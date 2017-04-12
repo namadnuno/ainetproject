@@ -1,0 +1,17 @@
+{
+  "name": "Projeto Ainet",
+  "description": "Printer Company need a web service",
+  "main": "",
+  "authors": [
+    "Nuno Alexandre <nunnomalex@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

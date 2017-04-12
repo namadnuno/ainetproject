@@ -1,95 +1,138 @@
-<!DOCTYPE html>
-<html lang="{{ config('app.locale') }}">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.main')
 
-        <title>Laravel</title>
-
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @if (Auth::check())
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ url('/login') }}">Login</a>
-                        <a href="{{ url('/register') }}">Register</a>
-                    @endif
+@section('content')
+        <nav class="nav">
+            <div class="nav-left">
+                <a class="nav-item">
+                    <img src="http://bulma.io/images/bulma-logo.png" alt="Bulma logo">
+                </a>
+            </div>
+            <div class="nav-center">
+                <a class="nav-item">
+                    <span class="icon">
+                        <i class="fa fa-github"></i>
+                    </span>
+                </a>
+                <a class="nav-item">
+                    <span class="icon">
+                        <i class="fa fa-twitter"></i>
+                    </span>
+                </a>
+            </div>
+            <span class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </span>
+            <div class="nav-right nav-menu">
+                <a class="nav-item">
+                    Home
+                </a>
+                <a class="nav-item">
+                    Documentation
+                </a>
+                <a class="nav-item">
+                    Blog
+                </a>
+                <span class="nav-item">
+                    <a class="button" >
+                        <span class="icon">
+                            <i class="fa fa-twitter"></i>
+                        </span>
+                        <span>Tweet</span>
+                    </a>
+                    <a class="button is-primary">
+                        <span class="icon">
+                            <i class="fa fa-download"></i>
+                        </span>
+                        <span>Download</span>
+                    </a>
+                </span>
+            </div>
+        </nav>
+        <div id="hero" style="background-image: url({{ asset('images/hero.jpg') }})">
+            <div class="container">
+                <div class="heading">
+                    <h1><span>Print</span>IT</h1>
                 </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
+                <div class="print-number">
+                    11111111
+                    <span>Impressões</span>
                 </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                <div class="cta-account">
+                       <a class="button is-primary is-large">Login</a>
                 </div>
             </div>
         </div>
-    </body>
-</html>
+        <section id="fight">
+            <div class="container">
+                <div class="columns">
+                    <div class="column has-text-centered">
+                        <div class="number-of-printes">
+                            <h3 class="title is-3">8393</h3> 
+                            <h4 class="subtitle is-4">Cores</h4>
+                        </div>
+                    </div>
+                    <div class="column has-text-centered">
+                        <div class="number-of-printes">
+                            <h3 class="title is-3">23213</h3> 
+                            <h4 class="subtitle is-4">Preto & branco</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="departamentos">
+            <div class="container">
+                <h2 class="title is-2 has-text-centered">Departamentos</h2>
+                <div class="content">
+                    <div class="columns">
+                    @foreach(App\Departament::all() as $department)
+                        <div class="column">
+                            <div class="box">
+                                <article class="media">
+                                    <div class="media-content">
+                                        <div class="content">
+                                            <h5 class="title is-5">{{ $department->name }}</h5>
+                                        </div>
+                                    </div>
+                                </article>
+                                <nav class="level is-mobile">
+                                    <div class="level-left">
+                                      <div class="level-item">
+                                        <span class="tag is-info">{{ $department->numTotalOfPrints() }} Impreções</span>
+                                      </div>
+                                    </div>
+                                </nav>
+                            </div>
+                        </div>
+                    @endforeach
+                    </div>
+                </div>  
+            </div>
+        </section>
+        <section id="status">
+            <div class="container">
+                <div class="columns">
+                    <div class="column">
+                        <div class="number-of-printes has-text-centered">
+                            <h3 class="title is-3">15</h3> 
+                            <h4 class="subtitle is-4">Hoje</h4>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="number-of-printes has-text-centered">
+                            <h3 class="title is-3">232</h3> 
+                            <h4 class="subtitle is-4">Mês</h4>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="number-of-printes has-text-centered">
+                            <h3 class="title is-3">3.5</h3> 
+                            <h4 class="subtitle is-4">Média</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    @stop

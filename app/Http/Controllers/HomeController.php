@@ -1,12 +1,16 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
+
     /**
-     * The Home of the project
+     * Página principal
+     *
+     * @return \Illuminate\Http\Response
      */
     public function index()
     {
