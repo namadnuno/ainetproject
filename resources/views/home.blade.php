@@ -1,55 +1,6 @@
 @extends('layouts.main')
 
 @section('content')
-        <nav class="nav">
-            <div class="nav-left">
-                <a class="nav-item">
-                    <img src="http://bulma.io/images/bulma-logo.png" alt="Bulma logo">
-                </a>
-            </div>
-            <div class="nav-center">
-                <a class="nav-item">
-                    <span class="icon">
-                        <i class="fa fa-github"></i>
-                    </span>
-                </a>
-                <a class="nav-item">
-                    <span class="icon">
-                        <i class="fa fa-twitter"></i>
-                    </span>
-                </a>
-            </div>
-            <span class="nav-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </span>
-            <div class="nav-right nav-menu">
-                <a class="nav-item">
-                    Home
-                </a>
-                <a class="nav-item">
-                    Documentation
-                </a>
-                <a class="nav-item">
-                    Blog
-                </a>
-                <span class="nav-item">
-                    <a class="button" >
-                        <span class="icon">
-                            <i class="fa fa-twitter"></i>
-                        </span>
-                        <span>Tweet</span>
-                    </a>
-                    <a class="button is-primary">
-                        <span class="icon">
-                            <i class="fa fa-download"></i>
-                        </span>
-                        <span>Download</span>
-                    </a>
-                </span>
-            </div>
-        </nav>
         <div id="hero" style="background-image: url({{ asset('images/hero.jpg') }})">
             <div class="container">
                 <div class="heading">
@@ -60,7 +11,7 @@
                     <span>Impressões</span>
                 </div>
                 <div class="cta-account">
-                       <a class="button is-primary is-large">Login</a>
+                       <a class="button is-primary is-large" href="{{ route('login') }}">Login</a>
                 </div>
             </div>
         </div>

@@ -36,4 +36,13 @@ class LoginController extends Controller
     {
         $this->middleware('guest', ['except' => 'logout']);
     }
+
+    /**
+     * Página de Login
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        return view('login');
+    }
 }
