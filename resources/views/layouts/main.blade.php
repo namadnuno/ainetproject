@@ -38,12 +38,12 @@
 	                        <span>Download</span>
 	                    </a>
                     @else
-                    	<a class="button is-primary">
+                    	<a class="button is-primary" href="{{ route('dashboard') }}">
 	                        <span class="icon">
 	                            <i class="fa fa-dashboard"></i>
 	                        </span>
                         	<span>Dashboard</span>
-                    </a>
+                    	</a>
                     @endif
                 </span>
             </div>
