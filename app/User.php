@@ -26,4 +26,22 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * Relação com os pedidos
+     * Um user tem vários pedidos
+     */
+    public function requests()
+    {
+        return $this->hasMany('App\Request', 'owner_id', 'id');
+    }
+
+    /**
+     * Relação entre o user e o departamento
+     * Um user tem um departamento
+     */
+    public function departament()
+    {
+        return $this->hasOne('App\Departament', 'id', 'department_id');
+    }
 }
