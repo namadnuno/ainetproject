@@ -3,7 +3,8 @@
 @section('content-child')
     <div class="box">
         <div class="media-content">
-            <form action="{{ route('requests.store') }}" method="POST">
+            <form action="{{ route('requests.store') }}" method="POST" enctype="multipart/form-data">
+                @include('partials.errors')
                 {{ csrf_field() }}
                 {{--
 
@@ -21,7 +22,7 @@
                 <div class="field">
                     <label class="description">Descrição do pedido</label>
                     <p class="control">
-                        <textarea class="textarea" placeholder="Descrição" name="description"></textarea>
+                        <textarea class="textarea" placeholder="Descrição" name="description">{{ old('description') }}</textarea>
                     </p>
                 </div>
                 <div class="columns">
@@ -30,7 +31,7 @@
                             <label for="open_date">Data do Pedido</label>
                             <p class="control">
                                 <input type="date" class="input" name="open_date"
-                                       value="{{ old('open_date') ? old('open_date') : \Carbon\Carbon::now()->toDateString() }}">
+                                       value="{{ old('open_date' , \Carbon\Carbon::now()->toDateString())  }}">
                             </p>
                         </div>
                     </div>
@@ -39,7 +40,7 @@
                             <label for="open_date">Data de Conclusão (opcional)</label>
                             <p class="control">
                                 <input type="date" class="input" name="due_date"
-                                       value="{{ old('open_date') ? old('open_date') : '' }}">
+                                       value="{{ old('open_date') }}">
                             </p>
                         </div>
                     </div>
@@ -48,7 +49,7 @@
                     <div class="column">
                         <div class="field">
                             <label for="quantity">Número de copias</label>
-                            <input type="number" class="input" min="1" max="1000" name="quantity">
+                            <input type="number" class="input" min="1" max="1000" name="quantity" value="{{ old('quantity', 1) }}">
                         </div>
                     </div>
                     <div class="column">
@@ -57,8 +58,8 @@
                             <p class="control">
                                 <span class="select is-fullwidth">
                                     <select name="colored" id="colored" class="select">
-                                        <option value="1">Cores</option>
-                                        <option value="0">Preto e branco</option>
+                                        <option value="1" {{ old('colored') == "1" ? 'selected' : '' }}>Cores</option>
+                                        <option value="0" {{ old('colored') == "0" ? 'selected' : '' }}>Preto e branco</option>
                                     </select>
                                 </span>
                             </p>
@@ -70,8 +71,8 @@
                             <p class="control">
                                 <span class="select is-fullwidth">
                                     <select name="stapled" id="stapled" class="select">
-                                        <option value="1">Com</option>
-                                        <option value="0">Sem</option>
+                                        <option value="1" {{ old('stapled') == "1" ? 'selected' : '' }}>Com</option>
+                                        <option value="0" {{ old('stapled') == "1" ? 'selected' : '' }}>Sem</option>
                                     </select>
                                 </span>
                             </p>
@@ -85,12 +86,12 @@
                             <p class="control">
                                 <span class="select is-fullwidth">
                                     <select name="paper_size" id="paper_size" class="select">
-                                        <option value="6">A6</option>
-                                        <option value="5">A5</option>
-                                        <option value="4" selected>A4</option>
-                                        <option value="3">A3</option>
-                                        <option value="2">A2</option>
-                                        <option value="1">A1</option>
+                                        <option value="6" {{ old('paper_size') == "6" ? 'selected' : '' }}>A6</option>
+                                        <option value="5" {{ old('paper_size') == "5" ? 'selected' : '' }}>A5</option>
+                                        <option value="4" {{ old('paper_size') == "4" ? 'selected' : 'selected' }}>A4</option>
+                                        <option value="3" {{ old('paper_size') == "3" ? 'selected' : '' }}>A3</option>
+                                        <option value="2" {{ old('paper_size') == "2" ? 'selected' : '' }}>A2</option>
+                                        <option value="1" {{ old('paper_size') == "1" ? 'selected' : '' }}>A1</option>
                                     </select>
                                 </span>
                             </p>

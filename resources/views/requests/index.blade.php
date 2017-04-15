@@ -1,8 +1,9 @@
 @extends('layouts.admin')
 
 @section('content-child')
+    @include('partials.messages')
     <div class="box">
-        <!-- Main container -->
+    <!-- Main container -->
         <nav class="level">
             <!-- Left side -->
             <div class="level-left">
@@ -44,25 +45,29 @@
                 </div>
             </nav>
         </div>
-        <div class="columns">
+        <div class="columns  is-multiline">
             @foreach ($requests as $request)
-                <div class="column is-3">
+                <div class="column is-one-quarter">
                     <div class="card">
-                        <div class="card-image">
-                            <figure class="image is-4by3">
-                                <img src="http://placehold.it/300x225" alt="">
-                            </figure>
-                        </div>
+                        @if(pathinfo(asset($request->file))['extension'] == 'jpg' ||
+                        pathinfo(asset($request->file))['extension'] == 'png' ||
+                        pathinfo(asset($request->file))['extension'] == 'tiff')
+                            <div class="card-image">
+                                <figure class="image is-4by3">
+                                    <img src="{{asset($request->file)}}" alt="">
+                                </figure>
+                            </div>
+                        @endif
                         <div class="card-content">
                             <div class="content">
-                                <span class="tag is-dark">#webdev</span>
-                                <strong class="timestamp">2 d</strong>
+                                <span class="tag is-dark">{{ pathinfo(asset($request->file))['extension'] }}</span>
+                                <strong class="timestamp">{{ \Carbon\Carbon::parse($request->open_date)->diffForHumans() }}</strong>
                             </div>
                         </div>
                         <footer class="card-footer">
-                            <a class="card-footer-item">Save</a>
-                            <a class="card-footer-item">Edit</a>
-                            <a class="card-footer-item">Delete</a>
+                            <a class="card-footer-item">Ver</a>
+                            <a class="card-footer-item">Editar</a>
+                            <a class="card-footer-item">Remover</a>
                         </footer>
                     </div>
                 </div>

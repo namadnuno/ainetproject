@@ -46,7 +46,8 @@
 				<ul class="menu-list">
 					<li><a href="{{ route('requests.index') }}"
 					{{ request()->is('requests') ? 'class=is-active' : '' }}>Meus Pedidos</a></li>
-					<li><a>Criar</a></li>
+					<li><a href="{{ route('requests.new') }}"
+								{{ request()->is('requests/new') ? 'class=is-active' : '' }}>Criar</a></li>
 				</ul>
 			</aside>
 		</div>
