@@ -22,7 +22,7 @@
 				</p>
 				<ul class="menu-list">
 					<li>
-						<a href="{{ route('dashboard') }}" 
+						<a href="{{ route('dashboard') }}"
 						{{ request()->is('dashboard') ? 'class=is-active' : '' }}
 						>Painel de Administração</a>
 					</li>
@@ -44,17 +44,18 @@
 					Pedidos
 				</p>
 				<ul class="menu-list">
-					<li><a>Meus Pedidos</a></li>
+					<li><a href="{{ route('requests.index') }}"
+					{{ request()->is('requests') ? 'class=is-active' : '' }}>Meus Pedidos</a></li>
 					<li><a>Criar</a></li>
 				</ul>
 			</aside>
 		</div>
 		<div class="column">
-			<div id="app">	
+			<div id="app">
 				@yield('content-child')
 			</div>
 		</div>
-	</div>	
+	</div>
 </section>
 @stop
 

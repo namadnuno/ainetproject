@@ -19,15 +19,30 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/perfil', [
         'as' => 'perfil.index',
         'uses' => 'PerfilController@index'
-        ]);
+    ]);
     Route::get('/perfil/edit', [
         'as' => 'perfil.edit',
         'uses' => 'PerfilController@edit'
-        ]);
-    Route::get('/perfil/update', [
+    ]);
+    Route::put('/perfil', [
         'as' => 'perfil.update',
         'uses' => 'PerfilController@update'
-        ]);
+    ]);
+
+    Route::get('/requests', [
+        'as' => 'requests.index',
+        'uses' => 'RequestController@index'
+    ]);
+
+    Route::get('/requests/new', [
+       'as' => 'requests.new',
+        'uses' => 'RequestController@new'
+    ]);
+
+    Route::post('/requests/', [
+       'as' => 'requests.store',
+        'uses' => 'RequestController@store'
+    ]);
 });
 
 Auth::routes();
