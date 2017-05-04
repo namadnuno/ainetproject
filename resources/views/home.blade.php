@@ -7,7 +7,7 @@
                     <h1><span>Print</span>IT</h1>
                 </div>
                 <div class="print-number">
-                    11111111
+                    {{ $pedidos->count() }}
                     <span>Impressões</span>
                 </div>
                 <div class="cta-account">
@@ -24,13 +24,13 @@
                 <div class="columns">
                     <div class="column has-text-centered">
                         <div class="number-of-printes">
-                            <h3 class="title is-3">8393</h3> 
+                            <h3 class="title is-3">{{ $pedidos->colored()->count() }}</h3> 
                             <h4 class="subtitle is-4">Cores</h4>
                         </div>
                     </div>
                     <div class="column has-text-centered">
                         <div class="number-of-printes">
-                            <h3 class="title is-3">23213</h3> 
+                            <h3 class="title is-3">{{ $pedidos->blackAndWhite()->count() }}</h3> 
                             <h4 class="subtitle is-4">Preto & branco</h4>
                         </div>
                     </div>
@@ -41,9 +41,9 @@
             <div class="container">
                 <h2 class="title is-2 has-text-centered">Departamentos</h2>
                 <div class="content">
-                    <div class="columns">
+                    <div class="columns is-multiline ">
                     @foreach(App\Departament::all() as $department)
-                        <div class="column">
+                        <div class="column is-one-quarter">
                             <div class="box">
                                 <article class="media">
                                     <div class="media-content">

@@ -31,4 +31,19 @@ class Request extends Model
     {
         return $query->where('description', 'LIKE', '%' . $filter . '%');
     }
+
+    public function scopeDone($query)
+    {
+        return $query->where('status', '2');
+    }
+
+    public function scopeColored($query)
+    {
+        return $query->where('colored', '1');
+    }
+
+    public function scopeBlackAndWhite($query)
+    {
+        return $query->where('colored', '0');
+    }
 }
