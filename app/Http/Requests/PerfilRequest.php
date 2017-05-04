@@ -29,7 +29,8 @@ class PerfilRequest extends FormRequest
                 'email' => 'required|min:5|email',
                 'password' => 'required|confirmed',
                 'profile_photo' => 'image',
-                'presentation' => 'max:254'
+                'presentation' => 'max:254',
+                'department_id' => 'required'
             ];
         }
         return [

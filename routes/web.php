@@ -28,7 +28,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'dashboard'], function () {
         'as' => 'perfil.edit',
         'uses' => 'PerfilController@edit'
     ]);
-    Route::post('/perfil', [
+    Route::post('/perfil/create', [
         'as' => 'perfil.storeAsAdmin',
         'uses' => 'PerfilController@storeAsAdmin'
     ]);

@@ -34,7 +34,8 @@ class PerfilController extends Controller
      */
     public function edit()
     {
-        return view('perfil.edit');
+        $user = auth()->user();
+        return view('perfil.edit', compact('user'));
     }
 
     public function update(PerfilRequest $request)
@@ -82,7 +83,7 @@ class PerfilController extends Controller
         
         $user->save();
 
-        return redirect()->route('utilizadores.index')->with('success', 'Perfil Criado!');
+        return redirect()->route('users.index')->with('success', 'Perfil Criado!');
     }
 
     /**
