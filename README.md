@@ -6,5 +6,6 @@ Para meter a dar tem de ser seguidos os seguintes passos.
       DB_DATABASE=homestead
       DB_USERNAME=homestead
       DB_PASSWORD=secret
+  4. composer install
   3. php artisan migrate
   4. php artisan migratie:refresh --seed
