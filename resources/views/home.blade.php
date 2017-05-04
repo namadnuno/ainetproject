@@ -11,7 +11,11 @@
                     <span>Impressões</span>
                 </div>
                 <div class="cta-account">
+                    @if (auth()->check())
+                       <a class="button is-primary is-large" href="{{ route('perfil.index') }}">Meu perfil</a>
+                    @else
                        <a class="button is-primary is-large" href="{{ route('login') }}">Login</a>
+                    @endif
                 </div>
             </div>
         </div>

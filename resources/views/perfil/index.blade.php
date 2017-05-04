@@ -1,16 +1,13 @@
 @extends('layouts.admin')
 
 @section('content-child')
+    @include('partials.messages')
     <div class="columns">
         <div class="column is-3">
             <div class="box">
                 <div class="card-image">
                     <figure class="image">
-                        @if (auth()->user()->profile_photo)
-                            <img src="{{ asset(auth()->user()->profile_photo) }}" class="is-circle">
-                        @else
-                            <img src="http://bulma.io/images/placeholders/128x128.png" class="is-circle">
-                        @endif
+                        @include('partials.profile_photo')
                     </figure>
                 </div>
             </div>

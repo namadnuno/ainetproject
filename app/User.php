@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'phone', 'profile_url', 'presentation', 'department_id'
     ];
 
     /**
@@ -43,5 +43,26 @@ class User extends Authenticatable
     public function departament()
     {
         return $this->hasOne('App\Departament', 'id', 'department_id');
+    }
+
+    /**
+     * Scope para fazer o filtro
+     * @param $query
+     * @param $filter
+     * @return mixed
+     */
+    public function scopeOfType($query, $filter)
+    {
+        return $query->where('name', 'LIKE', '%' . $filter . '%');
+    }
+
+    public function scopeActive($query)
+    {
+        return $query->where('blocked', '0');
+    }
+
+    public function isAdmin()
+    {
+        return $this->admin === '1';
     }
 }

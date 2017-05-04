@@ -19,7 +19,7 @@
         <a class="nav-item">
             Lista de Pedidos de Impressão
         </a>
-        <a class="nav-item">
+        <a class="nav-item @isActiveClass('contacts.index')" href="{{ route('contacts.index') }}">
             Lista de Contactos
         </a>
         <span class="nav-item">

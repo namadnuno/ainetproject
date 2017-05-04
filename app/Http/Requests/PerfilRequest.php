@@ -23,6 +23,15 @@ class PerfilRequest extends FormRequest
      */
     public function rules()
     {
+        if (request()->isMethod('post')) {
+            return [
+                'name' => 'required|min:5',
+                'email' => 'required|min:5|email',
+                'password' => 'required|confirmed',
+                'profile_photo' => 'image',
+                'presentation' => 'max:254'
+            ];
+        }
         return [
             'name' => 'required|min:5',
             'email' => 'required|min:5|email',

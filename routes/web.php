@@ -12,10 +12,14 @@
 */
 
 Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
+
+Route::get('/contacts', ['as' => 'contacts.index', 'uses' => 'UserController@indexAsGuest']);
+
 Route::get('/login', ['as' => 'login', 'uses' => 'Auth\LoginController@index']);
+
 Route::get('/dashboard', ['as' => 'dashboard', 'uses' => 'DashboardController@index']);
 
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => 'auth', 'prefix' => 'dashboard'], function () {
     Route::get('/perfil', [
         'as' => 'perfil.index',
         'uses' => 'PerfilController@index'
@@ -24,25 +28,38 @@ Route::group(['middleware' => 'auth'], function () {
         'as' => 'perfil.edit',
         'uses' => 'PerfilController@edit'
     ]);
+    Route::post('/perfil', [
+        'as' => 'perfil.storeAsAdmin',
+        'uses' => 'PerfilController@storeAsAdmin'
+    ]);
     Route::put('/perfil', [
         'as' => 'perfil.update',
         'uses' => 'PerfilController@update'
     ]);
 
-    Route::get('/requests', [
-        'as' => 'requests.index',
-        'uses' => 'RequestController@index'
+    Route::resource('requests', 'RequestController');
+
+    Route::get('requests/{request}/refuse', [
+        'as' => 'requests.refuse',
+        'uses' => 'RequestController@refuse'
     ]);
 
-    Route::get('/requests/new', [
-       'as' => 'requests.new',
-        'uses' => 'RequestController@new'
+    Route::post('/download/', [
+        'as' => 'download',
+        'uses' => 'DownloadController@show'
     ]);
+    
+    Route::resource('users', 'UserController', ['only' => [
+        'index', 'show', 'destroy', 'create']]);
 
-    Route::post('/requests/', [
-       'as' => 'requests.store',
-        'uses' => 'RequestController@store'
-    ]);
+    Route::put('/users/change', ['as' => 'user.change', 'uses' => 'UserController@change']);
+    
+    Route::put('/comments/change', ['as' => 'comments.change', 'uses' => 'CommentController@change']);
 });
+
+Route::resource('comments', 'CommentController', ['except' => [
+    'create'
+]]);
+
 
 Auth::routes();

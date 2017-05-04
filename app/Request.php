@@ -16,14 +16,19 @@ class Request extends Model
         'colored', 'stapled', 'paper_size',
         'paper_type', 'file'];
 
+    public function comments()
+    {
+        return $this->hasMany('App\Comment', 'request_id', 'id');
+    }
+
     /**
      * Scope para fazer o filtro
      * @param $query
      * @param $filter
      * @return mixed
      */
-    public function scopeFilterBy($query, $filter)
+    public function scopeOfType($query, $filter)
     {
-        return $this->contains($filter);
+        return $query->where('description', 'LIKE', '%' . $filter . '%');
     }
 }

@@ -1,80 +1,88 @@
 @extends('layouts.admin')
 
 @section('content-child')
-    @include('partials.messages')
-    <div class="box">
-    <!-- Main container -->
-        <nav class="level">
-            <!-- Left side -->
-            <div class="level-left">
-                <div class="level-item">
-                    <div class="field has-addons">
-                        <p class="control">
-                            <input class="input" type="text" placeholder="Procurar por pedido" name="filter">
-                        </p>
-                        <p class="control">
-                            <button class="button">
-                                Search
-                            </button>
-                        </p>
-                    </div>
+@include('partials.messages')
+@include('partials.filter-box', [
+    'filters' => [
+        'created_at' => 'Data de Criação',
+        'open_date' => 'Data Abertura',
+        'quantity' => 'Quantidade',
+        'paper_size' => 'Tamanho de Papel',
+        'status' => 'Estado',
+    ],
+    'newRoute' => 
+        'requests.create'
+    ])
+<div class="columns  is-multiline">
+    @foreach ($requests as $request)
+    <div class="column is-one-quarter">
+        <div class="card">
+            @if(pathinfo(asset($request->file))['extension'] == 'jpg' ||
+                pathinfo(asset($request->file))['extension'] == 'png' ||
+                pathinfo(asset($request->file))['extension'] == 'jpeg' ||
+                pathinfo(asset($request->file))['extension'] == 'tiff')
+                <div class="card-image">
+                    <figure class="image is-square">
+                        <img src="{{ asset( 'file-thumb/' .$request->file) }}" alt="">
+                    </figure>
                 </div>
-            </div>
-
-            <!-- Right side -->
-            <div class="level-right">
-                <p class="level-item"><strong>Ordernar por:</strong></p>
-                <p class="level-item">
-                    <div class="field is-marginless">
-                        <p class="control">
-                            <span class="select" name="order">
-                                <select>
-                                    <option value="created_date">Data Criação</option>
-                                    <option value="quantity">Quantidade</option>
-                                    <option value="paper_size">Tamanho de Papel</option>
-                                    <option value="status">Estado</option>
-                                </select>
-                            </span>
-                        </p>
-                    </div>
-                </p>
-                <p class="level-item"><a></a></p>
-                <p class="level-item"><a class="button is-info">Filtar</a></p>
-                <p class="level-item">
-                    <a class="button is-success" href="{{ route('requests.new') }}">Novo</a></p>
+                @else 
+                <div class="card-image">
+                    <figure class="image is-square">
+                        <img src="{{ asset('/files_formats/' . pathinfo(asset($request->file))['extension'] . '.png' )}}" alt="">
+                    </figure>
                 </div>
-            </nav>
-        </div>
-        <div class="columns  is-multiline">
-            @foreach ($requests as $request)
-                <div class="column is-one-quarter">
-                    <div class="card">
-                        @if(pathinfo(asset($request->file))['extension'] == 'jpg' ||
-                        pathinfo(asset($request->file))['extension'] == 'png' ||
-                        pathinfo(asset($request->file))['extension'] == 'tiff')
-                            <div class="card-image">
-                                <figure class="image is-4by3">
-                                    <img src="{{asset($request->file)}}" alt="">
-                                </figure>
+                @endif
+                <div class="card-content">
+                    <div class="content">
+                        <div class="level">
+                            <div class="level-left">
+                                <div class="level-item">
+                                    <span class="tag is-dark">{{ pathinfo(asset($request->file))['extension'] }}</span>
+                                </div>
+                                <div class="level-item">
+                                    <span class="tag is-info">{{ $request->quantity }}</span>
+                                </div>
                             </div>
-                        @endif
-                        <div class="card-content">
-                            <div class="content">
-                                <span class="tag is-dark">{{ pathinfo(asset($request->file))['extension'] }}</span>
-                                <strong class="timestamp">{{ \Carbon\Carbon::parse($request->open_date)->diffForHumans() }}</strong>
+                            <div class="level-right">
+                                <div class="level-item">
+                                    @if ($request->status == 0)
+                                        <span class="tag is-info">
+                                            Em espera
+                                        </span>
+                                    @elseif($request->status == 2)
+                                        <span class="tag is-warning">
+                                            Recusado
+                                        </span>
+                                    @else
+                                        <span class="tag is-success">
+                                            Concluido
+                                        </span>
+                                    @endif
+                                </div>
                             </div>
                         </div>
-                        <footer class="card-footer">
-                            <a class="card-footer-item">Ver</a>
-                            <a class="card-footer-item">Editar</a>
-                            <a class="card-footer-item">Remover</a>
-                        </footer>
+                        <div class="has-text-centered">
+                            <strong class="timestamp">{{ \Carbon\Carbon::parse($request->created_at)->diffForHumans() }}</strong>
+                        </div>
                     </div>
                 </div>
-            @endforeach
+                <footer class="card-footer">
+                    <a href="{{ route('requests.show', $request->id) }}" class="card-footer-item">Ver</a>
+                    <a href="{{ route('requests.edit', $request->id) }}" class="card-footer-item">Editar</a>
+                    <a class="card-footer-item">Remover</a>
+                </footer>
+            </div>
         </div>
+        @endforeach
+    </div>
+    @include('partials.pagination', ['pagination' => $requests])
     @endsection
 
     @section('title')
-        Meus Pedidos
+    Meus Pedidos
     @endsection
+
+
+
+    

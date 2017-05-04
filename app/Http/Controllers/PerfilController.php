@@ -2,26 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PerfilRequest;
 use App\User;
 use Illuminate\Http\Request;
-use App\Http\Requests\PerfilRequest;
+use Illuminate\Support\Facades\Hash;
 
 class PerfilController extends Controller
 {
 
     /**
-     * Repositório
-     * @var User
-     */
-    private $repo;
-
-    /**
      * Contrutor com dependency injection
-     * @param User $repo
      */
-    public function __construct(User $repo)
+    public function __construct()
     {
-        $this->repo = $repo;
+        $this->middleware('web');
     }
 
     /**
@@ -45,25 +39,69 @@ class PerfilController extends Controller
 
     public function update(PerfilRequest $request)
     {
-        $user = $this->repo->find(auth()->user()->id);
+        $user = User::find(auth()->user()->id);
 
-        if ($request->hasFile('profile_photo')) {
-            $user->profile_photo =  $request->profile_photo->move(public_path('profile_photo'), 'profile_photo-' . $user->id . '.' . $request->profile_photo->extension());
-        }
-
+        $user->profile_photo = $this->storePerfilPhoto($request);
+        
         if (!$request->password == '') {
             $user->password = Hash::make($request->password);
-        } else {
-            unset($request['password']);
         }
 
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->phone = $request->phone;
-        $user->profile_url = $request->profile_url;
-        $user->presentation = $request->presentation;
+        $user->fill(
+            request([
+                'name', 'email', 'phone', 'profile_url', 'presentation', 'department_id'
+            ])
+        );
+        
         $user->save();
 
-        return back();
+        return redirect()->route('perfil.index')->with('success', 'Perfil Alterado!');
+    }
+
+    public function storeAsAdmin(PerfilRequest $request)
+    {
+        $user = new User();
+        
+        $user->password = Hash::make($request->password);
+        
+        $user->blocked = 0;
+
+        $user->admin = 0;
+
+        $user->print_evals = 0;
+
+        $user->print_counts = 0;
+
+        $user->profile_photo = $this->storePerfilPhoto($request);
+        
+        $user->fill(
+            request([
+                'name', 'email', 'phone', 'profile_url', 'presentation', 'department_id'
+            ])
+        );
+        
+        $user->save();
+
+        return redirect()->route('utilizadores.index')->with('success', 'Perfil Criado!');
+    }
+
+    /**
+     * Guarda a foto de perfil
+     * @param  Illuminate\Http\Request $request
+     * @return string Nome da imagem
+     */
+    private function storePerfilPhoto($request)
+    {
+        if ($request->hasFile('profile_photo')) {
+            $filename = 'profile_photo-'
+                        . time() . '.' . $request->profile_photo->extension();
+            $request->profile_photo->move(
+                public_path('profile_photo'),
+                $filename
+            );
+            return $filename;
+        }
+
+        return null;
     }
 }

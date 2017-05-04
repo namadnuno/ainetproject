@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 
 @section('content-child')
+	@include('partials.messages')
 	<div class="box">
 		<form class="form" action="{{ route('perfil.update') }}"
 		method="POST" enctype="multipart/form-data">
@@ -32,6 +33,19 @@
 				<label class="label">Password</label>
 			 	<p class="control">
 					<input class="input" type="password" placeholder="Confirmação da Password" name="password_confirmation">
+			 	</p>
+			</div>
+			<div class="field">
+				<label class="label">Departamento</label>
+			 	<p class="control">
+					<span class="select is-fullwidth">
+				      <select name="department_id" >
+				        <option>-- Selecione o departamento --</option>
+				        @foreach (\App\Departament::all() as $departamento)
+					        <option {{ old('department_id') == $departamento->id ? 'selected' : '' }} value="{{ $departamento->id }}">{{ $departamento->name }}</option>
+				        @endforeach
+				      </select>
+				    </span>
 			 	</p>
 			</div>
 			<div class="field">

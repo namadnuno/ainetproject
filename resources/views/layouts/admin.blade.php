@@ -1,5 +1,6 @@
 @extends('layouts.main')
 
+
 @section('content')
 <section class="hero is-medium is-primary is-bold">
 	<div class="hero-body">
@@ -23,12 +24,12 @@
 				<ul class="menu-list">
 					<li>
 						<a href="{{ route('dashboard') }}"
-						{{ request()->is('dashboard') ? 'class=is-active' : '' }}
+						@isActive('dashboard')
 						>Painel de Administração</a>
 					</li>
 					<li>
 						<a href="{{ route('perfil.index') }}"
-						{{ request()->is('perfil') ? 'class=is-active' : '' }}
+						@isActive('perfil.index')
 						>Meu Perfil</a>
 					</li>
 				</ul>
@@ -36,18 +37,33 @@
 					Administração de Pedidos
 				</p>
 				<ul class="menu-list">
-					<li><a>Utilizadores</a></li>
+					<li>
+						<a href="{{ route('users.index') }}"
+						   @isActive('users.index')
+						>
+							Utilizadores
+						</a>
+					</li>
 					<li><a>Pedidos de Impressão</a></li>
-					<li><a>Comentários</a></li>
+					<li>
+						<a href="{{ route('comments.index') }}"
+						   @isActive('comments.index')>
+							Comentários
+						</a>
+					</li>
 				</ul>
 				<p class="menu-label">
 					Pedidos
 				</p>
 				<ul class="menu-list">
-					<li><a href="{{ route('requests.index') }}"
-					{{ request()->is('requests') ? 'class=is-active' : '' }}>Meus Pedidos</a></li>
-					<li><a href="{{ route('requests.new') }}"
-								{{ request()->is('requests/new') ? 'class=is-active' : '' }}>Criar</a></li>
+					<li>
+						<a href="{{ route('requests.index') }}"
+						   @isActive('requests.index')>Meus Pedidos</a>
+					</li>
+					<li>
+						<a href="{{ route('requests.create') }}"
+						   @isActive('requests.create')>Criar</a>
+					</li>
 				</ul>
 			</aside>
 		</div>

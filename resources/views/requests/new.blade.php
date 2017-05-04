@@ -6,19 +6,6 @@
             <form action="{{ route('requests.store') }}" method="POST" enctype="multipart/form-data">
                 @include('partials.errors')
                 {{ csrf_field() }}
-                {{--
-
-                Descrição do pedido;
-                Data do pedido;
-                Data limite para conclusão do pedido (opcional);
-                Número de cópias;
-                Cores/Preto e branco;
-                Com/sem agrafo
-                Tamanho do papel (A3, A4);
-                Tipo de papel (rascunho, normal, fotográfico);
-                Conteúdo multimédia (ficheiro a imprimir), podendo ser: ◦ Imagem (JPG, TIFF, PNG…); ◦ Ficheiro Word; ◦ Ficheiro Excel; ◦ Ficheiro ODT; ◦ Ficheiro PDF.
-
-                --}}
                 <div class="field">
                     <label class="description">Descrição do pedido</label>
                     <p class="control">

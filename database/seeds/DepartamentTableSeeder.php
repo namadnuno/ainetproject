@@ -11,11 +11,6 @@ class DepartamentTableSeeder extends Seeder
      */
     public function run()
     {
-        $faker = Faker\Factory::create();
-        for ($i=0; $i < 6 ; $i++) { 
-        	$d = new App\Departament;
-        	$d->name = $faker->catchPhrase;
-        	$d->save();
-        }
+        factory(App\Departament::class, 50)->create();
     }
 }

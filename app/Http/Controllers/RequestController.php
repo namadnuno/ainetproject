@@ -2,38 +2,36 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Request as RequestModel;
 use App\Http\Requests\PedidoRequest;
+use App\Request as RequestModel;
+use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image;
 
 class RequestController extends Controller
 {
-
     /**
-     * Repositório
-     * @var  Request $repo
+     * Numero de pedidos por página
      */
-    private $repo;
+    private const NUM_PER_PAGE = 20;
 
-    /**
-     * Contrutor do RequestController
-     * @param Request $repo
-     */
-    public function __constructor(RequestModel $repo)
+    public function __constructor()
     {
-        $this->repo = $repo;
-        $this->middleware('web ');
+        $this->middleware('web');
     }
-
     /**
      * Mostra a página dos pedidos do utilizador
      * @return Illuminate\Http\Request
      */
-    public function index(Request $request)
+    public function index()
     {
-        $requests = auth()->user()->requests()->get();
-
-        //$request = $requests->FilterBy($request->filter)->orderBy($request->order ? $request->order : 'created_at', 'DESC')->get();
+        //dd(request()->all());
+        $requests = auth()->user()->requests();
+        $requests = $requests
+        ->ofType(request('filter'))
+        ->orderBy(
+            request('orderby') ? request('orderby') : 'created_at',
+            request('order') ? request('order') : 'DESC'
+        )->paginate(static::NUM_PER_PAGE);
 
         return view('requests.index', compact('requests'));
     }
@@ -42,7 +40,7 @@ class RequestController extends Controller
      * Página de criação de um Request
      * @return Illuminate\Http\Request
      */
-    public function new()
+    public function create()
     {
         return view('requests.new');
     }
@@ -56,14 +54,54 @@ class RequestController extends Controller
     {
         $pedido = new RequestModel();
         $pedido = $pedido->fill($request->all());
-        $pedido->status = 1;
+        $pedido->status = 0;
+        
         $filename = 'file-' . time() . '.' . $request->file->extension();
-        $pedido->file = 'files/'.$filename;
+        $pedido->file = $filename;
         $request->file->move(public_path('files'), $filename);
+
+        $img = Image::make(public_path('files/' . $filename));
+        $img->fit(256);
+        $img->save(public_path('file-thumb/' . $filename));
+
         $pedido->owner_id = auth()->user()->id;
         $pedido->save();
 
-        return redirect()->route('requests.index'
-            )->with('success' , 'Pedido criado com sucesso!');
+        return redirect()->route(
+            'requests.index'
+        )->with('success', 'Pedido criado com sucesso!');
+    }
+
+    /**
+     * Apresenta a página do pedido 
+     * com a informação do mesmo
+     * @param  int id
+     * @return Illuminate\Http\Request
+     */
+    public function show(RequestModel $request)
+    {
+        return view(
+            'requests.show',
+            compact('request')
+        );
+    }
+
+    public function edit(RequestModel $request)
+    {
+        return view('requests.edit', compact('request'));
+    }
+
+    public function update(PedidoRequest $requestVal, RequestModel $request)
+    {
+        # code...
+    }
+
+    public function refuse(RequestModel $request)
+    {
+        $request->status = 2;
+        $request->save();
+
+        return redirect()->route('requests.index')
+                ->with('success', 'Pedido #'. $request->id .' recusado com sucesso!');
     }
 }
