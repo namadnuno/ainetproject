@@ -71,19 +71,27 @@
                 <div class="columns">
                     <div class="column">
                         <div class="number-of-printes has-text-centered">
-                            <h3 class="title is-3">15</h3> 
+                            <h3 class="title is-3">{{ $pedidos->done()->ofToday()->count() }}</h3> 
                             <h4 class="subtitle is-4">Hoje</h4>
                         </div>
                     </div>
                     <div class="column">
                         <div class="number-of-printes has-text-centered">
-                            <h3 class="title is-3">232</h3> 
+                            <h3 class="title is-3">{{ $pedidos->done()->ofMonth()->count() }}</h3> 
                             <h4 class="subtitle is-4">Mês</h4>
                         </div>
                     </div>
                     <div class="column">
                         <div class="number-of-printes has-text-centered">
-                            <h3 class="title is-3">3.5</h3> 
+                            <h3 class="title is-3">
+                                {{ 
+                                    $pedidos->done()->ofMonth()->count() / 
+                                    cal_days_in_month(CAL_GREGORIAN, 
+                                        Carbon\Carbon::now()->month, 
+                                        Carbon\Carbon::now()->year
+                                    ) 
+                                }}
+                            </h3> 
                             <h4 class="subtitle is-4">Média</h4>
                         </div>
                     </div>

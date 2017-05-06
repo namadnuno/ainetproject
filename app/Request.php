@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Request extends Model
@@ -45,5 +46,17 @@ class Request extends Model
     public function scopeBlackAndWhite($query)
     {
         return $query->where('colored', '0');
+    }
+
+    public function scopeOfToday($query)
+    {
+        return $query->where('created_at', Carbon::now()->toDateString());
+    }
+
+    public function scopeOfMonth($query)
+    {
+        return $query
+        ->where('created_at', '>=', Carbon::now()->startOfMonth()->toDateString())
+        ->where('created_at', '>=', Carbon::now()->endOfMonth()->toDateString());
     }
 }
