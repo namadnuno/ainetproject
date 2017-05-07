@@ -80,7 +80,9 @@
 	<script type="text/javascript">
 		 window.Laravel = {!! json_encode([
 	        'csrfToken' => csrf_token(),
+	        'authToken' => auth()->user()->createToken('My Token')->accessToken
 	    ]) !!};
+		var _api = "{{ url('/') }}"; 
 	</script>
 	<script src="{{ asset('js/app.js') }}" ></script>
 @stop

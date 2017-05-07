@@ -87,4 +87,23 @@ class Request extends Model
         ->where('created_at', '>=', Carbon::now()->startOfMonth()->toDateString())
         ->where('created_at', '>=', Carbon::now()->endOfMonth()->toDateString());
     }
+
+    /**
+     * Scope para todos os pedidos feitos nesta semana
+     * @param  \Illuminate\Database\Eloquent\Builder $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeOfWeek($query)
+    {
+        return $query
+        ->where('created_at', '>=', Carbon::now()->startOfWeek()->toDateString())
+        ->where('created_at', '>=', Carbon::now()->endOfWeek()->toDateString());
+    }
+
+    public function scopeBetween($query)
+    {
+        return $query
+        ->where('created_at', '>=', Carbon::now()->toDateTimeString())
+        ->where('created_at', '>=', Carbon::now()->toDateTimeString());
+    }
 }

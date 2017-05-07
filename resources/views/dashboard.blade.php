@@ -7,7 +7,7 @@
 				<div class="card-content">
 					<div class="content">
 						<p class="title is-1	 is-large has-text-centered">
-							3
+							{{ auth()->user()->requests()->done()->ofToday()->count() }}
 						</p>
 						<p class="subtitle has-text-centered">
 							Impressões Hoje
@@ -21,7 +21,7 @@
 				<div class="card-content">
 					<div class="content">
 						<p class="title is-1	 is-large has-text-centered">
-							25
+							{{ auth()->user()->requests()->done()->ofMonth()->count() }}
 						</p>
 						<p class="subtitle has-text-centered">
 							Impressões Este Mês
