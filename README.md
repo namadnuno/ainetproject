@@ -11,6 +11,9 @@ Para meter a dar tem de ser seguidos os seguintes passos.
   4. php artisan migratie:refresh --seed
   5. php artisan key:generate
  
+ 
+
 # Api Access
 Como Precisamos de utilizar a Api é preciso instalar o Laravel Passport
+
   6. php artisan passport:install
