@@ -53,9 +53,21 @@
                                     </div>
                                 </article>
                                 <nav class="level is-mobile">
-                                    <div class="level-left">
+                                    <div class="level-center">
                                       <div class="level-item">
                                         <span class="tag is-info">{{ $department->numTotalOfPrints() }} Impreções</span>
+                                      </div>
+                                    </div>
+                                </nav>
+                                <nav class="level is-mobile">
+                                    <div class="level-left">
+                                      <div class="level-item">
+                                        <span class="tag is-info">{{ $department->numPrintsColor() }} Impreções</span>
+                                      </div>
+                                    </div>
+                                    <div class="level-right">
+                                      <div class="level-item">
+                                        <span class="tag is-info">{{ $department->numPrintsBlackAndWhite() }} Impreções</span>
                                       </div>
                                     </div>
                                 </nav>

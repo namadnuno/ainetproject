@@ -23,4 +23,16 @@ class Departament extends Model
         }
         return $num;
     }
+
+    public function numPrintsBlackAndWhite()
+    {
+        $num = 0;
+        return $num;
+    }
+
+    public function numPrintsColor()
+    {
+       $num = 0;
+        return $num;
+    }
 }
