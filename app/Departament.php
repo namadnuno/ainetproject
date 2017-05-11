@@ -12,18 +12,16 @@ class Departament extends Model
      */
     public function users()
     {
-        return $this->hasMany('App\User', 'department_id');
+        return $this->hasMany(User::class, 'department_id');
     }
 
+    /**
+     * Relação com os pedidos
+     * Um user tem vários pedidos
+     */
     public function requests()
     {
-        $requests = [];
-        foreach ($this->users()->get() as $user) {
-            foreach ($user->requests as $request) {
-                $requests[] = $request;                
-            }
-        }
-        return $requests;
+        return $this->hasManyThrough(Request::class, User::class, 'department_id', 'owner_id');
     }
 
     public function scopeNumPrintsBlackAndWhite($query)
