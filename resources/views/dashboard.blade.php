@@ -52,7 +52,7 @@
 								<th>#</th>
 								<th>Data do pedido</th>
 								<th>Quantity</th>
-								<th>Cores</th>
+								<th>Cores/Preto e Branco</th>
 								<th>Estado</th>
 								<th></th>
 							</tr>
@@ -63,8 +63,16 @@
 									<td>{{ $request->id }}</td>
 									<td>{{ $request->open_date }}</td>
 									<td>{{ $request->quantity }}</td>
-									<td>{{ $request->colored }}</td>
-									<td>{{ $request->status }}</td>
+									<td>{{ $request->colored == 1 ? 'Cores' : 'Preto e Branco' }}</td>
+									<td>
+										@if($request->status == 0)
+											{{ 'Recusado' }}
+										@elseif($request->status == 1)
+											{{ 'Pendente' }}
+										@else
+											{{ 'Concluido' }}
+										@endif
+									</td>
 									<td>	
 										<a href="{{ url('/request/' . $request->id ) }}" class="button">
 											<span class="icon">

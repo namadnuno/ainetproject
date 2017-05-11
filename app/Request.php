@@ -108,4 +108,9 @@ class Request extends Model
         ->where('created_at', '>=', $dataInicio->toDateTimeString())
         ->where('created_at', '<=', $dataFim->toDateTimeString());
     }
+
+    public function isRecusado()
+    {
+        return $this->status == '0';
+    }
 }

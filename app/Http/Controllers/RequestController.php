@@ -55,7 +55,7 @@ class RequestController extends Controller
     {
         $pedido = new RequestModel();
         $pedido = $pedido->fill($request->all());
-        $pedido->status = 0;
+        $pedido->status = 1;
         
         $filename = 'file-' . time() . '.' . $request->file->extension();
         $pedido->file = $filename;
@@ -99,10 +99,28 @@ class RequestController extends Controller
 
     public function refuse(RequestModel $request)
     {
-        $request->status = 2;
+        $request->status = 0;
         $request->save();
 
         return redirect()->route('requests.index')
                 ->with('success', 'Pedido #'. $request->id .' recusado com sucesso!');
+    }
+
+    public function conclude(RequestModel $request)
+    {
+        $request->status = 2;
+        $request->save();
+
+        return redirect()->route('requests.index')
+                ->with('success', 'Pedido #'. $request->id .' concluído com sucesso!');
+    }
+
+    public function readmit(RequestModel $request)
+    {
+        $request->status = 1;
+        $request->save();
+
+        return redirect()->route('requests.index')
+                ->with('success', 'Pedido #'. $request->id .' readmitido com sucesso!');
     }
 }

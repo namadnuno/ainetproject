@@ -98,7 +98,7 @@
         <div class="field">
             <label for="open_date">Ficheiro</label>
             <p class="control">
-                <input type="file" class="input" name="file">
+                <input type="file" class="input" name="file" value="{{ old('file', $request->file) }}">
             </p>
         </div>
     </div>

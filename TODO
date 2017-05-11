@@ -17,3 +17,7 @@
 18. ap recusar pedido, posso voltar a recusa lo
 19. ap clicar para ver pedido, aparece em espera em vez de recusado
 20. botao concluir nao funciona
+21. rever impressoes em espera no dashboard (nao faz sentido la aparecer pedidos recusados ou concluidos, por isso a coluna estado tb nao devia aparecer)
+22. gravar edicao de pedido nao esta a funcionar
+23. verificacaoes no tipo de ficheiro
+24. escolher icone para o tipo de file odt e acrescentar mais extensoes para as imagens

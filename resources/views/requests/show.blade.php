@@ -21,14 +21,18 @@
 				<div class="media-content">
 					<div class="content">
 						<div class="level-item is-top-xsmall">
-							@if ($request->status == 1)
-							<span class="tag is-warning">
-								Em espera
-							</span>
+							@if ($request->status == 0)
+								<span class="tag is-danger">
+									Recusado
+								</span>
+							@elseif($request->status == 1)
+								<span class="tag is-warning">
+									Pendente
+								</span>
 							@else
-							<span class="tag is-success">
-								Em espera
-							</span>
+								<span class="tag is-success">
+									Concluído
+								</span>
 							@endif
 						</div>
 						<div class="has-text-centered is-top-small">
@@ -59,7 +63,7 @@
 					</div>
 					<div class="level-right">
 						<div class="level-item">
-							<i>{{ \Carbon\Carbon::parse($request->open_date)->diffForHumans() }}</i>	
+							<i>{{ \Carbon\Carbon::parse($request->created_at)->diffForHumans() }}</i>	
 						</div>						
 					</div>
 				</div>
@@ -69,7 +73,7 @@
 					</p>
 					<p>
 						<span class="tag {{ $request->colored == 1 ? 'is-primary' : 'is-dark' }}">
-							{{ $request->colored == 1 ? 'Cores' : 'Preto & Branco' }}
+							{{ $request->colored == 1 ? 'Cores' : 'Preto e Branco' }}
 						</span>
 						<span class="tag is-info">
 							{{ $request->quantity }} {{ $request->quantity > 1 ? 'Cópias' : 'Cópia' }}
@@ -81,7 +85,7 @@
 							A{{ $request->paper_size }}
 						</span>
 						<span class="tag is-primary">
-							tipo de papel é
+							Papel 
 							@if ($request->paper_type == 1)
 							normal
 							@elseif($request->paper_type == 2)

@@ -35,33 +35,51 @@
                 @endif
                 <div class="card-content">
                     <div class="content">
-                        <div class="level">
-                            <div class="level-left">
-                                <div class="level-item">
-                                    <span class="tag is-dark">{{ pathinfo(asset($request->file))['extension'] }}</span>
-                                </div>
-                                <div class="level-item">
-                                    <span class="tag is-info">{{ $request->quantity }}</span>
-                                </div>
+
+                        <div class="columns">
+                            <div class="column is-one-third">
+                                <span class="tag is-dark">
+                                @if(pathinfo(asset($request->file))['extension'] == 'pdf')
+                                    <i class="fa fa-file-pdf-o"></i> 
+                                @elseif(pathinfo(asset($request->file))['extension'] == "png" || pathinfo(asset($request->file))['extension'] == 'jpg' ||
+                                    pathinfo(asset($request->file))['extension'] == 'jpeg' ||
+                                    pathinfo(asset($request->file))['extension'] == 'tiff')
+                                    <i class="fa fa-file-photo-o"></i>
+                                @elseif(pathinfo(asset($request->file))['extension'] == "xlsx")
+                                    <i class="fa fa-file-excel-o"></i>
+                                @elseif(pathinfo(asset($request->file))['extension'] == "docx")
+                                    <i class="fa fa-file-word-o"></i>
+                                @elseif(pathinfo(asset($request->file))['extension'] == "odt")
+                                    escolher icon
+                                @endif
+                                </span>
                             </div>
-                            <div class="level-right">
-                                <div class="level-item">
-                                    @if ($request->status == 0)
-                                        <span class="tag is-info">
-                                            Em espera
-                                        </span>
-                                    @elseif($request->status == 2)
-                                        <span class="tag is-warning">
-                                            Recusado
-                                        </span>
-                                    @else
-                                        <span class="tag is-success">
-                                            Concluído
-                                        </span>
-                                    @endif
-                                </div>
+
+                            <div class="column is-one-third">
+                                <span class="tag is-info">
+                                <i class="fa fa-print">{{ $request->quantity }}</i>
+                                </span>
+                            </div>
+
+                            <div class="column is-one-third">
+                                @if ($request->status == 0)
+                                    <span class="tag is-danger">
+                                        <i class="fa fa-ban"></i>
+                                    </span>
+                                @elseif($request->status == 1)
+                                    <span class="tag is-warning">
+                                        <i class="fa fa-exclamation"></i>
+                                    </span>
+                                @else
+                                    <span class="tag is-success">
+                                        <i class="fa fa-check"></i>
+                                    </span>
+                                @endif
                             </div>
                         </div>
+
+                        
+
                         <div class="has-text-centered">
                             <strong class="timestamp">{{ \Carbon\Carbon::parse($request->created_at)->diffForHumans() }}</strong>
                         </div>

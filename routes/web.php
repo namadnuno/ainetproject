@@ -43,6 +43,14 @@ Route::group(['middleware' => 'auth', 'prefix' => 'dashboard'], function () {
         'as' => 'requests.refuse',
         'uses' => 'RequestController@refuse'
     ]);
+    Route::get('requests/{request}/conclude', [
+        'as' => 'requests.conclude',
+        'uses' => 'RequestController@conclude'
+    ]);
+    Route::get('requests/{request}/readmit', [
+        'as' => 'requests.readmit',
+        'uses' => 'RequestController@readmit'
+    ]);
 
     Route::post('/download/', [
         'as' => 'download',
