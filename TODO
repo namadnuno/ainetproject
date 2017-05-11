@@ -12,3 +12,8 @@
 13. funcionalidade de completar pedido, nome intuitivo
 14. ao clicar no botao meu perfil na pagina inicial, aparece um erro
 15. destincao de tipo de impressao por departamento, pagina inicial
+16. bug na pagina do perfil, mostra o icone de hiperligacao caso nao haja nenhum link
+17. nao faz o grafico dos pedidos
+18. ap recusar pedido, posso voltar a recusa lo
+19. ap clicar para ver pedido, aparece em espera em vez de recusado
+20. botao concluir nao funciona

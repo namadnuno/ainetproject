@@ -56,9 +56,17 @@
                                         </div>
                                     </div>
                                 </article>
+<<<<<<< HEAD
+                                <nav class="level is-mobile">
+                                    <div class="level-center">
+                                      <div class="column is-half is-offset-half">
+                                        <span class="tag is-info">{{ $department->numTotalOfPrints() }} Impreções</span>
+                                      </div>
+=======
                                 <div class="columns">
                                     <div class="column">
                                         <span class="tag is-info">{{ $department->requests_count}} Impreções</span>
+>>>>>>> fa9249a24fa6ad9a06314816493ca9b0b6ac4af1
                                     </div>
                                     <div class="column">
                                        <span class="tag is-info">{{ 1 }} Impreções</span>

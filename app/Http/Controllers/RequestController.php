@@ -42,7 +42,8 @@ class RequestController extends Controller
      */
     public function create()
     {
-        return view('requests.new');
+        $request= new Request;
+        return view('requests.new', compact('request'));
     }
 
     /**

@@ -56,7 +56,7 @@
                                         </span>
                                     @else
                                         <span class="tag is-success">
-                                            Concluido
+                                            Concluído
                                         </span>
                                     @endif
                                 </div>
