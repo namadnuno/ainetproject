@@ -12,27 +12,35 @@ class Departament extends Model
      */
     public function users()
     {
-        return $this->belongsTo('App\User', 'id', 'department_id');
+        return $this->hasMany('App\User', 'department_id');
     }
 
-    public function numTotalOfPrints()
+    public function requests()
+    {
+        $requests = [];
+        foreach ($this->users()->get() as $user) {
+            foreach ($user->requests as $request) {
+                $requests[] = $request;                
+            }
+        }
+        return $requests;
+    }
+
+    public function scopeNumPrintsBlackAndWhite($query)
     {
         $num = 0;
         foreach ($this->users()->get() as $user) {
-            $num += $user->print_counts;
+            $num += $user->requests()->blackAndWhite()->count();
         }
         return $num;
     }
 
-    public function numPrintsBlackAndWhite()
+    public function scopeNumPrintsColor($query)
     {
         $num = 0;
-        return $num;
-    }
-
-    public function numPrintsColor()
-    {
-       $num = 0;
+        foreach ($this->users()->get() as $user) {
+            $num += $user->requests()->colored()->count();
+        }
         return $num;
     }
 }

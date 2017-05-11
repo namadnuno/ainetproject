@@ -43,7 +43,7 @@ class User extends Authenticatable
      */
     public function departament()
     {
-        return $this->hasOne('App\Departament', 'id', 'department_id');
+        return $this->belongsTo('App\Departament', 'department_id');
     }
 
     /**
