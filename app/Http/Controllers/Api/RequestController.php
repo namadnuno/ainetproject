@@ -24,7 +24,7 @@ class RequestController extends Controller
         $end = Carbon::now()->endOfWeek();
 
         do {
-            $data[] = $requests->between($begin->startOfDay(), $begin->endOfDay())->count();
+            $data[] = auth()->user()->requests()->between($begin->copy()->startOfDay(), $begin->copy()->endOfDay())->count();
             $labels[] = $begin->toDateString();
         } while ($begin->addDay()->lt($end));
 

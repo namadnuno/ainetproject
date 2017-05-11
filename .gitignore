@@ -5,6 +5,7 @@
 /vendor
 /.idea
 /.vagrant
+.phpintel/index
 Homestead.json
 Homestead.yaml
 .env

@@ -73,7 +73,9 @@ class Request extends Model
      */
     public function scopeOfToday($query)
     {
-        return $query->where('created_at', Carbon::now()->toDateString());
+        return
+        $query->where('created_at', '>=', Carbon::now()->startOfDay()->toDateTimeString())
+        ->where('created_at', '<=', Carbon::now()->endOfDay()->toDateTimeString());
     }
 
     /**
@@ -85,7 +87,7 @@ class Request extends Model
     {
         return $query
         ->where('created_at', '>=', Carbon::now()->startOfMonth()->toDateString())
-        ->where('created_at', '>=', Carbon::now()->endOfMonth()->toDateString());
+        ->where('created_at', '<=', Carbon::now()->endOfMonth()->toDateString());
     }
 
     /**
@@ -100,10 +102,10 @@ class Request extends Model
         ->where('created_at', '>=', Carbon::now()->endOfWeek()->toDateString());
     }
 
-    public function scopeBetween($query)
+    public function scopeBetween($query, $dataInicio, $dataFim)
     {
-        return $query
-        ->where('created_at', '>=', Carbon::now()->toDateTimeString())
-        ->where('created_at', '>=', Carbon::now()->toDateTimeString());
+         return $query
+        ->where('created_at', '>=', $dataInicio->toDateTimeString())
+        ->where('created_at', '<=', $dataFim->toDateTimeString());
     }
 }
