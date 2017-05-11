@@ -73,7 +73,9 @@ class Request extends Model
      */
     public function scopeOfToday($query)
     {
-        return $query->where('created_at', Carbon::now()->toDateString());
+        return
+        $query->where('created_at', '>=', Carbon::now()->startOfDay()->toDateTimeString())
+        ->where('created_at', '<=', Carbon::now()->endOfDay()->toDateTimeString());
     }
 
     /**
