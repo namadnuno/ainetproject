@@ -54,7 +54,7 @@
                                 </article>
                                 <nav class="level is-mobile">
                                     <div class="level-center">
-                                      <div class="level-item">
+                                      <div class="column is-half is-offset-half">
                                         <span class="tag is-info">{{ $department->numTotalOfPrints() }} Impreções</span>
                                       </div>
                                     </div>

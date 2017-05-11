@@ -15,7 +15,7 @@ class RequestController extends Controller
 
     public function ofWeek()
     {
-        $requests = auth()->user()->requests()->done();
+        $requests = auth()->user()->requests();
 
         $labels = [];
         $data = [];
