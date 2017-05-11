@@ -1,4 +1,3 @@
-{{ method_field('PUT') }}
 {{ csrf_field() }}
 
 <div class="field">
