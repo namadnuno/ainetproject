@@ -34,7 +34,7 @@ class User extends Authenticatable
      */
     public function requests()
     {
-        return $this->hasMany('App\Request', 'owner_id', 'id');
+        return $this->hasMany(Request::class, 'owner_id');
     }
 
     /**
@@ -43,7 +43,7 @@ class User extends Authenticatable
      */
     public function departament()
     {
-        return $this->belongsTo('App\Departament', 'department_id');
+        return $this->belongsTo(Departament::class, 'department_id');
     }
 
     /**

@@ -15,6 +15,7 @@ class HomeController extends Controller
     public function index()
     {
     	$pedidos = Request::done();
-        return view('home', compact('pedidos'));
+        $departments = Departament::withCount(['users','requests'])->get();
+        return view('home', compact('pedidos', 'departments'));
     }
 }
