@@ -8,7 +8,8 @@
 			@include('partials.errors')
 			@include('perfil.form')
 			<div class="has-text-right">
-	    		<button class=" button is-primary">Enviar</button>
+				<button class=" button is-danger">Voltar</button>
+	    		<button class=" button is-success">Enviar</button>
 	  		</div>
 		</form>
 	</div>

@@ -55,14 +55,17 @@
 	                        	{{ csrf_field() }}
 	                        	{{ method_field('PUT') }}
 	                            <input type="hidden" value="{{ $user->id }}" name="user_id">
-								<button 
-								class="level-item button {{ $user->blocked == 1 ? 'is-success' : 'is-danger' }}" type="submit">
+								<button class="level-item button {{ $user->blocked == 1 ? 'is-success' : 'is-danger' }}" type="submit">
 									{{ $user->blocked == 1 ? 'Desbloquear' : 'Bloquear' }}
 								</button>
+								
 	                        </form>
 	                    </div>
 	                    @endunless
 	                </nav>
+	                <div class="level-left">
+	                	<a class="level-item button is-primary">Voltar</a>
+	                </div>
 	            </div>
 	        </div>
 	    </div>
