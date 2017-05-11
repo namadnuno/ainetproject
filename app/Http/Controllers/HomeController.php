@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Request;
+use App\Departament;
 
 class HomeController extends Controller
 {

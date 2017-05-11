@@ -13,6 +13,10 @@
                 <div class="cta-account">
                     @if (auth()->check())
                        <a class="button is-primary is-large" href="{{ route('perfil.index') }}">Meu perfil</a>
+                       <form action="{{ route('logout') }}" method="post">
+                            {{ csrf_field() }}
+                           <button type="submit" class="button is-primary is-large">Logout</button>
+                       </form>
                     @else
                        <a class="button is-primary is-large" href="{{ route('login') }}">Login</a>
                     @endif
