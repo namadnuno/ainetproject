@@ -16,33 +16,35 @@
             <div class="box">
                 <div class="media-content">
                     <div class="content">
-                        <p ><strong>{{ auth()->user()->name }}</strong> <small>{{ auth()->user()->email }}</small> </p>
-                        <p>
-                            {{ auth()->user()->presentation }}
-                        </p>
+                        <p><strong>{{ auth()->user()->name }}</strong> <small>{{ auth()->user()->email }}</small></p>
+                        <p>{{ auth()->user()->presentation }}</p>
                     </div>
                 </div>
+
                 <nav class="level is-mobile">
                     <div class="level-left">
                         <a class="level-item">
                             <span class="icon is-small">
                                 <i class="fa fa-phone"></i>
                             </span>
-                            {{ auth()->user()->phone ? auth()->user()->phone : 'Não Dado' }}
+                            {{ auth()->user()->phone ? auth()->user()->phone : 'Não há contacto' }}
                         </a>
                         <a class="level-item">
                             <span class="icon is-small">
                                 <i class="fa fa-link"></i>
                             </span>
-                            {{ auth()->user()->phone ? auth()->user()->profile_url : 'Não Dado' }}
+                            {{ auth()->user()->phone ? auth()->user()->profile_url : 'Não há ligação para um perfil externo' }}
                         </a>
                         <a class="level-item">
                             <span class="icon is-small">
                                 <i class="fa fa-building-o"></i>
                             </span>
+
                             {{ auth()->user()->departament->name }}
                         </a>
                     </div>
+                </nav>
+                <nav class="level is-mobile">
                     <div class="level-right">
                         <a href="{{ route('perfil.edit') }}" class="level-item button is-info">
                             Editar

@@ -6,7 +6,7 @@
 			<div class="card notification is-primary">
 				<div class="card-content">
 					<div class="content">
-						<p class="title is-1	 is-large has-text-centered">
+						<p class="title is-1 is-large has-text-centered">
 							{{ auth()->user()->requests()->ofToday()->count() }}
 						</p>
 						<p class="subtitle has-text-centered">
@@ -20,7 +20,7 @@
 			<div class="card notification is-info">
 				<div class="card-content">
 					<div class="content">
-						<p class="title is-1	 is-large has-text-centered">
+						<p class="title is-1 is-large has-text-centered">
 							{{ auth()->user()->requests()->ofMonth()->count() }}
 						</p>
 						<p class="subtitle has-text-centered">

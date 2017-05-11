@@ -1421,6 +1421,7 @@ input[type="submit"].button {
 .content h4 {
   font-size: 1.25em;
   margin-bottom: 0.8em;
+  font-weight: bold;
 }
 
 .content h5 {

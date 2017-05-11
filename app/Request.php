@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Request extends Model
 {
+    const RECUSADO = 0;
+    const PENDENTE = 1;
+    const CONCLUIDO = 2;
     /**
      * The attributes that are mass assignable.
      *

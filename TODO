@@ -1,23 +1,27 @@
 1. meter os files no storage, PerfilController, RequestController
 3. pagina de cada depatamento (publico, visivel a todos).
-4. destincao de copias na homepage
+	/*4. destincao de copias na homepage*/
 5. visualizacao do perfil publico
 6. policies geral
-/*7. dashboard grafico home*/
-8. valores reais 
+	/*7. dashboard grafico home*/
+	/*8. valores reais*/
 9. no perfil, garico com destincao de copias
 10. botao voltar ao ver o perfil
 11. concertar o storage e download
-12. cracao de impressoras
-13. funcionalidade de completar pedido, nome intuitivo
-14. ao clicar no botao meu perfil na pagina inicial, aparece um erro
+	/*12. cracao de impressoras*/
+	/*13. funcionalidade de completar pedido, nome intuitivo*/
+	/*14. ao clicar no botao meu perfil na pagina inicial, aparece um erro*/
 15. destincao de tipo de impressao por departamento, pagina inicial
 16. bug na pagina do perfil, mostra o icone de hiperligacao caso nao haja nenhum link
-17. nao faz o grafico dos pedidos
-18. ap recusar pedido, posso voltar a recusa lo
-19. ap clicar para ver pedido, aparece em espera em vez de recusado
-20. botao concluir nao funciona
+	/*17. nao faz o grafico dos pedidos*/
+	/*18. ao recusar pedido, posso voltar a recusa lo*/
+	/*19. ao clicar para ver pedido, aparece em espera em vez de recusado*/
+20. botao concluir pedido, nao funciona
 21. rever impressoes em espera no dashboard (nao faz sentido la aparecer pedidos recusados ou concluidos, por isso a coluna estado tb nao devia aparecer)
 22. gravar edicao de pedido nao esta a funcionar
 23. verificacaoes no tipo de ficheiro
 24. escolher icone para o tipo de file odt e acrescentar mais extensoes para as imagens
+25. usar constantes para os pedidos
+26. no progresso, na dashboard, nao faz sentido haver meios pedidos, apenas existir valores inteiros
+27. nao consigo editar perfil
+28. espaco apra avaliar qualidade da impressao
