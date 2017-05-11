@@ -13,7 +13,8 @@ class PrinterController extends Controller
      */
     public function index()
     {
-        return view('printers.index');
+        $printers = Printer::all();
+        return view('printers.index', compact('printers'));
     }
 
     /**
@@ -45,7 +46,7 @@ class PrinterController extends Controller
     {
         $printer = new Printer;
 
-        $printer->fill($request->all());
+        $printer->create($request->all());
 
         return redirect()->route('printers.index')->with('success', 'Impressora criada com sucesso');
     }
@@ -58,7 +59,7 @@ class PrinterController extends Controller
      */
     public function update(PrinterPostRequest $request, Printer $printer)
     {
-        $printer->fill($request->all());
+        $printer->update($request->all());
 
         return  redirect()->route('printers.index')->with('success', 'Impressora editada com sucesso');
     }

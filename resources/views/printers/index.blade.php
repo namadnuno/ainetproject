@@ -7,18 +7,15 @@
     @include('partials.filter-box', [
         'filters' => [
             'created_at' => 'Data de Criação',
-            'open_date' => 'Data Abertura',
-            'quantity' => 'Quantidade',
-            'paper_size' => 'Tamanho de Papel',
-            'status' => 'Estado',
         ],
         'newRoute' =>
-            'requests.create'
+            'printers.create'
         ])
     <div class="columns  is-multiline">
         @foreach ($printers as $printer)
             <div class="column is-one-quarter">
                 <div class="card">
+                    <h3 class="is-title is-3">{{ $printer->name }}</h3>
                 </div>
             </div>
         @endforeach

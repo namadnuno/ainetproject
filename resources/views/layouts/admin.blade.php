@@ -51,6 +51,12 @@
 							Comentários
 						</a>
 					</li>
+					<li>
+						<a href="{{ route('printers.index') }}"
+								@isActive('printers.index')>
+							Impressoras
+						</a>
+					</li>
 				</ul>
 				<p class="menu-label">
 					Pedidos

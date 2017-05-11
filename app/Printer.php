@@ -12,6 +12,12 @@ class Printer extends Model
      */
     public $table = 'printers';
 
+    /**
+     * Por causa do mass assignment
+     * @var array
+     */
+    protected $fillable = ['name'];
+
     public function request()
     {
         $this->belongsToMany(Request::class);
