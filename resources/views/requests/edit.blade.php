@@ -45,7 +45,7 @@
             <form action="{{ route('requests.update', $request->id) }}" method="POST" enctype="multipart/form-data">
                 {{ method_field('PUT') }}
                 @include('requests.form')
-                
+
             </form>
         </div>
     </div>
