@@ -63,7 +63,7 @@
 					</div>
 					<div class="level-right">
 						<div class="level-item">
-							<i>{{ \Carbon\Carbon::parse($request->created_at)->diffForHumans() }}</i>	
+							<i>{{ $request->created_at->diffForHumans() }}</i>
 						</div>						
 					</div>
 				</div>

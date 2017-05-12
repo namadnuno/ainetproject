@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\PedidoRequest;
 use App\Printer;
 use App\Request as RequestModel;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 use Mockery\Exception;
@@ -105,13 +106,30 @@ class RequestController extends Controller
     }
 
     /**
-     * Recusa o pedido de impressão
+     * Mostra a view com onde é dito o porque de ser recusado
      * @param RequestModel $request
      * @return \Illuminate\Http\RedirectResponse
      */
     public function refuse(RequestModel $request)
     {
+        return view('requests.refuse', compact('request'));
+    }
+
+    /**
+     * Recusa o pedido de impressão
+     * @param RequestModel $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function refused(RequestModel $request)
+    {
+        $this->validate(request(), [
+            'refused_reason' => 'required|min:10'
+        ]);
+
         $request->status = 0;
+
+        $request->refused_reason = request('refused_reason');
+
         $request->save();
 
         return redirect()->route('requests.index')
@@ -143,6 +161,8 @@ class RequestController extends Controller
         $request->status = 2;
 
         $request->printer_id = request('printer_id');
+
+        $request->closed_date = Carbon::now();
 
         $request->save();
 

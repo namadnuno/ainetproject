@@ -38,12 +38,19 @@ Route::group(['middleware' => 'auth', 'prefix' => 'dashboard'], function () {
     ]);
 
     Route::resource('requests', 'RequestController');
+
     Route::resource('printers', 'PrinterController');
 
     Route::get('requests/{request}/refuse', [
         'as' => 'requests.refuse',
         'uses' => 'RequestController@refuse'
     ]);
+
+    Route::post('requests/{request}/refused', [
+        'as' => 'requests.refused',
+        'uses' => 'RequestController@refused'
+    ]);
+
     Route::get('requests/{request}/finish', [
         'as' => 'requests.finish',
         'uses' => 'RequestController@finish'
