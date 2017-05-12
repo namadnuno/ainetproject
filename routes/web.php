@@ -44,10 +44,16 @@ Route::group(['middleware' => 'auth', 'prefix' => 'dashboard'], function () {
         'as' => 'requests.refuse',
         'uses' => 'RequestController@refuse'
     ]);
-    Route::get('requests/{request}/conclude', [
-        'as' => 'requests.conclude',
-        'uses' => 'RequestController@conclude'
+    Route::get('requests/{request}/finish', [
+        'as' => 'requests.finish',
+        'uses' => 'RequestController@finish'
     ]);
+
+    Route::post('request/{request}/done', [
+        'as' => 'requests.done',
+        'uses' => 'RequestController@done'
+    ]);
+
     Route::get('requests/{request}/readmit', [
         'as' => 'requests.readmit',
         'uses' => 'RequestController@readmit'

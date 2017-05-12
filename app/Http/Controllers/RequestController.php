@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\PedidoRequest;
+use App\Printer;
 use App\Request as RequestModel;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
+use Mockery\Exception;
 
 class RequestController extends Controller
 {
@@ -92,11 +94,21 @@ class RequestController extends Controller
         return view('requests.edit', compact('request'));
     }
 
+    /**
+     * Atualiza o pedido de impressão
+     * @param PedidoRequest $requestVal
+     * @param RequestModel $request
+     */
     public function update(PedidoRequest $requestVal, RequestModel $request)
     {
-        # code...
+        throw new Exception("not implemented");
     }
 
+    /**
+     * Recusa o pedido de impressão
+     * @param RequestModel $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function refuse(RequestModel $request)
     {
         $request->status = 0;
@@ -106,15 +118,41 @@ class RequestController extends Controller
                 ->with('success', 'Pedido #'. $request->id .' recusado com sucesso!');
     }
 
-    public function conclude(RequestModel $request)
+    /**
+     * Mostra a view para ser escolhida a impressora que finalizou o pedido
+     * @param RequestModel $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function finish(RequestModel $request)
     {
-        $request->status = 2;
-        $request->save();
-
-        return redirect()->route('requests.index')
-                ->with('success', 'Pedido #'. $request->id .' concluído com sucesso!');
+        $printers = Printer::all();
+        return view('requests.finish', compact('request', 'printers'));
     }
 
+    /**
+     * Finaliza o pedido de impressão
+     * @param RequestModel $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function done(RequestModel $request)
+    {
+        $this->validate(request(), [
+            'printer_id' => 'required|exists:printers,id'
+        ]);
+
+        $request->status = 2;
+
+        $request->printer_id = request('printer_id');
+
+        $request->save();
+
+        return redirect()->route('requests.index')->with('success', 'Pedido finalizado com sucesso!');
+    }
+    /**
+     * Readmite o pedido de impressão
+     * @param RequestModel $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function readmit(RequestModel $request)
     {
         $request->status = 1;

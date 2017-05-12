@@ -27,7 +27,7 @@
                                 Recusar
                             </span>
                         </a>
-                        <a href="{{ route('requests.conclude', $request->id) }}" type="submit" class="level-item button is-success">
+                        <a href="{{ route('requests.finish', $request->id) }}" type="submit" class="level-item button is-success">
                             <span class="icon is-small">
                                 <i class="fa fa-check"></i>
                             </span>

@@ -15,7 +15,15 @@
         @foreach ($printers as $printer)
             <div class="column is-one-quarter">
                 <div class="card">
-                    <h3 class="is-title is-3">{{ $printer->name }}</h3>
+                    <div class="card-content">
+                        <div class="content has-text-centered">
+                            <h3 class="is-title ">{{ $printer->name }}</h3>
+                        </div>
+                    </div>
+                    <footer class="card-footer">
+                        <a href="{{ route('printers.edit', $printer) }}" class="card-footer-item">Editar</a>
+                        <a href="{{ route('printers.destroy', $printer) }}" class="card-footer-item">Remover</a>
+                    </footer>
                 </div>
             </div>
         @endforeach
