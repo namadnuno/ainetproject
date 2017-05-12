@@ -60,11 +60,11 @@
                              	   <i class="fa fa-building-o"></i>
                             	</span>
 								{{ $user->departament->name }}
-                            	</a>
+                            </a>
                     	</div>
                 	</div>
                 	<div class="level-left">
-	                	<a class="level-item button is-primary">Voltar</a>
+	                	<a href="{{ url()->previous() }}" class="level-item button is-primary">Voltar</a>
 	                    @unless(auth()->check() && auth()->user()->isAdmin())
                         <form action="{{ route('user.change') }}" method="post" >
                         	{{ csrf_field() }}

@@ -8,7 +8,7 @@
 			@include('partials.errors')
 			@include('perfil.form')
 			<div class="has-text-right">
-				<button class=" button is-danger">Voltar</button>
+				<a href="{{ url()->previous() }}" class=" button is-danger">Voltar</a>
 	    		<button class=" button is-success">Enviar</button>
 	  		</div>
 		</form>

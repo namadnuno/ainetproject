@@ -20,6 +20,7 @@
                     </p>
                 </div>
                 <div class="has-text-right">
+                    <a href="{{ url()->previous() }}" type="submit" class="button is-danger">Voltar</a>
                     <button type="submit" class="button is-success">Completar</button>
                 </div>
             </form>
@@ -28,5 +29,5 @@
 @endsection
 
 @section('title')
-    Concluir pedido Pedido #{{ $request->id }}
+    Concluir Pedido #{{ $request->id }}
 @endsection

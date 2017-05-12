@@ -16,7 +16,7 @@
             <div class="box">
                 <div class="media-content">
                     <div class="content">
-                        <p><strong>{{ auth()->user()->name }}</strong><!-- <small>{{ auth()->user()->email }}</small>--></p>
+                        <p><strong>{{ auth()->user()->name }}</strong></p>
                         <p>{{ auth()->user()->presentation }}</p>
                     </div>
                 </div>

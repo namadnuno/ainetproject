@@ -190,6 +190,9 @@
 					</article>
 				</div>
 			</div>
+			<div class="level-right">
+			<a href="{{ url()->previous() }}" class="level-item button is-danger">Voltar</a>
+			</div>
 		</div>
 	</div>
 	@endsection
