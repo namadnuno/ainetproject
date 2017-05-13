@@ -6,7 +6,7 @@
 	/*7. dashboard grafico home*/
 	/*8. valores reais*/
 9. no perfil, garico com destincao de copias
-10. botao voltar ao ver o perfil
+	/*10. botao voltar ao ver o perfil*/
 11. concertar o storage e download
 	/*12. cracao de impressoras*/
 	/*13. funcionalidade de completar pedido, nome intuitivo*/
@@ -26,5 +26,10 @@
 26. no progresso, na dashboard, nao faz sentido haver meios pedidos, apenas existir valores inteiros
 27. nao consigo editar perfil
 28. espaco para avaliar qualidade da impressao, selecionar a impressora, apos pedido concluido
-29. botoes voltar nao funcionam
-30. comentar pedido nao funciona, mas so se pode comentar os pedidos pendentes
+	/*29. botoes voltar nao funcionam*/
+30. comentar um comentario de pedido nao funciona, ou se funciona mostra as respostas
+	/*31. so se pode comentar os pedidos pendentes*/
+32. o que e publico e nao precisa de estar autenticado
+	lista de contactos
+	mostrar os departamentos
+	lista de pedidos (apenas os concluidos)

@@ -3,7 +3,7 @@
 @section('content')
 	@include('partials.section-header', 
 	[
-	    'title' => 'Perfil do '. $user->name,
+	    'title' => 'Perfil de '. $user->name,
 	    'subtitle' => ''
 	]);	
 	<div class="container">	

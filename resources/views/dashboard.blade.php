@@ -32,7 +32,7 @@
 		</div>
 	</div>
 	<div class="column">
-		<div class="section is-paddingless">
+		<div class="section is-paddingless">Valores inteiros
 			<chart-mouth-prints></chart-mouth-prints>
 		</div>
 	</div>

@@ -136,6 +136,9 @@
 										</div>
 									</article>
 								@endforeach
+
+								<!--apenas responder a comentarios em pedidos pendentes-->
+								@if($request->status == 1)
 								<article class="media">
 									<figure class="media-left">
 										<p class="image is-64x64">
@@ -148,22 +151,26 @@
 											{{ csrf_field() }}
 											<div class="field">
 												<p class="control">
-												<textarea class="textarea is-small" name="comment" placeholder="Novo Comentário"></textarea>
+												<input class="input is-small" name="comment" placeholder="Resposta ao Comentário">
 												</p>
 												<input type="hidden" name="request_id" value="{{ $request->id }}">
 												<input type="hidden" name="parent_id" value="{{ $comment->id }}">
 											</div>
 											<div class="field">
 												<p class="control">
-													<button type="submit" class="button">Comentar</button>
+													<button type="submit" class="button">Responder</button>
 												</p>
 											</div>
 										</form>
 									</div>
+									@endif
 								</article>
 							</div>
 						</article>
 					@endforeach
+					
+					<!--apenas comentar em pedidos pendentes-->
+					@if($request->status == 1)
 					<article class="media">
 						<figure class="media-left">
 							<p class="image is-64x64">
@@ -176,7 +183,7 @@
 								{{ csrf_field() }}
 								<div class="field">
 									<p class="control">
-									<textarea class="textarea" name="comment" placeholder="Novo Comentário"></textarea>
+									<input class="input is-small" name="comment" placeholder="Novo Comentário">
 									</p>
 									<input type="hidden" name="request_id" value="{{ $request->id }}">
 								</div>
@@ -188,12 +195,13 @@
 							</form>
 						</div>
 					</article>
+					@endif
 				</div>
 			</div>
-			<div class="level-right">
-			<a href="{{ url()->previous() }}" class="level-item button is-danger">Voltar</a>
-			</div>
 		</div>
+	</div>
+	<div class="level-right">
+		<a href="{{ url()->previous() }}" class="level-item button is-primary">Voltar</a>
 	</div>
 	@endsection
 
