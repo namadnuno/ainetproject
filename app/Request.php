@@ -18,7 +18,7 @@ class Request extends Model
     protected $fillable = [
         'description', 'open_date','quantity',
         'colored', 'stapled', 'paper_size',
-        'paper_type', 'file'];
+        'paper_type', 'file', 'satisfaction_grade'];
 
     /**
      * Todos os comentários associados ao pedido

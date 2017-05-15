@@ -35,7 +35,18 @@
 								</span>
 							@endif
 						</div>
-						<div class="has-text-centered is-top-small">
+
+						@if($request->status == 2)
+						<div class="level-item is-top-xsmall">
+							<span class="icon is-small">
+	                            @for ($i = 0; $i < $request->satisfaction_grade; $i++)
+	                                <i class="fa fa-star"></i>
+	                            @endfor
+	                        </span>
+	                    </div>
+	                    @endif
+
+						<div class="has-text-centered is-top-xsmall">
 							<form action="{{ route('download') }}" method="post">
 								{{ csrf_field() }}
 								<input type="hidden" name="file" value="{{ $request->file }}">
@@ -73,11 +84,15 @@
 					</p>
 					<p>
 						<span class="tag {{ $request->colored == 1 ? 'is-primary' : 'is-dark' }}">
-							{{ $request->colored == 1 ? 'Cores' : 'Preto e Branco' }}
+							<span class="icon is-small">
+                                        <i class="fa fa-file-{{ typeFile($request) }}-o"></i>
+                                    </span>
 						</span>
 						<span class="tag is-info">
-							{{ $request->quantity }} {{ $request->quantity > 1 ? 'Cópias' : 'Cópia' }}
-						</span>
+                            <span class="icon is-small">
+                                <i class="fa fa-print"> {{ $request->quantity }}</i>
+                            </span>
+                        </span>
 						<span class="tag {{ $request->stapled == 1 ? 'is-info' : 'is-warning' }}">
 							{{ $request->stapled == 1 ? 'É' : 'Não é' }} agrafado
 						</span>
@@ -163,8 +178,8 @@
 											</div>
 										</form>
 									</div>
-									@endif
 								</article>
+								@endif
 							</div>
 						</article>
 					@endforeach
@@ -201,7 +216,7 @@
 		</div>
 	</div>
 	<div class="level-right">
-		<a href="{{ url()->previous() }}" class="level-item button is-primary">Voltar</a>
+		<a href="{{ URL::previous() }}" class="level-item button is-primary">Voltar</a>
 	</div>
 	@endsection
 

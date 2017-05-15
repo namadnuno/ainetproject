@@ -41,19 +41,7 @@
                                 <div class="column is-one-third">
                                 <span class="tag is-{{ $request->colored == 1 ? 'primary' : 'dark'}}">
                                     <span class="icon is-small">
-                                        @if(pathinfo(asset($request->file))['extension'] == 'pdf')
-                                            <i class="fa fa-file-pdf-o"></i>
-                                        @elseif(pathinfo(asset($request->file))['extension'] == "png" || pathinfo(asset($request->file))['extension'] == 'jpg' ||
-                                            pathinfo(asset($request->file))['extension'] == 'jpeg' ||
-                                            pathinfo(asset($request->file))['extension'] == 'tiff')
-                                            <i class="fa fa-file-photo-o"></i>
-                                        @elseif(pathinfo(asset($request->file))['extension'] == "xlsx")
-                                            <i class="fa fa-file-excel-o"></i>
-                                        @elseif(pathinfo(asset($request->file))['extension'] == "docx")
-                                            <i class="fa fa-file-word-o"></i>
-                                        @elseif(pathinfo(asset($request->file))['extension'] == "odt")
-                                            escolher icon
-                                        @endif
+                                        <i class="fa fa-file-{{ typeFile($request) }}-o"></i>
                                     </span>
                                 </span>
                                 </div>
@@ -92,7 +80,7 @@
                             @if($request->status == 2)
                                 <div class="has-text-centered">
                                     <span class="icon is-small">
-                                        @for ($i = 0; $i < $request->quantity; $i++)
+                                        @for ($i = 0; $i < $request->satisfaction_grade; $i++)
                                             <i class="fa fa-star"></i>
                                         @endfor
                                     </span>
@@ -131,9 +119,9 @@
             </div>
             <div class="column is-4">
                 <span class="tag is-primary">
-                        <span class="icon is-small">
-                            <i class="fa fa-file-photo-o"></i>
-                        </span>
+                    <span class="icon is-small">
+                        <i class="fa fa-file-photo-o"></i>
+                    </span>
                 </span>
                 Impressão a Cores
             </div>
@@ -149,17 +137,17 @@
         <div class="columns">
             <div class="column is-4">
                 <span class="tag is-danger">
-                        <span class="icon is-small">
-                            <i class="fa fa-ban"></i>
-                        </span>
+                    <span class="icon is-small">
+                        <i class="fa fa-ban"></i>
+                    </span>
                 </span>
                 Pedido recusado
             </div>
             <div class="column is-4">
                 <span class="tag is-warning">
-                        <span class="icon is-small">
-                            <i class="fa fa-exclamation"></i>
-                        </span>
+                    <span class="icon is-small">
+                        <i class="fa fa-exclamation"></i>
+                    </span>
                 </span>
                 Pedido pendente
             </div>

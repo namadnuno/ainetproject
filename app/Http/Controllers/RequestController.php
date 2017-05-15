@@ -155,12 +155,15 @@ class RequestController extends Controller
     public function done(RequestModel $request)
     {
         $this->validate(request(), [
-            'printer_id' => 'required|exists:printers,id'
+            'printer_id' => 'required|exists:printers,id',
+            'satisfaction_grade' => 'required|digits_between:1,3'
         ]);
 
         $request->status = 2;
 
         $request->printer_id = request('printer_id');
+
+        $request->satisfaction_grade = request('satisfaction_grade');
 
         $request->closed_date = Carbon::now();
 

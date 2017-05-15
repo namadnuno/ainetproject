@@ -21,11 +21,11 @@
 21. rever impressoes em espera no dashboard (nao faz sentido la aparecer pedidos recusados ou concluidos, por isso a coluna estado tb nao devia aparecer)
 22. gravar edicao de pedido nao esta a funcionar
 23. verificacaoes no tipo de ficheiro
-24. escolher icone para o tipo de file odt e acrescentar mais extensoes para as imagens
+	/*24. escolher icone para o tipo de file odt e acrescentar mais extensoes para as imagens*/
 25. usar constantes para os pedidos ????
 26. no progresso, na dashboard, nao faz sentido haver meios pedidos, apenas existir valores inteiros
 27. nao consigo editar perfil
-28. espaco para avaliar qualidade da impressao, selecionar a impressora, apos pedido concluido
+	/*28. espaco para avaliar qualidade da impressao, selecionar a impressora, apos pedido*/concluido
 	/*29. botoes voltar nao funcionam*/
 30. comentar um comentario de pedido nao funciona, ou se funciona mostra as respostas
 	/*31. so se pode comentar os pedidos pendentes*/
