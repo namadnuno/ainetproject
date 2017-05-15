@@ -1,35 +1,47 @@
-1. meter os files no storage, PerfilController, RequestController
-3. pagina de cada depatamento (publico, visivel a todos).
-	/*4. destincao de copias na homepage*/
-5. visualizacao do perfil publico
-6. policies geral
-	/*7. dashboard grafico home*/
-	/*8. valores reais*/
-9. no perfil, garico com destincao de copias
-	/*10. botao voltar ao ver o perfil*/
-11. concertar o storage e download
-	/*12. cracao de impressoras*/
-	/*13. funcionalidade de completar pedido, nome intuitivo*/
-	/*14. ao clicar no botao meu perfil na pagina inicial, aparece um erro*/
-15. destincao de tipo de impressao por departamento, pagina inicial
-16. bug na pagina do perfil, mostra o icone de hiperligacao caso nao haja nenhum link
-	/*17. nao faz o grafico dos pedidos*/
-	/*18. ao recusar pedido, posso voltar a recusa lo*/
-	/*19. ao clicar para ver pedido, aparece em espera em vez de recusado*/
-20. botao concluir pedido, nao funciona
-    ao concluir pedido, criar relatorio de impresao, e pedir a qualidade da impressao
-21. rever impressoes em espera no dashboard (nao faz sentido la aparecer pedidos recusados ou concluidos, por isso a coluna estado tb nao devia aparecer)
-22. gravar edicao de pedido nao esta a funcionar
-23. verificacaoes no tipo de ficheiro
-	/*24. escolher icone para o tipo de file odt e acrescentar mais extensoes para as imagens*/
-25. usar constantes para os pedidos ????
-26. no progresso, na dashboard, nao faz sentido haver meios pedidos, apenas existir valores inteiros
-27. nao consigo editar perfil
-	/*28. espaco para avaliar qualidade da impressao, selecionar a impressora, apos pedido*/concluido
-	/*29. botoes voltar nao funcionam*/
-30. comentar um comentario de pedido nao funciona, ou se funciona mostra as respostas
-	/*31. so se pode comentar os pedidos pendentes*/
-32. o que e publico e nao precisa de estar autenticado
-	lista de contactos
-	mostrar os departamentos
-	lista de pedidos (apenas os concluidos)
+################# PERFIS
+	mostra o icone de hiperligacao caso nao haja nenhum link
+	nao consigo editar perfil
+
+################# PEDIDOS
+	ao concluir, pedir a qualidade da impressao
+	gravar edicao nao esta a funcionar
+	ao editar o file perde se, e para validar todos os campos e necessario introduzir um novo file (nao deve ser assim)
+	verificacaoes no tipo de ficheiro
+	usar constantes para os pedidos ????
+	comentar um comentario de pedido nao funciona, ou se funciona mostra as respostas
+
+################# DASHBOARD
+	garico com destincao de copias
+	rever impressoes em espera (nao faz sentido la aparecer pedidos recusados ou concluidos, por isso a coluna estado tb nao devia aparecer)
+	no progresso, nao faz sentido haver meios pedidos, apenas existir valores inteiros
+
+################# HOME
+	destincao de tipo de impressao por departamento
+
+################# OUTROS / GERAL
+	meter os files no storage, PerfilController, RequestController
+	pagina de cada depatamento (publico, visivel a todos)
+	visualizacao do perfil publico
+	policies geral
+	concertar o storage e download
+	o que e publico e nao precisa de estar autenticado
+		lista de contactos
+		mostrar os departamentos
+		lista de pedidos (apenas os concluidos)
+
+################ FEITO
+	destincao de copias na homepage
+	dashboard grafico home
+	valores reais
+	botao voltar ao ver o perfil
+	cracao de impressoras
+	funcionalidade de completar pedido, nome intuitivo
+	ao clicar no botao meu perfil na pagina inicial, aparece um erro
+	nao faz o grafico dos pedidos
+	ao recusar pedido, posso voltar a recusa lo
+	ao clicar para ver pedido, aparece em espera em vez de recusado
+	botao concluir pedido, nao funciona   
+	escolher icone para o tipo de file odt e acrescentar mais extensoes para as imagens
+	espaco para avaliar qualidade da impressao, selecionar a impressora, apos pedidoconcluido
+	botoes voltar nao funcionam
+	so se pode comentar os pedidos pendentes
