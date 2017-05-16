@@ -1,28 +1,31 @@
-<nav class="nav">
-    <div class="nav-left">
+<nav class="nav has-shadow">
+  <div class="container">
+    
         <a href="{{ url('/') }}" class="nav-item">
             <img src="{{ asset('images/logo/logo-sm.png') }}" alt="Bulma logo">
         </a>
-    </div>
-    <span class="nav-toggle">
-        <span></span>
-        <span></span>
-        <span></span>
-    </span>
-    <div class="nav-right nav-menu">
-    <a href="{{ url('/') }}" class="nav-item">
+      <a href="{{ url('/') }}" class="nav-item">
             Home
         </a>
-        <a class="nav-item">
-            Departamentos
+      <a class="nav-item is-tab is-hidden-mobile">Departamentos</a>
+      <a class="nav-item is-tab is-hidden-mobile">Impressões</a>
+      <a class="nav-item @isActiveClass('contacts.index')" href="{{ route('contacts.index') }}">
+            Contactos
         </a>
-        <a class="nav-item">
-            Lista de Pedidos de Impressão
-        </a>
-        <a class="nav-item @isActiveClass('contacts.index')" href="{{ route('contacts.index') }}">
-            Lista de Contactos
-        </a>
-        <span class="nav-item">
+      
+    </div>
+    <span class="nav-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </span>
+    <div class="nav-right nav-menu">
+      <a class="nav-item is-tab is-hidden-tablet is-active">Home</a>
+      <a class="nav-item is-tab is-hidden-tablet">Departamentos</a>
+      <a class="nav-item is-tab is-hidden-tablet">Impressões</a>
+      <a class="nav-item is-tab is-hidden-tablet">Contactos</a>
+      
+      <span class="nav-item">
             @if(auth()->guest())
             <a href="{{ route('login') }}" class="button is-primary">
                <span class="icon">
@@ -37,7 +40,18 @@
                </span>
                <span>Dashboard</span>
            </a>
+
+
+           <a  href= {{ route('logout') }}"  class="button is-primary">
+                {{ csrf_field() }}
+               <span class="icon">
+                   <i class="fa fa-sign-in"></i>
+               </span>
+               <span>Logout</span>
+           </a>
+
            @endif
-       </span>
-   </div>
+       </span>  
+
+  </div>
 </nav>
