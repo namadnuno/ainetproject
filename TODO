@@ -11,9 +11,11 @@
 	comentar um comentario de pedido nao funciona, ou se funciona mostra as respostas
 
 ################# DASHBOARD
-	garico com destincao de copias
+	grafico com destincao de copias
 	rever impressoes em espera (nao faz sentido la aparecer pedidos recusados ou concluidos, por isso a coluna estado tb nao devia aparecer)
 	no progresso, nao faz sentido haver meios pedidos, apenas existir valores inteiros
+	o olho não funciona
+	
 
 ################# HOME
 	destincao de tipo de impressao por departamento
