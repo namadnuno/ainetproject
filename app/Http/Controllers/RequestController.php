@@ -15,7 +15,7 @@ class RequestController extends Controller
     /**
      * Numero de pedidos por página
      */
-    private const NUM_PER_PAGE = 20;
+    const NUM_PER_PAGE = 20;
 
     public function __constructor()
     {
@@ -60,13 +60,16 @@ class RequestController extends Controller
         $pedido = $pedido->fill($request->all());
         $pedido->status = 1;
         
-        $filename = 'file-' . time() . '.' . $request->file->extension();
-        $pedido->file = $filename;
-        $request->file->move(public_path('files'), $filename);
+        // $filename = 'file-' . time() . '.' . $request->file->extension();
+        // $pedido->file = $filename;
+        // $request->file->move(public_path('files'), $filename);
 
-        $img = Image::make(public_path('files/' . $filename));
-        $img->fit(256);
-        $img->save(public_path('file-thumb/' . $filename));
+        $pedido->file = $request->file->store('public/files');
+
+        //dd($pedido->file);
+        // $img = image::make(public_path('files/' . $filename));
+        // $img->fit(256);
+        // $img->save(public_path('file-thumb/' . $filename));
 
         $pedido->owner_id = auth()->user()->id;
         $pedido->save();
@@ -77,7 +80,7 @@ class RequestController extends Controller
     }
 
     /**
-     * Apresenta a página do pedido 
+     * Apresenta a página do pedido
      * com a informação do mesmo
      * @param  int id
      * @return Illuminate\Http\Request

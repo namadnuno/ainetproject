@@ -24,7 +24,7 @@
                         pathinfo(asset($request->file))['extension'] == 'tiff')
                         <div class="card-image">
                             <figure class="image is-square">
-                                <img src="{{ asset( 'file-thumb/' .$request->file) }}" alt="">
+                                <img src="{{ asset(Storage::url($request->file)) }}" alt="">
                             </figure>
                         </div>
                     @else
@@ -36,7 +36,6 @@
                     @endif
                     <div class="card-content">
                         <div class="content">
-
                             <div class="columns">
                                 <div class="column is-one-third">
                                 <span class="tag is-{{ $request->colored == 1 ? 'primary' : 'dark'}}">
