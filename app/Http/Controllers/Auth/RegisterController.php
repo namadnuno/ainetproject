@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use Carbon\Carbon;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -51,6 +52,9 @@ class RegisterController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
+            'password_confirmation' => 'required|same:password',
+            'department_id' => 'required|integer|exists:departaments,id',
+            'phone' => 'required|integer',
         ]);
     }
 
@@ -66,6 +70,14 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'department_id' => $data['department_id'],
+            'phone' => $data['phone'],
+            'admin' => '0',
+            'blocked' => '0',
+            'print_evals' => 0,
+            'print_counts' => 0,
+            'created_at' => Carbon::now(),
+            'updated_at' =>Carbon::now(),
         ]);
     }
 }

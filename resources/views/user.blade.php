@@ -40,7 +40,7 @@
 	                            <span class="icon">
 	                                <i class="fa fa-link"></i>
 	                            </span>
-		                            {{ $user->phone ? $user->profile_url : 'Não há ligação para um perfil externo' }}
+		                            {{ $user->profile_url ? $user->profile_url : 'Não há ligação para um perfil externo' }}
 		                    </a>
 	                    </div>
                 	</div>
@@ -51,7 +51,7 @@
                             	<span class="icon">
                                 	<i class="fa fa-envelope"></i>
                             	</span>
-	                            	{{ $user->phone ? $user->phone : 'Não há email' }}
+	                            	{{ $user->email ? $user->email : 'Não há email' }}
 	                        </a>
                     	</div>
                     	<div class="column is-half">

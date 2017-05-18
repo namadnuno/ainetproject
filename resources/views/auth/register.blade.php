@@ -1,71 +1,80 @@
-@extends('layouts.app')
+@extends('layouts.main')
 
 @section('content')
+<section class="hero is-small is-primary is-bold">
+    <div class="hero-body">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column">
+                    <p class="title">
+                    Registo
+                    </p>
+                    <p class="subtitle">
+                        Crie a sua conta para ter acesso ao <b>painel de administração</b>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Register</div>
-                <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ route('register') }}">
+        <div class="column is-half is-offset-one-quarter is-top-small">
+            @include('partials.errors')
+            <div class="card is-centered">
+                <div class="card-content">
+                    <form method="POST" action="{{ route('register') }}">
                         {{ csrf_field() }}
-
-                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Name</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
-
-                                @if ($errors->has('name'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
+                        <div class="field">
+                            <label class="label">Nome</label>
+                            <p class="control">
+                                <input class="input" type="text" placeholder="Nome" name="name"
+                                value="{{ old('name', $user->name)}}" required>
+                            </p>
                         </div>
-
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
+                        <div class="field">
+                            <label class="label">Email</label>
+                            <p class="control">
+                                <input class="input" type="text" placeholder="Email" name="email"
+                                value="{{ old('email', $user->email) }}" required>
+                            </p>
                         </div>
-
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
+                        <div class="field">
+                            <label class="label">Password</label>
+                            <p class="control">
+                                <input class="input" type="password" placeholder="Password" name="password" required>
+                            </p>
                         </div>
-
-                        <div class="form-group">
-                            <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
-                            </div>
+                        <div class="field">
+                            <label class="label">Confirmação da Password</label>
+                            <p class="control">
+                                <input class="input" type="password" placeholder="Confirmação da Password" name="password_confirmation" required>
+                            </p>
                         </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Register
-                                </button>
-                            </div>
+                        <div class="field">
+                            <label class="label">Departamento</label>
+                            <p class="control">
+                                <span class="select is-fullwidth">
+                                    <select name="department_id" required>
+                                        <option value="">-- Selecione o departamento --</option>
+                                        @foreach (\App\Departament::all() as $departamento)
+                                        <option {{ old('department_id', $user->department_id) == $departamento->id ? 'selected' : '' }} value="{{ $departamento->id }}">{{ $departamento->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </span>
+                            </p>
+                        </div>
+                        <div class="field">
+                            <label class="label">Telemovel</label>
+                            <p class="control">
+                                <input class="input" type="number" min="100000000" max="999999999" placeholder="Telemovel" name="phone"
+                                value="{{ old('phone', $user->phone) }}" required>
+                            </p>
+                        </div>
+                        <div class="field has-text-right">
+                            <button type="submit" class="button is-primary">
+                                Registo
+                            </button>
                         </div>
                     </form>
                 </div>

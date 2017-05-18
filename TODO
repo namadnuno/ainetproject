@@ -16,6 +16,8 @@
 	no progresso, nao faz sentido haver meios pedidos, apenas existir valores inteiros
 	o olho não funciona
 	
+################# REGISTO
+	ao registar, falta implementar o token_remember
 
 ################# HOME
 	destincao de tipo de impressao por departamento
