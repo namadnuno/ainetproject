@@ -29,10 +29,7 @@ class RequestController extends Controller
      */
     public function index()
     {
-        //dd(request()->all());
-        $requests = auth()->user()->requests();
-        $requests = $requests
-        ->ofType(request('filter'))
+        $requests = auth()->user()->requests()->search(request('filter'))
         ->orderBy(
             request('orderby') ? request('orderby') : 'created_at',
             request('order') ? request('order') : 'DESC'

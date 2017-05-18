@@ -2,19 +2,16 @@
 	<form action="{{ request()->url() }}" method="GET" >
 		<div class="columns">
 			<div class="column is-one-quarter">
-				<strong>Pesquisa</strong>
 				<div class="field has-addons">
 					<p class="control">
-						<input class="input" type="text" placeholder="Procura" name="filter" value="{{ old('filter', request('filter'))  }}">
+						<input class="input is-small" type="text" placeholder="Procura" name="filter" value="{{ old('filter', request('filter'))  }}">
 					</p>
 				</div>
 			</div>
-			{{ csrf_field() }}
-			<div class="column is-one-quarter">
-				<strong>Ordernar por</strong>
+			<div class="column">
 				<div class="field is-marginless">
 					<p class="control">
-						<span class="select" >
+						<span class="select is-small" >
 							<select name="orderby">
 								@foreach ($filters as $filter => $title)
 									<option value="{{ $filter }}" {{ old('orderby', request('orderby')) == $filter ? 'selected' : '' }} > {{ $title }}
@@ -23,13 +20,13 @@
 							</select>
 						</span>
 					</p>
+					<p class="help">Ordernar por</p>
 				</div>
 			</div>
 			<div class="column is-one-quarter">
-				<strong>Ordem</strong>
 				<div class="field is-marginless">
 					<p class="control">
-						<span class="select" >
+						<span class="select is-small" >
 							<select name="order">
 									<option value="DESC" {{ old('order', request('order')) == "DESC" ? 'selected' : '' }} > Descendente
 									</option>
@@ -38,46 +35,17 @@
 							</select>
 						</span>
 					</p>
+					 <p class="help">Ordem</p>
 				</div>
 			</div>
-			<div class="column is-one-quarter">
-				<!--<strong>Opções</strong><br>-->
-				<p class="control">
-				<button class="button is-info" type="submit">Filtar</button>
+			<div class="column is-3 has-text-right">
 				@if ($newRoute != '')
-					<a class="button is-success" href="{{ route($newRoute) }}">Novo</a>
+					<a class="button is-success is-small" href="{{ route($newRoute) }}">
+					    <span>Criar</span>
+					</a>
 				@endif
-				</p>
+				<button class="button is-info is-small" type="submit">Filtar</button>
 			</div>
 		</div>
-
-		<!--<nav class="level">
-			<div class="level-left">
-				<div class="level-item">
-
-				</div>
-			</div>
-			
-			<div class="level-right">
-				<p class="level-item">
-					
-				</p>
-				<p class="level-item">
-					
-				</p>
-				<p class="level-item"><a></a></p>
-				<p class="level-item">
-					
-				</p>
-				<p class="level-item">
-					
-				</p>
-				<p class="level-item"><a></a></p>
-				<p class="level-item">
-					
-				</p>
-
-			</div>
-		</nav>-->
 	</form>
 </div>
