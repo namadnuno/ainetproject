@@ -33,6 +33,12 @@
                </span>
                <span>Login</span>
            </a>
+           <a href="{{ route('register') }}" class="button is-primary">
+               <span class="icon">
+                   <i class="fa fa-user-plus"></i>
+               </span>
+               <span>Registar</span>
+           </a>
            @else
            <a class="button is-primary" href="{{ route('dashboard') }}">
                <span class="icon">
@@ -41,11 +47,11 @@
                <span>Dashboard</span>
            </a>
 
-          <form action="{{ route('logout') }}" method="POST">
+          <form action="{{ route('logout') }}" method="POST" style="padding-left: 15px;">
             <button class="button is-primary">
                 {{ csrf_field() }}
                <span class="icon">
-                   <i class="fa fa-sign-in"></i>
+                   <i class="fa fa-sign-out"></i>
                </span>
                <span>Logout</span>
            </button>
