@@ -1,89 +1,89 @@
 @extends('layouts.admin')
 
 @section('content-child')
-    @include('partials.messages')
-    @include('partials.filter-box', [
-        'filters' => [
-            'created_at' => 'Data de Criação',
-            'open_date' => 'Data Abertura',
-            'quantity' => 'Quantidade',
-            'paper_size' => 'Tamanho de Papel',
-            'status' => 'Estado',
-        ],
-        'newRoute' =>
-            'requests.create'
-        ])
+@include('partials.messages')
+@include('partials.filter-box', [
+    'filters' => [
+    'created_at' => 'Data de Criação',
+    'open_date' => 'Data Abertura',
+    'quantity' => 'Quantidade',
+    'paper_size' => 'Tamanho de Papel',
+    'status' => 'Estado',
+    ],
+    'newRoute' =>
+    'requests.create'
+    ])
 
     <div class="columns is-multiline">
         @foreach ($requests as $request)
-            <div class="column is-one-quarter">
-                <div class="card">
-                    @if(pathinfo(asset($request->file))['extension'] == 'jpg' ||
-                        pathinfo(asset($request->file))['extension'] == 'png' ||
-                        pathinfo(asset($request->file))['extension'] == 'jpeg' ||
-                        pathinfo(asset($request->file))['extension'] == 'tiff')
-                        <div class="card-image">
-                            <figure class="image is-square">
-                                <img src="{{ asset(Storage::url($request->file)) }}" alt="">
-                            </figure>
-                        </div>
+        <div class="column is-one-quarter">
+            <div class="card">
+                @if(pathinfo(asset($request->file))['extension'] == 'jpg' ||
+                    pathinfo(asset($request->file))['extension'] == 'png' ||
+                    pathinfo(asset($request->file))['extension'] == 'jpeg' ||
+                    pathinfo(asset($request->file))['extension'] == 'tiff')
+                    <div class="card-image">
+                        <figure class="image is-square">
+                            <img src="{{ asset(Storage::url($request->file)) }}" alt="">
+                        </figure>
+                    </div>
                     @else
-                        <div class="card-image">
-                            <figure class="image is-square">
-                                <img src="{{ asset('/files_formats/' . pathinfo(asset($request->file))['extension'] . '.png' )}}" alt="">
-                            </figure>
-                        </div>
+                    <div class="card-image">
+                        <figure class="image is-square">
+                            <img src="{{ asset('/files_formats/' . pathinfo(asset($request->file))['extension'] . '.png' )}}" alt="">
+                        </figure>
+                    </div>
                     @endif
                     <div class="card-content">
                         <div class="content">
                             <div class="columns">
                                 <div class="column is-one-third">
-                                <span class="tag is-{{ $request->colored == 1 ? 'primary' : 'dark'}}">
-                                    <span class="icon is-small">
-                                        <i class="fa fa-file-{{ typeFile($request) }}-o"></i>
+                                    <span class="tag is-{{ $request->colored == 1 ? 'primary' : 'dark'}}">
+                                        <span class="icon is-small">
+                                            <i class="fa fa-file-{{ typeFile($request) }}-o"></i>
+                                        </span>
                                     </span>
-                                </span>
                                 </div>
 
                                 <div class="column is-one-third">
-                                <span class="tag is-info">
-                                    <span class="icon is-small">
-                                        <i class="fa fa-print"> {{ $request->quantity }}</i>
+                                    <span class="tag is-info">
+                                        <span class="icon is-small">
+                                            <i class="fa fa-print"> {{ $request->quantity }}</i>
+                                        </span>
                                     </span>
-                                </span>
                                 </div>
 
                                 <div class="column is-one-third">
                                     @if ($request->status == 0)
-                                        <span class="tag is-danger">
-                                            <span class="icon is-small">
-                                                <i class="fa fa-ban"></i>
-                                            </span>
+                                    <span class="tag is-danger">
+                                        <span class="icon is-small">
+                                            <i class="fa fa-ban"></i>
                                         </span>
+                                    </span>
                                     @elseif($request->status == 1)
-                                        <span class="tag is-warning">
-                                            <span class="icon is-small">
-                                                <i class="fa fa-exclamation"></i>
-                                            </span>
+                                    <span class="tag is-warning">
+                                        <span class="icon is-small">
+                                            <i class="fa fa-exclamation"></i>
+                                        </span>
                                     </span>
                                     @else
-                                        <span class="tag is-success">
-                                            <span class="icon is-small">
-                                                <i class="fa fa-check"></i>
-                                            </span>
+                                    <span class="tag is-success">
+                                        <span class="icon is-small">
+                                            <i class="fa fa-check"></i>
                                         </span>
+                                    </span>
                                     @endif
                                 </div>
                             </div>
 
                             @if($request->status == 2)
-                                <div class="has-text-centered">
-                                    <span class="icon is-small">
-                                        @for ($i = 0; $i < $request->satisfaction_grade; $i++)
-                                            <i class="fa fa-star"></i>
-                                        @endfor
-                                    </span>
-                                </div>
+                            <div class="has-text-centered">
+                                <span class="icon is-small">
+                                    @for ($i = 0; $i < $request->satisfaction_grade; $i++)
+                                    <i class="fa fa-star"></i>
+                                    @endfor
+                                </span>
+                            </div>
                             @endif
 
                             <div class="has-text-centered">
@@ -95,79 +95,78 @@
                     <footer class="card-footer">
                         <a href="{{ route('requests.show', $request->id) }}" class="card-footer-item">Ver</a>
                         @if($request->status != 2)
-                            <a href="{{ route('requests.edit', $request->id) }}" class="card-footer-item">Editar</a>
-                            <a class="card-footer-item">Remover</a>
-                        @else
-                            <a class="card-footer-item"><i class="fa fa-download"></i>Relatório</a>
-                        @endif
-                    </footer>
-                </div>
-            </div>
-        @endforeach
-    </div>
+                        <a href="{{ route('requests.edit', $request->id) }}" class="card-footer-item">Editar</a>
+                       <remover-pedido route="{{ route('requests.destroy', $request) }}" token="{{ csrf_token() }}" ></remover-pedido>
+                  @else
+                  <a class="card-footer-item"><i class="fa fa-download"></i>Relatório</a>
+                  @endif
+              </footer>
+          </div>
+      </div>
+      @endforeach
+  </div>
 
-    <div class="box">
-        <div class="columns">
-            <div class="column is-4">
-                <span class="tag is-dark">
-                    <span class="icon is-small">
-                        <i class="fa fa-file-photo-o"></i>
-                    </span>
+  <div class="box">
+    <div class="columns">
+        <div class="column is-4">
+            <span class="tag is-dark">
+                <span class="icon is-small">
+                    <i class="fa fa-file-photo-o"></i>
                 </span>
-                Impressão a Preto e Branco
-            </div>
-            <div class="column is-4">
-                <span class="tag is-primary">
-                    <span class="icon is-small">
-                        <i class="fa fa-file-photo-o"></i>
-                    </span>
-                </span>
-                Impressão a Cores
-            </div>
-            <div class="column is-4">
-                <span class="tag is-info">
-                    <span class="icon is-small">
-                        <i class="fa fa-print"></i>
-                    </span>
-                </span>
-                Quantidade de mpressões
-            </div>
+            </span>
+            Impressão a Preto e Branco
         </div>
-        <div class="columns">
-            <div class="column is-4">
-                <span class="tag is-danger">
-                    <span class="icon is-small">
-                        <i class="fa fa-ban"></i>
-                    </span>
+        <div class="column is-4">
+            <span class="tag is-primary">
+                <span class="icon is-small">
+                    <i class="fa fa-file-photo-o"></i>
                 </span>
-                Pedido recusado
-            </div>
-            <div class="column is-4">
-                <span class="tag is-warning">
-                    <span class="icon is-small">
-                        <i class="fa fa-exclamation"></i>
-                    </span>
+            </span>
+            Impressão a Cores
+        </div>
+        <div class="column is-4">
+            <span class="tag is-info">
+                <span class="icon is-small">
+                    <i class="fa fa-print"></i>
                 </span>
-                Pedido pendente
-            </div>
-            <div class="column is-4">
-                <span class="tag is-success">
-                    <span class="icon is-small">
-                        <i class="fa fa-check"></i>
-                    </span>
-                </span>
-                Pedido concluído
-            </div>
+            </span>
+            Quantidade de mpressões
         </div>
     </div>
+    <div class="columns">
+        <div class="column is-4">
+            <span class="tag is-danger">
+                <span class="icon is-small">
+                    <i class="fa fa-ban"></i>
+                </span>
+            </span>
+            Pedido recusado
+        </div>
+        <div class="column is-4">
+            <span class="tag is-warning">
+                <span class="icon is-small">
+                    <i class="fa fa-exclamation"></i>
+                </span>
+            </span>
+            Pedido pendente
+        </div>
+        <div class="column is-4">
+            <span class="tag is-success">
+                <span class="icon is-small">
+                    <i class="fa fa-check"></i>
+                </span>
+            </span>
+            Pedido concluído
+        </div>
+    </div>
+</div>
 
-    @include('partials.pagination', ['pagination' => $requests])
+@include('partials.pagination', ['pagination' => $requests])
 @endsection
 
 @section('title')
-    Meus Pedidos
+Meus Pedidos
 @endsection
 
 
 
-    

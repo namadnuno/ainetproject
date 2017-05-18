@@ -95,9 +95,25 @@ class RequestController extends Controller
      * @param PedidoRequest $requestVal
      * @param RequestModel $request
      */
-    public function update(PedidoRequest $requestVal, RequestModel $request)
+    public function update(PedidoRequest $requestValidator, RequestModel $request)
     {
         throw new Exception("not implemented");
+    }
+
+    /**
+     * Remove um pedido que não esteja concluido
+     * @param  Request $request
+     * @return Illuminate\Http\Response
+     */
+    public function destroy(RequestModel $request)
+    {
+        if ($request->status == 2) {
+            return back()->with('warning', 'Não é possível remover pedidos concluidos!');
+        }
+
+        $request->delete();
+        
+        return back()->with('success', 'Pedido removido com sucesso');
     }
 
     /**
