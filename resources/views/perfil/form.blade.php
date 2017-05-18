@@ -21,7 +21,7 @@
 	</p>
 </div>
 <div class="field">
-	<label class="label">Password</label>
+	<label class="label">Confirmação da Password</label>
 	<p class="control">
 		<input class="input" type="password" placeholder="Confirmação da Password" name="password_confirmation">
 	</p>

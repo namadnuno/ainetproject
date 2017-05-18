@@ -4,7 +4,7 @@
 <section class="hero is-small is-primary is-bold">
     <div class="hero-body">
         <div class="container">
-            <div class="columns is-vcentered">
+            <div class="columns is-centered">
                 <div class="column">
                     <p class="title">
                         Login
@@ -19,7 +19,8 @@
 </section>
 <div class="container">
     <div class="row">
-        <div class="column is-half is-offset-one-quarter is-top-large">
+        <div class="column is-half is-offset-one-quarter is-top-small">
+            @include('partials.errors')
             <div class="card is-centered">
                 <div class="card-content">
                     <form class="form-horizontal" role="form" method="POST" action="{{ route('login') }}">
