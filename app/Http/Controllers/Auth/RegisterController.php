@@ -72,7 +72,10 @@ class RegisterController extends Controller
             'password' => bcrypt($data['password']),
             'department_id' => $data['department_id'],
             'phone' => $data['phone'],
-            'admin' => 1,
+            'admin' => '0',
+            'blocked' => '0',
+            'print_evals' => 0,
+            'print_counts' => 0,
             'created_at' => Carbon::now(),
             'updated_at' =>Carbon::now(),
         ]);

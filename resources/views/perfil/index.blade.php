@@ -35,7 +35,7 @@
                             <span class="icon">
                                 <i class="fa fa-link"></i>
                             </span>
-                            {{ auth()->user()->phone ? auth()->user()->profile_url : 'Não há ligação para um perfil externo' }}
+                            {{ auth()->user()->profile_url ? auth()->user()->profile_url : 'Não há ligação para um perfil externo' }}
                         </a>
                     </div>
                 </div>
