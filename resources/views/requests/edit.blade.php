@@ -48,10 +48,9 @@
     </div>
     <div class="box">
         <div class="media-content">
-            <form action="{{ route('requests.update', $request->id) }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('requests.update', $request) }}" method="POST" enctype="multipart/form-data">
                 {{ method_field('PUT') }}
                 @include('requests.form')
-
             </form>
         </div>
     </div>
