@@ -18,10 +18,7 @@
         @foreach ($requests as $request)
         <div class="column is-one-quarter">
             <div class="card">
-                @if(pathinfo(asset($request->file))['extension'] == 'jpg' ||
-                    pathinfo(asset($request->file))['extension'] == 'png' ||
-                    pathinfo(asset($request->file))['extension'] == 'jpeg' ||
-                    pathinfo(asset($request->file))['extension'] == 'tiff')
+                @if(isImage($request->file))
                     <div class="card-image">
                         <figure class="image is-square">
                             <img src="{{ asset(Storage::url($request->file)) }}" alt="">
@@ -87,7 +84,7 @@
                             @endif
 
                             <div class="has-text-centered">
-                                <strong class="timestamp">{{ \Carbon\Carbon::parse($request->created_at)->diffForHumans() }}</strong>
+                                <strong class="timestamp">{{ $request->created_at->diffForHumans() }}</strong>
                             </div>
                         </div>
                     </div>

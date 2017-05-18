@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PedidoPutRequest;
 use App\Http\Requests\PedidoRequest;
 use App\Printer;
 use App\Request as RequestModel;
@@ -92,12 +93,25 @@ class RequestController extends Controller
 
     /**
      * Atualiza o pedido de impressão
-     * @param PedidoRequest $requestVal
+     * @param PedidoRequest $requestValidator
      * @param RequestModel $request
      */
-    public function update(PedidoRequest $requestValidator, RequestModel $request)
+    public function update(PedidoPutRequest $requestValidator, RequestModel $request)
     {
-        throw new Exception("not implemented");
+        $request->fill($requestValidator->all());
+        
+        //dd('add');
+        //dd($requestValidator->file->store('public/files'));
+
+        if ($requestValidator->hasFile('file')) {
+            $request->file = $requestValidator->file->store('public/files');
+        }
+
+        $request->save();
+
+        return redirect()->route(
+            'requests.index'
+        )->with('success', 'Pedido editado com sucesso!');
     }
 
     /**

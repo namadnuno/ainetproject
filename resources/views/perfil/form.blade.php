@@ -1,5 +1,4 @@
 {{ csrf_field() }}
-
 <div class="field">
 	<label class="label">Nome</label>
 	<p class="control">
