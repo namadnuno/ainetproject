@@ -41,14 +41,16 @@
                <span>Dashboard</span>
            </a>
 
-
-           <a  href= {{ route('logout') }}"  class="button is-primary">
+          <form action="{{ route('logout') }}" method="POST">
+            <button class="button is-primary">
                 {{ csrf_field() }}
                <span class="icon">
                    <i class="fa fa-sign-in"></i>
                </span>
                <span>Logout</span>
-           </a>
+           </button>
+          </form>
+           
 
            @endif
        </span>  
