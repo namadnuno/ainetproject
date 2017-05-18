@@ -5,6 +5,7 @@
 	<div class="box">
 		<form class="form" action="{{ route('perfil.update') }}"
 		method="POST" enctype="multipart/form-data">
+			{{ method_field('PUT') }}
 			@include('partials.errors')
 			@include('perfil.form')
 			<div class="has-text-right">
