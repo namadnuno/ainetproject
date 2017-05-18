@@ -4,8 +4,12 @@ use Illuminate\Support\Facades\Storage;
 
 function typeFile($request)
 {
+    if (isImage($request->file)) {
+        return "photo";
+    }
+    return "pdf";
     /*if (pathinfo(asset($request->file))['extension'] == 'pdf') {
-        return "pdf";
+        
     } elseif (
     pathinfo(asset($request->file))['extension'] == "png"||
     pathinfo(asset($request->file))['extension'] == "jpg"||
