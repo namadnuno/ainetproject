@@ -1,5 +1,5 @@
 ################# PERFIS
-	mostra o icone de hiperligacao caso nao haja nenhum link
+	
 	nao consigo editar perfil
 
 ################# PEDIDOS
@@ -49,3 +49,4 @@
 	espaco para avaliar qualidade da impressao, selecionar a impressora, apos pedidoconcluido
 	botoes voltar nao funcionam
 	so se pode comentar os pedidos pendentes
+	mostra o icone de hiperligacao caso nao haja nenhum link
