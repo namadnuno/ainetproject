@@ -7,6 +7,7 @@ use App\Printer;
 use App\Request as RequestModel;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 use Mockery\Exception;
 
@@ -60,16 +61,7 @@ class RequestController extends Controller
         $pedido = $pedido->fill($request->all());
         $pedido->status = 1;
         
-        // $filename = 'file-' . time() . '.' . $request->file->extension();
-        // $pedido->file = $filename;
-        // $request->file->move(public_path('files'), $filename);
-
         $pedido->file = $request->file->store('public/files');
-
-        //dd($pedido->file);
-        // $img = image::make(public_path('files/' . $filename));
-        // $img->fit(256);
-        // $img->save(public_path('file-thumb/' . $filename));
 
         $pedido->owner_id = auth()->user()->id;
         $pedido->save();
