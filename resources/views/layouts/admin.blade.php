@@ -33,31 +33,33 @@
 						>Meu Perfil</a>
 					</li>
 				</ul>
-				<p class="menu-label">
-					Administração de Pedidos
-				</p>
-				<ul class="menu-list">
-					<li>
-						<a href="{{ route('users.index') }}"
-						   @isActive('users.index')
-						>
-							Utilizadores
-						</a>
-					</li>
-					<li><a>Pedidos de Impressão</a></li>
-					<li>
-						<a href="{{ route('comments.index') }}"
-						   @isActive('comments.index')>
-							Comentários
-						</a>
-					</li>
-					<li>
-						<a href="{{ route('printers.index') }}"
-								@isActive('printers.index')>
-							Impressoras
-						</a>
-					</li>
-				</ul>
+				@if(auth()->user()->isAdmin())
+					<p class="menu-label">
+						Administração de Pedidos
+					</p>
+					<ul class="menu-list">
+						<li>
+							<a href="{{ route('users.index') }}"
+							   @isActive('users.index')
+							>
+								Utilizadores
+							</a>
+						</li>
+						<li><a>Pedidos de Impressão</a></li>
+						<li>
+							<a href="{{ route('comments.index') }}"
+							   @isActive('comments.index')>
+								Comentários
+							</a>
+						</li>
+						<li>
+							<a href="{{ route('printers.index') }}"
+									@isActive('printers.index')>
+								Impressoras
+							</a>
+						</li>
+					</ul>
+				@endif
 				<p class="menu-label">
 					Pedidos
 				</p>

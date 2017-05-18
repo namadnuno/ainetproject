@@ -10,6 +10,17 @@
                         @include('partials.profile_photo')
                     </figure>
                 </div>
+                <div class="card-content">
+                    <div class="has-text-centered">
+                        <span class="tag is-info">
+                            @if( auth()->user()->isAdmin() )
+                                Administrador
+                            @else
+                                Funcionário
+                            @endif
+                        </span>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="column">
