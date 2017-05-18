@@ -82,26 +82,4 @@ class RegisterController extends Controller
             'updated_at' =>Carbon::now(),
         ]);
     }
-
-    public function sendEmailReminder(array $data)
-    {
-        Mail::raw('plain text message', function ($message) {
-            $message->from('ruben_carreira97@hotmail.com', 'John Doe');
-            //$message->sender('ruben.manuel.carreira@gmail.com', 'John Doe');
-        
-            $message->to('ruben.manuel.carreira@gmail.com', 'John Doe');
-        
-            //$message->cc('john@johndoe.com', 'John Doe');
-            //$message->bcc('john@johndoe.com', 'John Doe');
-        
-            //$message->replyTo('john@johndoe.com', 'John Doe');
-        
-            $message->subject('Subject');
-        
-            //$message->priority(3);
-        
-            //$message->attach('pathToFile');
-        });
-
-    }
 }

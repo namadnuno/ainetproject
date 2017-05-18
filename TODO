@@ -1,9 +1,6 @@
 ################# PERFIS
-	
-	nao consigo editar perfil
 
 ################# PEDIDOS
-	ao concluir, pedir a qualidade da impressao
 	gravar edicao nao esta a funcionar
 	ao editar o file perde se, e para validar todos os campos e necessario introduzir um novo file (nao deve ser assim)
 	verificacaoes no tipo de ficheiro
@@ -18,6 +15,7 @@
 	
 ################# REGISTO
 	ao registar, falta implementar o token_remember
+	enviar mail
 
 ################# HOME
 	destincao de tipo de impressao por departamento
@@ -34,6 +32,7 @@
 		lista de pedidos (apenas os concluidos)
 
 ################ FEITO
+	ao concluir, pedir a qualidade da impressao
 	destincao de copias na homepage
 	dashboard grafico home
 	valores reais
@@ -50,3 +49,4 @@
 	botoes voltar nao funcionam
 	so se pode comentar os pedidos pendentes
 	mostra o icone de hiperligacao caso nao haja nenhum link
+	nao consigo editar perfil
