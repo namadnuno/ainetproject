@@ -38,39 +38,49 @@
                 </div>
             </div>
         </section>
+
         <section id="departamentos">
             <div class="container">
                 <h2 class="title is-2 has-text-centered">Departamentos</h2>
                 <div class="content">
                     <div class="columns is-multiline ">
+
                     @foreach($departments as $department)
-                        <div class="column is-one-quarter">
+                        <div class="column is-half">
                             <div class="box">
                                 <article class="media">
                                     <div class="media-content">
                                         <div class="content">
-                                            <h5 class="title is-5">{{ $department->name }}</h5>
+                                            <h5 class="title is-5"> 
+                                                <span class="icon"><i class="fa fa-building-o"></i></span>
+                                                {{ $department->name }}
+                                            </h5>
                                         </div>
                                     </div>
                                 </article>
                                 <div class="columns">
-                                    <div class="column">
+                                    <div class="column is-one-quarter">
                                         <span class="tag is-info">{{ $department->requests_count}} Impreções</span>
                                     </div>
-                                    <div class="column">
-                                       <span class="tag is-info">{{ 1 }} Impreções</span>
+                                    <div class="column is-one-quarter">
+                                       <span class="tag is-dark">{{ 1 }} Impreções</span>
                                     </div>
-                                    <div class="column">
-                                         <span class="tag is-info">{{ $department->numPrintsBlackAndWhite }} Impreções</span>
+                                    <div class="column is-one-quarter">
+                                         <span class="tag is-success">{{ $department->numPrintsBlackAndWhite }} Impreções</span>
+                                    </div>
+                                    <div class="column is-one-quarter">
+                                         <span class="tag is-primary">{{ $department->numFuncionaros }} Funcionários</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     @endforeach
+
                     </div>
                 </div>
             </div>
         </section>
+
         <section id="status">
             <div class="container">
                 <div class="columns">
