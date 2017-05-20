@@ -16608,6 +16608,7 @@ __webpack_require__(150);
 //Vue.component('example', require('./components/Example.vue'));
 Vue.component('chart-mouth-prints', __webpack_require__(203));
 Vue.component('remover-pedido', __webpack_require__(202));
+Vue.component('evaluate-pedido', __webpack_require__(218));
 
 var app = new Vue({
   el: '#app'
@@ -69613,6 +69614,224 @@ module.exports = Vue$3;
 
 module.exports = __webpack_require__(127);
 
+
+/***/ }),
+/* 209 */,
+/* 210 */,
+/* 211 */,
+/* 212 */,
+/* 213 */,
+/* 214 */,
+/* 215 */,
+/* 216 */,
+/* 217 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+	props: ['route', 'token'],
+	data: function data() {
+		return {
+			isActive: false
+		};
+	},
+
+	methods: {
+		open: function open() {
+			this.isActive = true;
+		},
+		close: function close() {
+			this.isActive = false;
+		}
+	}
+});
+
+/***/ }),
+/* 218 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(124)(
+  /* script */
+  __webpack_require__(217),
+  /* template */
+  __webpack_require__(219),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "D:\\Projetos\\ainetproject\\resources\\assets\\js\\components\\EvaluatePedido.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] EvaluatePedido.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-b6fa9ad4", Component.options)
+  } else {
+    hotAPI.reload("data-v-b6fa9ad4", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 219 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "inline"
+  }, [_c('a', {
+    staticClass: "card-footer-item",
+    on: {
+      "click": _vm.open
+    }
+  }, [_vm._v("\n\t\t\tAvaliar\n\t\t")]), _vm._v(" "), _c('div', {
+    staticClass: "modal",
+    class: {
+      'is-active': _vm.isActive
+    }
+  }, [_c('div', {
+    staticClass: "modal-background"
+  }), _vm._v(" "), _c('div', {
+    staticClass: "modal-card"
+  }, [_c('header', {
+    staticClass: "modal-card-head"
+  }, [_c('p', {
+    staticClass: "modal-card-title"
+  }, [_vm._v("Avalie esta Impressão")]), _vm._v(" "), _c('button', {
+    staticClass: "delete",
+    on: {
+      "click": _vm.close
+    }
+  })]), _vm._v(" "), _c('form', {
+    attrs: {
+      "action": _vm.route,
+      "method": "post"
+    }
+  }, [_c('section', {
+    staticClass: "modal-card-body"
+  }, [_c('input', {
+    attrs: {
+      "type": "hidden",
+      "name": "_token"
+    },
+    domProps: {
+      "value": _vm.token
+    }
+  }), _vm._v(" "), _c('input', {
+    attrs: {
+      "type": "hidden",
+      "name": "_method",
+      "value": "PUT"
+    }
+  }), _vm._v(" "), _vm._m(0)]), _vm._v(" "), _c('footer', {
+    staticClass: "modal-card-foot has-text-right"
+  }, [_c('a', {
+    staticClass: "button",
+    attrs: {
+      "type": "button"
+    },
+    on: {
+      "click": function($event) {
+        if (!('button' in $event) && _vm._k($event.keyCode, "preventDefault")) { return null; }
+        _vm.close($event)
+      }
+    }
+  }, [_vm._v("\n\t\t\t\t\t\t\tCalcelar\n\t\t\t\t\t\t")]), _vm._v(" "), _c('button', {
+    staticClass: "button is-danger",
+    attrs: {
+      "type": "submit"
+    }
+  }, [_vm._v("\n\t\t\t\t\t\t\tAvaliar\n\t\t\t\t\t\t")])])])])])])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "field"
+  }, [_c('label', {
+    attrs: {
+      "for": "satisfaction_grade"
+    }
+  }, [_vm._v("Qualidade da impressão")]), _vm._v(" "), _c('p', {
+    staticClass: "control"
+  }, [_c('span', {
+    staticClass: "select"
+  }, [_c('select', {
+    attrs: {
+      "name": "satisfaction_grade"
+    }
+  }, [_c('option', [_vm._v("Avalie")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "1"
+    }
+  }, [_vm._v("Má")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "2"
+    }
+  }, [_vm._v("Razoável")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "3"
+    }
+  }, [_vm._v("Boa")])])])])])
+}]}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-b6fa9ad4", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

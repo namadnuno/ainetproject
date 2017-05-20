@@ -177,13 +177,11 @@ class RequestController extends Controller
     public function done(RequestModel $request)
     {
         $this->validate(request(), [
-            'printer_id' => 'required|exists:printers,id',
-            'satisfaction_grade' => 'required|digits_between:1,3'
+            'printer_id' => 'required|exists:printers,id'
         ]);
 
         $request->status = 2;
         $request->printer_id = request('printer_id');
-        $request->satisfaction_grade = request('satisfaction_grade');
         $request->closed_date = Carbon::now();
         $request->save();
 
@@ -201,5 +199,19 @@ class RequestController extends Controller
 
         return redirect()->route('requests.index')
                 ->with('success', 'Pedido #'. $request->id .' readmitido com sucesso!');
+    }
+
+    public function evaluate(RequestModel $request)
+    {
+        $this->validate(request(),
+            ['satisfaction_grade' => 'required|digits_between:1,3']
+        );
+
+        $request->satisfaction_grade = request('satisfaction_grade');
+
+        $request->save();
+
+        return redirect()->route('requests.index')
+                ->with('success', 'Grau de satisfação foi atribuido ao pedido #'. $request->id .' com sucesso!');
     }
 }

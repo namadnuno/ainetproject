@@ -41,15 +41,6 @@
                                     </span>
                                 </span>
                             </div>
-
-                            <div class="column is-one-third">
-                                <span class="tag is-info">
-                                    <span class="icon is-small">
-                                        <i class="fa fa-print"> {{ $request->quantity }}</i>
-                                    </span>
-                                </span>
-                            </div>
-
                             <div class="column is-one-third">
                                 @if ($request->status == 0)
                                 <span class="tag is-danger">
@@ -96,6 +87,7 @@
                     <remover-pedido route="{{ route('requests.destroy', $request) }}" token="{{ csrf_token() }}" ></remover-pedido>
                     @else
                     <a class="card-footer-item"><i class="fa fa-download"></i>Relatório</a>
+                    <evaluate-pedido route="{{ route('requests.evaluate', $request) }}" token="{{ csrf_token() }}"></evaluate-pedido>
                     @endif
                 </footer>
             </div>

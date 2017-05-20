@@ -16,6 +16,7 @@ require('./bootstrap');
 //Vue.component('example', require('./components/Example.vue'));
 Vue.component('chart-mouth-prints', require('./components/chart-mouth-prints.vue'));
 Vue.component('remover-pedido', require('./components/RemoverPedido.vue'));
+Vue.component('evaluate-pedido', require('./components/EvaluatePedido.vue'));
 
 const app = new Vue({
     el: '#app'

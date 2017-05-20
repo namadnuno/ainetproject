@@ -56,9 +56,14 @@ Route::group(['middleware' => 'auth', 'prefix' => 'dashboard'], function () {
         'uses' => 'RequestController@finish'
     ]);
 
-    Route::post('request/{request}/done', [
+    Route::post('request/{request}/finish', [
         'as' => 'requests.done',
         'uses' => 'RequestController@done'
+    ]);
+
+    Route::put('request/{request}/finish', [
+        'as' => 'requests.evaluate',
+        'uses' => 'RequestController@evaluate'
     ]);
 
     Route::get('requests/{request}/readmit', [
