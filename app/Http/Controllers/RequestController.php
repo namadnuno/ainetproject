@@ -182,13 +182,9 @@ class RequestController extends Controller
         ]);
 
         $request->status = 2;
-
         $request->printer_id = request('printer_id');
-
         $request->satisfaction_grade = request('satisfaction_grade');
-
         $request->closed_date = Carbon::now();
-
         $request->save();
 
         return redirect()->route('requests.index')->with('success', 'Pedido finalizado com sucesso!');

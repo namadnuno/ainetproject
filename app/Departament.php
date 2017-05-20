@@ -41,4 +41,10 @@ class Departament extends Model
         }
         return $num;
     }
+
+    public function scopeNumFuncionarios($query, $department)
+    {
+        dd(DB::table('users')->where('department_id', '=', $department->$id)->get()->count());
+        return DB::table('users')->where('department_id', '=', $department->$id)->get()->count();
+    }
 }

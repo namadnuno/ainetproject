@@ -18,7 +18,9 @@
 	enviar mail
 
 ################# HOME
-	destincao de tipo de impressao por departamento
+	destincao de tipo de impressao por departamento (em percentagem)
+	count de impressoes por dia, no total por mes, e a media por dia no mes atual, e o total
+	departamentos movidos para o separador "departamentos" do menu
 
 ################# OUTROS / GERAL
 	meter os files no storage, PerfilController, RequestController
@@ -30,6 +32,7 @@
 		lista de contactos
 		mostrar os departamentos
 		lista de pedidos (apenas os concluidos)
+
 
 ################ FEITO
 	ao concluir, pedir a qualidade da impressao
