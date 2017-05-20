@@ -66,6 +66,11 @@ Route::group(['middleware' => 'auth', 'prefix' => 'dashboard'], function () {
         'uses' => 'RequestController@evaluate'
     ]);
 
+    Route::get('request/{request}/report', [
+        'as' => 'request.report',
+        'uses' => 'RequestController@report'
+    ]);
+
     Route::get('requests/{request}/readmit', [
         'as' => 'requests.readmit',
         'uses' => 'RequestController@readmit'

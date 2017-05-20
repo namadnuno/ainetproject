@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 use Mockery\Exception;
+use Barryvdh\DomPDF\Facade as PDF;
 
 class RequestController extends Controller
 {
@@ -201,6 +202,11 @@ class RequestController extends Controller
                 ->with('success', 'Pedido #'. $request->id .' readmitido com sucesso!');
     }
 
+    /**
+     * Recebe a avaliação do funcionário e guarda no pedido
+     * @param  RequestModel $request
+     * @return Illuminate\Http\Response
+     */
     public function evaluate(RequestModel $request)
     {
         $this->validate(request(),
@@ -213,5 +219,16 @@ class RequestController extends Controller
 
         return redirect()->route('requests.index')
                 ->with('success', 'Grau de satisfação foi atribuido ao pedido #'. $request->id .' com sucesso!');
+    }
+
+    /**
+     * Dado um pedido faz um relatório retorna o download dele
+     * @param  Request $request
+     * @return [type]
+     */
+    public function report(Request $request)
+    {
+        $pdf = PDF::loadView('requests.report');
+        return $pdf->download('invoice.pdf');
     }
 }

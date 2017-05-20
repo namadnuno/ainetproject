@@ -93,8 +93,11 @@
                     <a href="{{ route('requests.edit', $request->id) }}" class="card-footer-item">Editar</a>
                     <remover-pedido route="{{ route('requests.destroy', $request) }}" token="{{ csrf_token() }}" ></remover-pedido>
                     @else
-                    <a class="card-footer-item"><i class="fa fa-download"></i>Relatório</a>
-                    <evaluate-pedido route="{{ route('requests.evaluate', $request) }}" token="{{ csrf_token() }}"></evaluate-pedido>
+                        @if($request->satisfaction_grade)
+                            <a href="{{ route('request.report', $request) }}" class="card-footer-item"><i class="fa fa-download"></i>Relatório</a>
+                        @else
+                            <evaluate-pedido route="{{ route('requests.evaluate', $request) }}" token="{{ csrf_token() }}"></evaluate-pedido>
+                        @endif
                     @endif
                 </footer>
             </div>
