@@ -63,12 +63,12 @@
                                 @endif
                             </div>
                             <div class="column is-one-third">
- -                                <span class="tag is-info">
- -                                    <span class="icon is-small">
- -                                        <i class="fa fa-print"> {{ $request->quantity }}</i>
- -                                    </span>
- -                                </span>
- -                            </div>
+                                 <span class="tag is-info">
+                                     <span class="icon is-small">
+                                         <i class="fa fa-print"> {{ $request->quantity }}</i>
+                                     </span>
+                                 </span>
+                             </div>
                         </div>
 
                         @if($request->status == 2)
@@ -80,7 +80,6 @@
                             </span>
                         </div>
                         @endif
-
                         <div class="has-text-centered">
                             <strong class="timestamp">{{ $request->created_at->diffForHumans() }}</strong>
                         </div>
