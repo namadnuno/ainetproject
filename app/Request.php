@@ -36,8 +36,7 @@ class Request extends Model
      */
     public static function scopeSearch($query, $filter = '')
     {
-        return $query->where('description', 'LIKE', '%' . $filter . '%')
-                ->orWhere('description', 'LIKE', '%' . $filter . '%');
+        return $query->where('description', 'LIKE', '%' . $filter . '%');
     }
 
     /**

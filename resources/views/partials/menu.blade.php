@@ -7,7 +7,7 @@
       <a href="{{ url('/') }}" class="nav-item">
             Home
         </a>
-      <a class="nav-item is-tab is-hidden-mobile">Departamentos</a>
+      <a class="nav-item is-tab is-hidden-mobile" href="{{ route('departmentsAsGuest') }}">Departamentos</a>
       <a class="nav-item is-tab is-hidden-mobile">Impressões</a>
       <a class="nav-item @isActiveClass('contacts.index')" href="{{ route('contacts.index') }}">
             Contactos

@@ -13,6 +13,8 @@
 
 Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
 
+Route::get('/departments', ['as' => 'departmentsAsGuest', 'uses' => 'DepartmentController@indexAsGuest']);
+
 Route::get('/contacts', ['as' => 'contacts.index', 'uses' => 'UserController@indexAsGuest']);
 
 Route::get('/login', ['as' => 'login', 'uses' => 'Auth\LoginController@index']);

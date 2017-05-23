@@ -24,27 +24,15 @@ class Departament extends Model
         return $this->hasManyThrough(Request::class, User::class, 'department_id', 'owner_id');
     }
 
-    public function scopeNumPrintsBlackAndWhite($query)
-    {
-        $num = 0;
-        foreach ($this->users()->get() as $user) {
-            $num += $user->requests()->blackAndWhite()->count();
-        }
-        return $num;
-    }
 
-    public function scopeNumPrintsColor($query)
+    /**
+     * Scope para fazer o filtro
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param $filter
+     * @return mixed
+     */
+    public static function scopeSearch($query, $filter = '')
     {
-        $num = 0;
-        foreach ($this->users()->get() as $user) {
-            $num += $user->requests()->colored()->count();
-        }
-        return $num;
-    }
-
-    public function scopeNumFuncionarios($query, $department)
-    {
-        dd(DB::table('users')->where('department_id', '=', $department->$id)->get()->count());
-        return DB::table('users')->where('department_id', '=', $department->$id)->get()->count();
+        return $query->where('name', 'LIKE', '%' . $filter . '%');
     }
 }
