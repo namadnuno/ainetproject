@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Request;
 use App\Departament;
+use Carbon\Carbon;
 
 class HomeController extends Controller
 {
@@ -15,8 +16,25 @@ class HomeController extends Controller
      */
     public function index()
     {
-    	$pedidos = Request::done();
-        $departments = Departament::withCount(['users','requests'])->get();
-        return view('home', compact('pedidos', 'departments'));
+
+        $requestsNumber = Request::done()->count();
+
+    	$coloredRequests = Request::done()->colored();
+
+    	$blackAndWhiteRequests = Request::done()->blackAndWhite();
+
+    	$todayRequests = Request::done()->ofToday();
+    	$mouthRequests = Request::done()->ofMonth();
+
+        $averagePerMouth = round(Request::done()->ofMonth()->count() /
+        cal_days_in_month(CAL_GREGORIAN,
+            Carbon::now()->month,
+            Carbon::now()->year
+        ), 2);
+
+        $departments = Departament::withCount(['users','requests'])->paginate(6);
+
+        return view('home', compact('requestsNumber', 'coloredRequests', 'blackAndWhiteRequests',
+            'departments', 'todayRequests', 'mouthRequests', 'averagePerMouth'));
     }
 }
