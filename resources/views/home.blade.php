@@ -8,7 +8,7 @@
             </div>
             <div class="print-number">
                 {{ $requestsNumber }}
-                <span>Impressões</span>
+                <span style="font-size: 30px">Impressões</span>
             </div>
             <div class="cta-account">
                 @if (auth()->check())
@@ -24,14 +24,14 @@
         <nav class="level">
             <div class="level-item has-text-centered">
                 <div>
-                    <p class="heading">Cores</p>
-                    <p class="title">{{ $coloredRequests->count() }}</p>
+                    <p class="title">{{ number_format($coloredRequests->count()/$requestsNumber * 100, 1) }} %</p>
+                    <p class="sub-title">Cores</p>
                 </div>
             </div>
             <div class="level-item has-text-centered">
                 <div>
-                    <p class="heading">Preto & branco</p>
-                    <p class="title">{{ $blackAndWhiteRequests->count() }}</p>
+                    <p class="title">{{ number_format($blackAndWhiteRequests->count()/$requestsNumber * 100, 1) }} %</p>
+                    <p class="sub-title">Preto & branco</p>
                 </div>
             </div>
         </nav>
@@ -42,20 +42,66 @@
             <h2 class="title is-2 is-inline">Departamentos com mais Impressões</h2>
             <div class="content">
                 <div class="columns is-multiline ">
-
                     @foreach($departments as $department)
                         <div class="column is-one-third">
                             <div class="box">
-                                    <p class="title is-3 has-text-centered">
-                                        {{ $department->requests()->done()->count() }}
-                                    </p>
-                                    <a class="card-header-icon">
-                                        {{ $department->name }}
-                                    </a>
+                                <p class="title is-3 has-text-centered">
+                                    {{ $department->requests()->done()->count() }}
+                                </p>
+                                <a class="card-header-icon">
+                                    <span class="icon">
+                                        <i class="fa fa-building"></i>
+                                    </span>
+                                    {{ $department->name }}
+                                </a> 
                             </div>
                         </div>
                     @endforeach
                 </div>
+
+                <div class="columns">
+                    <div class="column is-one-third" style="padding-top: 60px">
+                            <div class="box">
+                                <p class="title is-3 has-text-centered">
+                                    {{ $departments[0]->requests()->done()->count() }}
+                                </p>
+                                <a class="card-header-icon" style="padding-bottom: 41px">
+                                    <span class="icon">
+                                        <i class="fa fa-building"></i>
+                                    </span>
+                                    {{ $departments[0]->name }}
+                                </a> 
+                            </div>
+                        </div>
+                        <div class="column is-one-third">
+                            <div class="box">
+                                <p class="title is-3 has-text-centered">
+                                    {{ $departments[1]->requests()->done()->count() }}
+                                </p>
+                                <a class="card-header-icon" style="padding-bottom: 90px">
+                                    <span class="icon">
+                                        <i class="fa fa-building"></i>
+                                    </span>
+                                    {{ $departments[1]->name }}
+                                </a> 
+                            </div>
+                        </div>
+                        <div class="column is-one-third" style="padding-top: 90px">
+                            <div class="box">
+                                <p class="title is-3 has-text-centered">
+                                    {{ $departments[2]->requests()->done()->count() }}
+                                </p>
+                                <a class="card-header-icon">
+                                    <span class="icon">
+                                        <i class="fa fa-building"></i>
+                                    </span>
+                                    {{ $departments[2]->name }}
+                                </a> 
+                            </div>
+                        </div>
+                </div>
+
+
                 <div class="has-text-centered">
                     <a href="{{ route('departmentsAsGuest') }}" class="button is-info is-large">Ver Departamentos</a>
                 </div>
@@ -66,20 +112,20 @@
         <nav class="level">
             <div class="level-item has-text-centered">
                 <div>
-                    <p class="heading">Hoje</p>
                     <p class="title">{{ $todayRequests->count() }}</p>
+                    <p class="sub-title">Hoje</p>
                 </div>
             </div>
             <div class="level-item has-text-centered">
                 <div>
-                    <p class="heading">Mês</p>
                     <p class="title">{{ $mouthRequests->count() }}</p>
+                    <p class="sub-title">Mês</p>
                 </div>
             </div>
             <div class="level-item has-text-centered">
                 <div>
-                    <p class="heading">Média por dia</p>
                     <p class="title">{{ $averagePerMouth }}</p>
+                    <p class="sub-title">Média por dia</p>
                 </div>
             </div>
         </nav>
@@ -87,7 +133,7 @@
     <div class="parallax-window is-full-centered"  data-parallax="scroll" data-image-src="{{ asset('images/contactos.jpg') }}">
         <div class="has-text-centered is-item">
             <h2 class="title is-colored-white">Veja todos os Contactos!</h2>
-            <a href="" class="button is-primary is-large">Contactos</a>
+            <a href="{{ route('contacts.index') }}" class="button is-primary is-large">Contactos</a>
         </div>
     </div>
 @stop

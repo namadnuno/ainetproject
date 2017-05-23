@@ -8,12 +8,13 @@
 
 ################# PEDIDOS
 	gravar edicao nao esta a funcionar
-	ao editar o file perde se, e para validar todos os campos e necessario introduzir um novo file (nao deve ser assim)
+	ao editar, perde se o nome do ficheiro (nao deve ser assim)
 	verificacaoes no tipo de ficheiro
-	usar constantes para os tipos de pedidos ????
+	usar constantes para os tipos de pedidos 											<<<<------------
 	comentar um comentario de pedido nao funciona, ou se funciona mostra as respostas
-	ao criar mostrar um campo se e impresso em frente e verso, ou se e em paginas unicas
+	ao criar mostrar um campo se e impresso em frente e verso, ou se e em paginas unicas <<<<------------
 	ao recusar um pedido, nao ha botao para voltar a sua ediacao de pedido	
+	concertar helper para aparecer o icone correto
 
 	################# PEDIDOS / COMENTARIOS
 		se for administrador, pode desativar comentarios ou respostas a comentarios
@@ -34,9 +35,8 @@
 
 ################# DASHBOARD
 	grafico com destincao de copias
-	rever impressoes em espera (nao faz sentido la aparecer pedidos recusados ou concluidos, por isso a coluna estado tb nao devia aparecer)
+	rever impressoes em espera (nao faz sentido la aparecer pedidos recusados ou concluidos)
 	no progresso, nao faz sentido haver meios pedidos, apenas existir valores inteiros
-	o olho não funciona
 
 	################ TODOS OS PEDIDOS
 		(deve aparecer link para esta pagina, caso for administrador)
@@ -54,8 +54,6 @@
 
 
 ################# HOME
-	destincao de tipo de impressao por departamento (em percentagem)
-	count de impressoes por dia, no total por mes, e a media por dia no mes atual, e o total
 	separador de perfis (apenas os desbloqueados)
 
 	############# HOME / IMPRESSOES
@@ -70,11 +68,7 @@
 			- numero funcionarios (acho que podera ficar bem)
 
 	############# HOME / CONTACTOS
-		devera aparecer apenas o nome, mail, telefone
-			- caso exista, o link de perfil exerto
 
-	############# HOME / CONTACTOS / FUNCIONARIO
-		devera aparecer o perfil completo
 
 
 ################# OUTROS / GERAL
@@ -110,3 +104,5 @@
 	so se pode comentar os pedidos pendentes
 	mostra o icone de hiperligacao caso nao haja nenhum link
 	nao consigo editar perfil
+	destincao de tipo de impressao por departamento (em percentagem)
+	count de impressoes por dia, no total por mes, e a media por dia no mes atual, e o total	

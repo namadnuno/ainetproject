@@ -74,7 +74,7 @@
 										@endif
 									</td>
 									<td>	
-										<a href="{{ url('/request/' . $request->id ) }}" class="button">
+										<a href="{{ url('dashboard/requests/' . $request->id ) }}" class="button">
 											<span class="icon">
 												<i class="fa fa-eye"></i>
 											</span>
