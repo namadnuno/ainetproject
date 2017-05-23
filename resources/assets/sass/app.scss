@@ -112,3 +112,15 @@ img.is-circle {
 .is-inline {
     display: inline-block;
 }
+.is-colored-white {
+  color: #ffffff;
+}
+.parallax-window {
+  height: 400px;
+
+  &.is-full-centered {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

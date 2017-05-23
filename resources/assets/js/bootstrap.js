@@ -46,3 +46,5 @@ window.axios.defaults.headers.common['Accept'] = 'application/json';
 //     broadcaster: 'pusher',
 //     key: 'your-pusher-key'
 // });
+
+require('jquery-parallax.js')

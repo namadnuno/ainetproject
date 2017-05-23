@@ -21,22 +21,20 @@
             </div>
         </div>
         <section id="fight">
-            <div class="container">
-                <div class="columns">
-                    <div class="column has-text-centered">
-                        <div class="number-of-printes">
-                            <h3 class="title is-3">{{ $coloredRequests->count() }}</h3>
-                            <h4 class="subtitle is-4">Cores</h4>
+                <nav class="level">
+                    <div class="level-item has-text-centered">
+                        <div>
+                            <p class="heading">Cores</p>
+                            <p class="title">{{ $coloredRequests->count() }}</p>
                         </div>
                     </div>
-                    <div class="column has-text-centered">
-                        <div class="number-of-printes">
-                            <h3 class="title is-3">{{ $blackAndWhiteRequests->count() }}</h3>
-                            <h4 class="subtitle is-4">Preto & branco</h4>
+                    <div class="level-item has-text-centered">
+                        <div>
+                            <p class="heading">Preto & branco</p>
+                            <p class="title">{{ $blackAndWhiteRequests->count() }}</p>
                         </div>
                     </div>
-                </div>
-            </div>
+                </nav>
         </section>
 
         <section id="departamentos">
@@ -78,34 +76,38 @@
                     </div>
                 </div>
                 @include('partials.pagination', ['pagination' => $departments])
-
             </div>
         </section>
-
         <section id="status">
-            <div class="container">
-                <div class="columns">
-                    <div class="column">
-                        <div class="number-of-printes has-text-centered">
-                            <h3 class="title is-3">{{ $todayRequests->count() }}</h3>
-                            <h4 class="subtitle is-4">Hoje</h4>
-                        </div>
-                    </div>
-                    <div class="column">
-                        <div class="number-of-printes has-text-centered">
-                            <h3 class="title is-3">{{ $mouthRequests->count() }}</h3>
-                            <h4 class="subtitle is-4">Mês</h4>
-                        </div>
-                    </div>
-                    <div class="column">
-                        <div class="number-of-printes has-text-centered">
-                            <h3 class="title is-3">
-                                {{ $averagePerMouth }}
-                            </h3>
-                            <h4 class="subtitle is-4">Média por dia</h4>
-                        </div>
+            <nav class="level">
+                <div class="level-item has-text-centered">
+                    <div>
+                        <p class="heading">Hoje</p>
+                        <p class="title">{{ $todayRequests->count() }}</p>
                     </div>
                 </div>
-            </div>
+                <div class="level-item has-text-centered">
+                    <div>
+                        <p class="heading">Mês</p>
+                        <p class="title">{{ $mouthRequests->count() }}</p>
+                    </div>
+                </div>
+                <div class="level-item has-text-centered">
+                    <div>
+                        <p class="heading">Média por dia</p>
+                        <p class="title">{{ $averagePerMouth }}</p>
+                    </div>
+                </div>
+            </nav>
         </section>
+        <div class="parallax-window is-full-centered"  data-parallax="scroll" data-image-src="{{ asset('images/contactos.jpg') }}">
+            <div class="has-text-centered is-item">
+                <h2 class="title is-colored-white">Veja todos os Contactos!</h2>
+                <a href="" class="button is-primary is-large">Contactos</a>
+            </div>
+        </div>
     @stop
+
+@section('scripts')
+    <script src="{{ asset('js/home.js') }}"></script>
+@stop
