@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Request;
 use App\Departament;
 use Carbon\Carbon;
+use function foo\func;
 
 class HomeController extends Controller
 {
@@ -19,20 +20,22 @@ class HomeController extends Controller
 
         $requestsNumber = Request::done()->count();
 
-    	$coloredRequests = Request::done()->colored();
+        $coloredRequests = Request::done()->colored();
 
-    	$blackAndWhiteRequests = Request::done()->blackAndWhite();
+        $blackAndWhiteRequests = Request::done()->blackAndWhite();
 
-    	$todayRequests = Request::done()->ofToday();
-    	$mouthRequests = Request::done()->ofMonth();
+        $todayRequests = Request::done()->ofToday();
+        $mouthRequests = Request::done()->ofMonth();
 
         $averagePerMouth = round(Request::done()->ofMonth()->count() /
-        cal_days_in_month(CAL_GREGORIAN,
-            Carbon::now()->month,
-            Carbon::now()->year
-        ), 2);
+            cal_days_in_month(CAL_GREGORIAN,
+                Carbon::now()->month,
+                Carbon::now()->year
+            ), 2);
 
-        $departments = Departament::withCount(['users','requests'])->paginate(6);
+        $departments = Departament::withCount(['users','requests'], function ($query) {
+            $query->where('requests.status', '2');
+        })->orderBy('requests_count', 'DESC')->take(3)->get();
 
         return view('home', compact('requestsNumber', 'coloredRequests', 'blackAndWhiteRequests',
             'departments', 'todayRequests', 'mouthRequests', 'averagePerMouth'));

@@ -18,7 +18,9 @@ class DepartmentController extends Controller
      */
     public function indexAsGuest()
     {
-        $departments = Departament::withCount(['users','requests'])->search(request('filter'))
+        $departments = Departament::withCount(['users','requests'], function ($query) {
+            $query->where('requests.status', '2');
+        })->search(request('filter'))
             ->orderBy(
                 request('orderby') ? request('orderby') : 'created_at',
                 request('order') ? request('order') : 'DESC'
