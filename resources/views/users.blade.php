@@ -43,3 +43,7 @@
 			@include('partials.pagination', ['pagination' => $users])
 		</div>
 		@stop
+
+@section('scripts')
+	<script src="{{ asset('js/home.js') }}"></script>
+@stop
