@@ -2,6 +2,20 @@ impressoes
 	0- recusado
 	1- pendeing
 	2- concluido
+
+	filtros:
+		- expressao do doc
+		- dono
+		- departamento do dono
+		- data de pedido
+		- estado (apenas pendentes e concluidos)
+		- qq combinacao
+	pesquisas:
+		- ordenavel por nome funcionario
+		- departemento
+		- estado
+		- tipo de impressao
+		- data de pedido
 	
 colored
 	1- cores
@@ -10,3 +24,4 @@ colored
 admin
 	1- e
 	0- user
+

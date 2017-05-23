@@ -114,6 +114,7 @@
 			</div>
 			<div class="box">
 				<div class="media-content">
+					<b>Comentários</b>
 					@foreach ($request->comments()->parents()->atives()->get() as $comment)
 						<article class="media">
 							<figure class="media-left">

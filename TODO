@@ -1,26 +1,81 @@
 ################# PERFIS
+	quando nao tem foto, aparecer um icone simbolico
+	caso seja adminstrador, pode ver os utilizadores bloqueados
+	apenas os admin podem ver os outros utilizadores
+	como admin, poder bloquear utilizadores
+	como admin, posso atribuir ou retirar perfil de admin
+
 
 ################# PEDIDOS
 	gravar edicao nao esta a funcionar
 	ao editar o file perde se, e para validar todos os campos e necessario introduzir um novo file (nao deve ser assim)
 	verificacaoes no tipo de ficheiro
-	usar constantes para os pedidos ????
+	usar constantes para os tipos de pedidos ????
 	comentar um comentario de pedido nao funciona, ou se funciona mostra as respostas
+	ao criar mostrar um campo se e impresso em frente e verso, ou se e em paginas unicas
+	ao recusar um pedido, nao ha botao para voltar a sua ediacao de pedido	
+
+	################# PEDIDOS / COMENTARIOS
+		se for administrador, pode desativar comentarios ou respostas a comentarios
+			- comentario desativado nunca mais pode ser acedido
+			- remove todas as repsotas a esse comentario
+		se for admistrador, poder ver todos os comentarios
+
+
+################# BLOQUEIOS
+	apenas o admin pode ver
+
+	############ BLOQUEIOS / COMENTARIOS
+		ver todos os comentarios e pofer filtra los, e assim pode desbloquea los
+
+	############ BLOQUEIOS / PERFIS	
+		ver todos os utilizadores e pofer filtra los, e assim pode desbloquea los
+
 
 ################# DASHBOARD
 	grafico com destincao de copias
 	rever impressoes em espera (nao faz sentido la aparecer pedidos recusados ou concluidos, por isso a coluna estado tb nao devia aparecer)
 	no progresso, nao faz sentido haver meios pedidos, apenas existir valores inteiros
 	o olho não funciona
+
+	################ TODOS OS PEDIDOS
+		(deve aparecer link para esta pagina, caso for administrador)
+		aparecer informacao referente ao dono do user
+			- nome
+			- departamento
+			- mail
+			- telefone
+
 	
 ################# REGISTO
 	ao registar, falta implementar o token_remember
 	enviar mail
 
+
+
 ################# HOME
 	destincao de tipo de impressao por departamento (em percentagem)
 	count de impressoes por dia, no total por mes, e a media por dia no mes atual, e o total
-	departamentos movidos para o separador "departamentos" do menu
+	separador de perfis (apenas os desbloqueados)
+
+	############# HOME / IMPRESSOES
+		apenas apresentar as concluidas
+
+	############# HOME / DEPARTAMENTOS
+		por departamento deve aparecer:
+			- total
+			- percentagem de imp a cores
+			- percentagem de imp a B/W
+			- media por dia naquela mes
+			- numero funcionarios (acho que podera ficar bem)
+
+	############# HOME / CONTACTOS
+		devera aparecer apenas o nome, mail, telefone
+			- caso exista, o link de perfil exerto
+
+	############# HOME / CONTACTOS / FUNCIONARIO
+		devera aparecer o perfil completo
+
 
 ################# OUTROS / GERAL
 	meter os files no storage, PerfilController, RequestController
@@ -32,6 +87,8 @@
 		lista de contactos
 		mostrar os departamentos
 		lista de pedidos (apenas os concluidos)
+
+
 
 
 ################ FEITO
