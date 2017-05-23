@@ -63,13 +63,13 @@
                                         <span class="tag is-info">{{ $department->requests_count}} Impreções</span>
                                     </div>
                                     <div class="column is-one-quarter">
-                                       <span class="tag is-dark">{{ 1 }} Impreções</span>
+                                       <span class="tag is-dark">{{ $department->requests()->blackAndWhite()->count() }} Impreções</span>
                                     </div>
                                     <div class="column is-one-quarter">
-                                         <span class="tag is-success">{{ $department->numPrintsBlackAndWhite }} Impreções</span>
+                                         <span class="tag is-success">{{ $department->requests()->colored()->count() }} Impreções</span>
                                     </div>
                                     <div class="column is-one-quarter">
-                                         <span class="tag is-primary">{{ $department->numFuncionaros }} Funcionários</span>
+                                         <span class="tag is-primary">{{ $department->users()->count() }} Funcionários</span>
                                     </div>
                                 </div>
                             </div>
