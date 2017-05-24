@@ -16,6 +16,17 @@
 	                        @include('partials.profile_photo_of', $user)
 	                    </figure>
 	                </div>
+					<div class="card-content">
+						<div class="has-text-centered">
+                        <span class="tag is-info">
+                            @if( auth()->user()->isAdmin() )
+								Administrador
+							@else
+								Funcionário
+							@endif
+                        </span>
+						</div>
+					</div>
 	            </div>
 	        </div>
 	        <div class="column">
@@ -65,16 +76,16 @@
                 	</div>
                 	<div class="level-left">
 	                	<a href="{{ url()->previous() }}" class="level-item button is-primary">Voltar</a>
-	                    @unless(auth()->check() && auth()->user()->isAdmin())
-                        <form action="{{ route('user.change') }}" method="post" >
-                        	{{ csrf_field() }}
-                        	{{ method_field('PUT') }}
-                            <input type="hidden" value="{{ $user->id }}" name="user_id">
-							<button class="level-item button {{ $user->blocked == 1 ? 'is-success' : 'is-danger' }}" type="submit">
-								{{ $user->blocked == 1 ? 'Desbloquear' : 'Bloquear' }}
-							</button>
-                        </form>
-	                    @endunless	                
+	                    @if(auth()->check() && auth()->user()->isAdmin())
+							<form action="{{ route('user.change') }}" method="post" >
+								{{ csrf_field() }}
+								{{ method_field('PUT') }}
+								<input type="hidden" value="{{ $user->id }}" name="user_id">
+								<button class="level-item button {{ $user->blocked == 1 ? 'is-success' : 'is-danger' }}" type="submit">
+									{{ $user->blocked == 1 ? 'Desbloquear' : 'Bloquear' }}
+								</button>
+							</form>
+	                    @endif
 	                </div>
 	            </div>
 	        </div>

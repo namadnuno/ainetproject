@@ -6,9 +6,10 @@
 	'filters' => [
 		'created_at' => 'Data de Criação',
 		'name' => 'Nome',
-		'email' => 'Email'
+		'email' => 'Email',
+		'blocked' => 'Bloqueados'
 	],
-	'newRoute' => 
+	'newRoute' =>
 		'users.create'
 ])
 <div class="columns  is-multiline">

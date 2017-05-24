@@ -37,6 +37,7 @@ class HomeController extends Controller
             $query->where('requests.status', '2');
         })->orderBy('requests_count', 'DESC')->take(3)->get();
 
+
         return view('home', compact('requestsNumber', 'coloredRequests', 'blackAndWhiteRequests',
             'departments', 'todayRequests', 'mouthRequests', 'averagePerMouth'));
     }

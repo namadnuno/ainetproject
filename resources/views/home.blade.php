@@ -39,51 +39,33 @@
 
     <section id="departamentos">
         <div class="container">
-            <h2 class="title is-2 is-inline">Departamentos com mais Impressões</h2>
+            <h2 class="title is-2 is-inline">Departamentos </h2>
             <div class="content">
-                <div class="columns is-multiline ">
-                    @foreach($departments as $department)
-                        <div class="column is-one-third">
-                            <div class="box">
-                                <p class="title is-3 has-text-centered">
-                                    {{ $department->requests()->done()->count() }}
-                                </p>
-                                <a class="card-header-icon">
-                                    <span class="icon">
-                                        <i class="fa fa-building"></i>
-                                    </span>
-                                    {{ $department->name }}
-                                </a> 
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-
                 <div class="columns">
                     <div class="column is-one-third" style="padding-top: 60px">
                             <div class="box">
                                 <p class="title is-3 has-text-centered">
-                                    {{ $departments[0]->requests()->done()->count() }}
+                                    {{ $departments[1]->requests()->done()->count() }}
                                 </p>
                                 <a class="card-header-icon" style="padding-bottom: 41px">
                                     <span class="icon">
                                         <i class="fa fa-building"></i>
                                     </span>
-                                    {{ $departments[0]->name }}
-                                </a> 
+                                    {{ $departments[1]->name }}
+                                </a>
                             </div>
                         </div>
                         <div class="column is-one-third">
                             <div class="box">
                                 <p class="title is-3 has-text-centered">
-                                    {{ $departments[1]->requests()->done()->count() }}
+                                    {{ $departments[0]->requests()->done()->count() }}
                                 </p>
                                 <a class="card-header-icon" style="padding-bottom: 90px">
                                     <span class="icon">
                                         <i class="fa fa-building"></i>
                                     </span>
-                                    {{ $departments[1]->name }}
-                                </a> 
+                                    {{ $departments[0]->name }}
+                                </a>
                             </div>
                         </div>
                         <div class="column is-one-third" style="padding-top: 90px">
@@ -96,7 +78,7 @@
                                         <i class="fa fa-building"></i>
                                     </span>
                                     {{ $departments[2]->name }}
-                                </a> 
+                                </a>
                             </div>
                         </div>
                 </div>
