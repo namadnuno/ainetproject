@@ -6,25 +6,12 @@
         <textarea class="textarea" placeholder="Descrição" name="description">{{ old('description', $request->description) }}</textarea>
     </p>
 </div>
-<div class="columns">
-    <div class="column">
-        <div class="field">
-            <label for="open_date">Data do Pedido</label>
-            <p class="control">
-                <input type="date" class="input" name="open_date"
-                       value="{{ old('open_date' , \Carbon\Carbon::parse($request->open_date)->toDateString())  }}">
-            </p>
-        </div>
-    </div>
-    <div class="column">
-        <div class="field">
-            <label for="open_date">Data de Conclusão (opcional)</label>
-            <p class="control">
-                <input type="date" class="input" name="due_date"
-                       value="{{ old('due_date', \Carbon\Carbon::parse($request->due_date)->toDateString() ) }}">
-            </p>
-        </div>
-    </div>
+<div class="field">
+    <label for="due_date">Data do Pedido</label>
+    <p class="control">
+        <input type="date" class="input" name="due_date"
+               value="{{ old('due_date' , \Carbon\Carbon::parse($request->due_date)->toDateString())  }}">
+    </p>
 </div>
 <div class="columns">
     <div class="column">

@@ -18,26 +18,22 @@
         @foreach ($requests as $request)
         <div class="column is-one-quarter">
             <div class="card">
-                @if(isImage($request->file))
                 <div class="card-image">
                     <figure class="image is-square">
-                        <img src="{{ asset(Storage::url($request->file)) }}" alt="">
+                        @if(isImage($request))
+                            <img src="{{ route('getFile', $request) }}" alt="pedido" />
+                        @else 
+                            <img src="{{ asset('/files_formats/' . typeFile($request) . '.png')}}" alt="" />
+                        @endif
                     </figure>
                 </div>
-                @else
-                <div class="card-image">
-                    <figure class="image is-square">
-                        <img src="{{ asset('/files_formats/' . pathinfo(asset($request->file))['extension'] . '.png' )}}" alt="">
-                    </figure>
-                </div>
-                @endif
                 <div class="card-content">
                     <div class="content">
                         <div class="columns">
                             <div class="column is-one-third">
                                 <span class="tag is-{{ $request->colored == 1 ? 'primary' : 'dark'}}">
                                     <span class="icon is-small">
-                                        <i class="fa fa-file-{{ typeFile($request) }}-o"></i>
+                                        <i class="fa fa-{{ typeFile($request) }}"></i>
                                     </span>
                                 </span>
                             </div>

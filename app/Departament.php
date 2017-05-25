@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Departament extends Model
 {
 
+    public $table = 'departments';
+
     /**
      * Get the users that owns the department.
      */

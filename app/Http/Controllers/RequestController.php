@@ -6,12 +6,13 @@ use App\Http\Requests\PedidoPutRequest;
 use App\Http\Requests\PedidoRequest;
 use App\Printer;
 use App\Request as RequestModel;
+use Barryvdh\DomPDF\Facade as PDF;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 use Mockery\Exception;
-use Barryvdh\DomPDF\Facade as PDF;
+use Ramsey\Uuid\Uuid;
 
 class RequestController extends Controller
 {
@@ -57,12 +58,19 @@ class RequestController extends Controller
     public function store(PedidoRequest $request)
     {
         $pedido = new RequestModel();
+
         $pedido = $pedido->fill($request->all());
+    
         $pedido->status = 1;
-        
-        $pedido->file = $request->file->store('public/files');
 
         $pedido->owner_id = auth()->user()->id;
+
+        $filename = Uuid::uuid1()->toString() . '.' . $request->file->extension();
+
+        $request->file->storeAs('/print-jobs/' . $pedido->owner_id, $filename);
+        
+        $pedido->file = $filename;
+
         $pedido->save();
 
         return redirect()->route(

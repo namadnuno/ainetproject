@@ -6,59 +6,50 @@
 		<div class="box">
 			<div class="media-image">
 				<figure class="image">
-					@if(pathinfo(asset($request->file))['extension'] == 'jpg' ||
-						pathinfo(asset($request->file))['extension'] == 'png' ||
-						pathinfo(asset($request->file))['extension'] == 'jpeg' ||
-						pathinfo(asset($request->file))['extension'] == 'tiff')
-						<img src="{{asset('file-thumb/'. $request->file)}}" alt="">
-
-						@else 
-
-						<img src="{{ asset('/files_formats/' . pathinfo(asset($request->file))['extension'] . '.png' )}}" alt="">
-						@endif
+					@if(isImage($request))
+						<img src="{{ route('getFile', $request) }}" alt="pedido" />
+					@else  
+                        <img src="{{ asset('/files_formats/' . typeFile($request) . '.png')}}" alt="" />
+                    @endif
 					</figure>
 				</div>
 				<div class="media-content">
 					<div class="content">
 						<div class="level-item is-top-xsmall">
 							@if ($request->status == 0)
-								<span class="tag is-danger">
-									Recusado
-								</span>
+							<span class="tag is-danger">
+								Recusado
+							</span>
 							@elseif($request->status == 1)
-								<span class="tag is-warning">
-									Pendente
-								</span>
+							<span class="tag is-warning">
+								Pendente
+							</span>
 							@else
-								<span class="tag is-success">
-									Concluído
-								</span>
+							<span class="tag is-success">
+								Concluído
+							</span>
 							@endif
 						</div>
 
 						@if($request->status == 2)
 						<div class="level-item is-top-xsmall">
 							<span class="icon is-small">
-	                            @for ($i = 0; $i < $request->satisfaction_grade; $i++)
-	                                <i class="fa fa-star"></i>
-	                            @endfor
-	                        </span>
-	                    </div>
-	                    @endif
+								@for ($i = 0; $i < $request->satisfaction_grade; $i++)
+								<i class="fa fa-star"></i>
+								@endfor
+							</span>
+						</div>
+						@endif
 
 						<div class="has-text-centered is-top-xsmall">
-							<form action="{{ route('download') }}" method="post">
-								{{ csrf_field() }}
-								<input type="hidden" name="file" value="{{ $request->file }}">
-								<button type="submit" class="button is-primary has-icon">
-									<span class="icon is-small">
-										<i class="fa fa-download"></i>
-								    </span>
-      								<span>
-      									Download
-      								</span>
-      							</button>
-							</form>
+							<a href="{{ route('downloadFile', $request) }}"  class="button is-primary has-icon">
+								<span class="icon is-small">
+									<i class="fa fa-download"></i>
+								</span>
+								<span>
+									Download
+								</span>
+							</a>
 						</div>
 					</div>
 				</div>
@@ -85,14 +76,14 @@
 					<p>
 						<span class="tag {{ $request->colored == 1 ? 'is-primary' : 'is-dark' }}">
 							<span class="icon is-small">
-                                        <i class="fa fa-file-{{ typeFile($request) }}-o"></i>
-                                    </span>
+								<i class="fa fa-file-{{ typeFile($request) }}-o"></i>
+							</span>
 						</span>
 						<span class="tag is-info">
-                            <span class="icon is-small">
-                                <i class="fa fa-print"> {{ $request->quantity }}</i>
-                            </span>
-                        </span>
+							<span class="icon is-small">
+								<i class="fa fa-print"> {{ $request->quantity }}</i>
+							</span>
+						</span>
 						<span class="tag {{ $request->stapled == 1 ? 'is-info' : 'is-warning' }}">
 							{{ $request->stapled == 1 ? 'É' : 'Não é' }} agrafado
 						</span>
@@ -116,73 +107,73 @@
 				<div class="media-content">
 					<b>Comentários</b>
 					@foreach ($request->comments()->parents()->atives()->get() as $comment)
-						<article class="media">
-							<figure class="media-left">
-								<p class="image is-64x64">
-									@include('partials.profile_photo_of', ['user' => $comment->user])
+					<article class="media">
+						<figure class="media-left">
+							<p class="image is-64x64">
+								@include('partials.profile_photo_of', ['user' => $comment->user])
+							</p>
+						</figure>
+						<div class="media-content">
+							<div class="content">
+								<p>
+									<strong>{{ $comment->user->name }}</strong>
+									<br>
+									{{ $comment->comment }}
+									<br>
+									<small>{{ \Carbon\Carbon::parse($comment->created_at)->diffForHumans() }}</small>
 								</p>
-							</figure>
-							<div class="media-content">
-								<div class="content">
-									<p>
-										<strong>{{ $comment->user->name }}</strong>
-										<br>
-										{{ $comment->comment }}
-										<br>
-										<small>{{ \Carbon\Carbon::parse($comment->created_at)->diffForHumans() }}</small>
-									</p>
-								</div>
-								@foreach ($comment->childrens()->atives() as $childrenComment)
-									<article class="media">
-									<figure class="media-left">
-										<p class="image is-64x64">
-											@include('partials.profile_photo_of', ['user' => $childrenComment->user])
-										</p>
-									</figure>
-										<div class="media-content">
-											<div class="content">
-												<p>
-													<strong>{{ $childrenComment->user->name }}</strong>
-													<br>
-													{{ $childrenComment->comment }}
-													<br>
-													<small>{{ \Carbon\Carbon::parse($childrenComment->created_at)->diffForHumans() }}</small>
-												</p>
-											</div>
-										</div>
-									</article>
-								@endforeach
-
-								<!--apenas responder a comentarios em pedidos pendentes-->
-								@if($request->status == 1)
-								<article class="media">
-									<figure class="media-left">
-										<p class="image is-64x64">
-											@include('partials.profile_photo')
-										</p>
-									</figure>
-									<div class="media-content">
-										<form method="post" action="{{ route('comments.store') }}">
-											@include('partials.errors')
-											{{ csrf_field() }}
-											<div class="field">
-												<p class="control">
-												<input class="input is-small" name="comment" placeholder="Resposta ao Comentário">
-												</p>
-												<input type="hidden" name="request_id" value="{{ $request->id }}">
-												<input type="hidden" name="parent_id" value="{{ $comment->id }}">
-											</div>
-											<div class="field">
-												<p class="control">
-													<button type="submit" class="button">Responder</button>
-												</p>
-											</div>
-										</form>
-									</div>
-								</article>
-								@endif
 							</div>
-						</article>
+							@foreach ($comment->childrens()->atives() as $childrenComment)
+							<article class="media">
+								<figure class="media-left">
+									<p class="image is-64x64">
+										@include('partials.profile_photo_of', ['user' => $childrenComment->user])
+									</p>
+								</figure>
+								<div class="media-content">
+									<div class="content">
+										<p>
+											<strong>{{ $childrenComment->user->name }}</strong>
+											<br>
+											{{ $childrenComment->comment }}
+											<br>
+											<small>{{ \Carbon\Carbon::parse($childrenComment->created_at)->diffForHumans() }}</small>
+										</p>
+									</div>
+								</div>
+							</article>
+							@endforeach
+
+							<!--apenas responder a comentarios em pedidos pendentes-->
+							@if($request->status == 1)
+							<article class="media">
+								<figure class="media-left">
+									<p class="image is-64x64">
+										@include('partials.profile_photo')
+									</p>
+								</figure>
+								<div class="media-content">
+									<form method="post" action="{{ route('comments.store') }}">
+										@include('partials.errors')
+										{{ csrf_field() }}
+										<div class="field">
+											<p class="control">
+												<input class="input is-small" name="comment" placeholder="Resposta ao Comentário">
+											</p>
+											<input type="hidden" name="request_id" value="{{ $request->id }}">
+											<input type="hidden" name="parent_id" value="{{ $comment->id }}">
+										</div>
+										<div class="field">
+											<p class="control">
+												<button type="submit" class="button">Responder</button>
+											</p>
+										</div>
+									</form>
+								</div>
+							</article>
+							@endif
+						</div>
+					</article>
 					@endforeach
 					
 					<!--apenas comentar em pedidos pendentes-->
@@ -199,7 +190,7 @@
 								{{ csrf_field() }}
 								<div class="field">
 									<p class="control">
-									<input class="input is-small" name="comment" placeholder="Novo Comentário">
+										<input class="input is-small" name="comment" placeholder="Novo Comentário">
 									</p>
 									<input type="hidden" name="request_id" value="{{ $request->id }}">
 								</div>

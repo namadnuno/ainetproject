@@ -12,7 +12,8 @@
         "laravel/framework": "5.4.*",
         "laravel/passport": "^2.0",
         "laravel/scout": "^3.0",
-        "laravel/tinker": "~1.0"
+        "laravel/tinker": "~1.0",
+        "ramsey/uuid": "^3.6"
     },
     "require-dev": {
         "mockery/mockery": "0.9.*",

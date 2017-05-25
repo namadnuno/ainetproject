@@ -18,8 +18,10 @@ Route::get('/departments', ['as' => 'departmentsAsGuest', 'uses' => 'DepartmentC
 Route::get('/contacts', ['as' => 'contacts.index', 'uses' => 'UserController@indexAsGuest']);
 
 Route::get('/login', ['as' => 'login', 'uses' => 'Auth\LoginController@index']);
-
 Route::get('/dashboard', ['as' => 'dashboard', 'uses' => 'DashboardController@index']);
+
+Route::get('/request-file/{request}', 'FileController@getFile')->name('getFile');
+Route::get('/request-file/{request}/download', 'FileController@downloadFile')->name('downloadFile');
 
 Route::group(['middleware' => 'auth', 'prefix' => 'dashboard'], function () {
     Route::get('/perfil', [
@@ -78,10 +80,6 @@ Route::group(['middleware' => 'auth', 'prefix' => 'dashboard'], function () {
         'uses' => 'RequestController@readmit'
     ]);
 
-    Route::post('/download/', [
-        'as' => 'download',
-        'uses' => 'DownloadController@show'
-    ]);
     
     Route::resource('users', 'UserController', ['only' => [
         'index', 'show', 'destroy', 'create']]);
