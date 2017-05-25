@@ -11,84 +11,58 @@
 |
 */
 
-Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
+Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/departments', ['as' => 'departmentsAsGuest', 'uses' => 'DepartmentController@indexAsGuest']);
 
-Route::get('/contacts', ['as' => 'contacts.index', 'uses' => 'UserController@indexAsGuest']);
+Route::get('/contacts', 'UserController@indexAsGuest')->name('contacts.index');
 
-Route::get('/login', ['as' => 'login', 'uses' => 'Auth\LoginController@index']);
-Route::get('/dashboard', ['as' => 'dashboard', 'uses' => 'DashboardController@index']);
+Route::get('/login', 'Auth\LoginController@index')->name('login');
+
+Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
 Route::get('/request-file/{request}', 'FileController@getFile')->name('getFile');
 Route::get('/request-file/{request}/download', 'FileController@downloadFile')->name('downloadFile');
 
 Route::group(['middleware' => 'auth', 'prefix' => 'dashboard'], function () {
-    Route::get('/perfil', [
-        'as' => 'perfil.index',
-        'uses' => 'PerfilController@index'
-    ]);
-    Route::get('/perfil/edit', [
-        'as' => 'perfil.edit',
-        'uses' => 'PerfilController@edit'
-    ]);
-    Route::post('/perfil/create', [
-        'as' => 'perfil.storeAsAdmin',
-        'uses' => 'PerfilController@storeAsAdmin'
-    ]);
-    Route::put('/perfil', [
-        'as' => 'perfil.update',
-        'uses' => 'PerfilController@update'
-    ]);
-
+    Route::get('/perfil', 'PerfilController@index')->name('perfil.index');
+    Route::get('/perfil/edit', 'PerfilController@edit')->name('perfil.edit');
+    Route::post('/perfil/create', 'PerfilController@storeAsAdmin')->name('perfil.storeAsAdmin');
+    Route::put('/perfil', 'PerfilController@update')->name('perfil.update');
+    
     Route::resource('requests', 'RequestController');
 
     Route::resource('departments', 'DepartmentController');
 
     Route::resource('printers', 'PrinterController');
 
-    Route::get('requests/{request}/refuse', [
-        'as' => 'requests.refuse',
-        'uses' => 'RequestController@refuse'
-    ]);
+    Route::get('requests/{request}/refuse', 'AdminRequestController@refuse')
+            ->name('requests.refuse');
 
-    Route::post('requests/{request}/refused', [
-        'as' => 'requests.refused',
-        'uses' => 'RequestController@refused'
-    ]);
+    Route::post('requests/{request}/refused', 'AdminRequestController@refused')
+            ->name('requests.refused');
 
-    Route::get('requests/{request}/finish', [
-        'as' => 'requests.finish',
-        'uses' => 'RequestController@finish'
-    ]);
+    Route::get('requests/{request}/finish', 'AdminRequestController@finish')
+            ->name('requests.finish');
 
-    Route::post('request/{request}/finish', [
-        'as' => 'requests.done',
-        'uses' => 'RequestController@done'
-    ]);
+    Route::post('request/{request}/finish', 'AdminRequestController@done')
+            ->name('requests.done');
 
-    Route::put('request/{request}/finish', [
-        'as' => 'requests.evaluate',
-        'uses' => 'RequestController@evaluate'
-    ]);
+    Route::put('request/{request}/finish', 'RequestController@evaluate')
+            ->name('requests.evaluate');
 
-    Route::get('request/{request}/report', [
-        'as' => 'request.report',
-        'uses' => 'RequestController@report'
-    ]);
+    Route::get('request/{request}/report', 'RequestController@report')
+            ->name('request.report');
 
-    Route::get('requests/{request}/readmit', [
-        'as' => 'requests.readmit',
-        'uses' => 'RequestController@readmit'
-    ]);
-
+    Route::get('requests/{request}/readmit', 'AdminRequestController@readmit')
+            ->name('requests.readmit');
     
     Route::resource('users', 'UserController', ['only' => [
         'index', 'show', 'destroy', 'create']]);
 
-    Route::put('/users/change', ['as' => 'user.change', 'uses' => 'UserController@change']);
+    Route::put('/users/change', 'UserController@change')->name('user.change');
     
-    Route::put('/comments/change', ['as' => 'comments.change', 'uses' => 'CommentController@change']);
+    Route::put('/comments/change', 'CommentController@change')->name('comments.change');
 });
 
 Route::resource('comments', 'CommentController', ['except' => [
