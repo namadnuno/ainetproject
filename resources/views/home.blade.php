@@ -24,13 +24,23 @@
         <nav class="level">
             <div class="level-item has-text-centered">
                 <div>
-                    <p class="title">{{ number_format($coloredRequests->count()/$requestsNumber * 100, 1) }} %</p>
+                    <p class="title">
+                    @if($requests != 0)
+                        {{ number_format($coloredRequests->count()/$requestsNumber * 100, 1) }} %
+                    @else
+                        {{ 0 }}
+                    </p>
                     <p class="sub-title">Cores</p>
                 </div>
             </div>
             <div class="level-item has-text-centered">
                 <div>
-                    <p class="title">{{ number_format($blackAndWhiteRequests->count()/$requestsNumber * 100, 1) }} %</p>
+                    <p class="title">
+                    @if($requests != 0)
+                        {{ number_format($blackAndWhiteRequests->count()/$requestsNumber * 100, 1) }} %
+                    @else
+                        {{ 0 }}
+                    </p>
                     <p class="sub-title">Preto & branco</p>
                 </div>
             </div>
