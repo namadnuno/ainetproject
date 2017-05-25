@@ -16,7 +16,7 @@ class Printer extends Model
      * Por causa do mass assignment
      * @var array
      */
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'create_at', 'update_at'];
 
     public function request()
     {

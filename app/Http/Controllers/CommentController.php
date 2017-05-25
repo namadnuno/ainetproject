@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {
-    private const NUM_PER_PAGE = 20;
+    const NUM_PER_PAGE = 20;
     
     public function __construct()
     {
