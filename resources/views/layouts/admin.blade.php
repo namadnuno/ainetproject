@@ -25,7 +25,7 @@
 					<li>
 						<a href="{{ route('dashboard') }}"
 						@isActive('dashboard')
-						>Painel de Administração</a>
+						>Painel Principal</a>
 					</li>
 					<li>
 						<a href="{{ route('perfil.index') }}"
