@@ -54,6 +54,7 @@
             <h2 class="title is-2 is-inline">Departamentos </h2>
             <div class="content">
                 <div class="columns">
+                rever funcao que esta a devolver o array
                     <div class="column is-one-third" style="padding-top: 60px">
                             <div class="box">
                                 <p class="title is-3 has-text-centered">
