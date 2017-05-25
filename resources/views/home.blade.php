@@ -25,7 +25,7 @@
             <div class="level-item has-text-centered">
                 <div>
                     <p class="title">
-                    @if($requests != 0)
+                    @if($requestsNumber != 0)
                         {{ number_format($coloredRequests->count()/$requestsNumber * 100, 1) }} %
                     @else
                         {{ 0 }}
@@ -37,7 +37,7 @@
             <div class="level-item has-text-centered">
                 <div>
                     <p class="title">
-                    @if($requests != 0)
+                    @if($requestsNumber != 0)
                         {{ number_format($blackAndWhiteRequests->count()/$requestsNumber * 100, 1) }} %
                     @else
                         {{ 0 }}
