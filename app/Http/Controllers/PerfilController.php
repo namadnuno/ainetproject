@@ -6,6 +6,7 @@ use App\Http\Requests\PerfilRequest;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Ramsey\Uuid\Uuid;
 
 class PerfilController extends Controller
 {
@@ -94,12 +95,10 @@ class PerfilController extends Controller
     private function storePerfilPhoto($request)
     {
         if ($request->hasFile('profile_photo')) {
-            $filename = 'profile_photo-'
-                        . time() . '.' . $request->profile_photo->extension();
-            $request->profile_photo->move(
-                public_path('profile_photo'),
-                $filename
-            );
+            $filename = Uuid::uuid1()->toString() . '.' . $request->profile_photo->extension();
+
+            $request->profile_photo->storeAs('/public/profiles/', $filename);
+            
             return $filename;
         }
 

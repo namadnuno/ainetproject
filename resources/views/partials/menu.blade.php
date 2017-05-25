@@ -41,7 +41,7 @@
            </a>
             @else
                 <auth-menu :user="{{ auth()->user() }}"
-                           thumb="{{ auth()->user()->profile_photo ? asset('profile_photo/' . auth()->user()->profile_photo) : asset('profile_photo/no_photo.jpg') }}">
+                           thumb="{{ auth()->user()->profile_photo ? asset('storage/profiles/' . auth()->user()->profile_photo) : asset('profile_photo/no_photo.jpg') }}">
                     <a class="button is-link is-small is-fullwidth" href="{{ route('dashboard') }}">
                        <span>Dashboard</span>
                     </a>

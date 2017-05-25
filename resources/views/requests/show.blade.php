@@ -60,7 +60,7 @@
 				<div class="level">
 					<div class="level-left">
 						<div class="level-item">
-							<b>Pedido nº {{ $request->id }} </b>							
+							<p class="title is-4">Pedido nº {{ $request->id }} </p>							
 						</div>
 					</div>
 					<div class="level-right">
@@ -105,7 +105,7 @@
 			</div>
 			<div class="box">
 				<div class="media-content">
-					<b>Comentários</b>
+					<p class="title is-5">Comentários</p>
 					@foreach ($request->comments()->parents()->atives()->get() as $comment)
 					<article class="media">
 						<figure class="media-left">
