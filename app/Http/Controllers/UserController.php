@@ -16,7 +16,7 @@ class UserController extends Controller
         $this->middleware('web');
     }
 
-    private const NUM_PER_PAGE = 20;
+    const NUM_PER_PAGE = 20;
     /**
      * Display a listing of the resource.
      *

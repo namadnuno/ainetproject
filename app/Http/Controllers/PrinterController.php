@@ -7,13 +7,18 @@ use App\Printer;
 
 class PrinterController extends Controller
 {
+    const NUM_PER_PAGE=20;
     /**
      * Página com todas as impressoras
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
-        $printers = Printer::all();
+        $printers = Printer::ofType(request('filter'))
+        ->orderBy(
+            request('orderby') ? request('orderby') : 'created_at',
+            request('order') ? request('order') : 'DESC'
+        )->paginate(static::NUM_PER_PAGE);
         return view('printers.index', compact('printers'));
     }
 

@@ -45,6 +45,13 @@
 								Utilizadores
 							</a>
 						</li>
+						<li>
+							<a href="{{ route('departments.index') }}"
+							   @isActive('departments.index')
+							>
+								Departamentos
+							</a>
+						</li>
 						<li><a>Pedidos de Impressão</a></li>
 						<li>
 							<a href="{{ route('comments.index') }}"
