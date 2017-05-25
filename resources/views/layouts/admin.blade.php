@@ -52,7 +52,11 @@
 								Departamentos
 							</a>
 						</li>
-						<li><a>Pedidos de Impressão</a></li>
+						<li>
+							<a @isActive('requests.admnistrate') href="{{ route('requests.admnistrate') }}">
+								Pedidos de Impressão
+							</a>
+						</li>
 						<li>
 							<a href="{{ route('comments.index') }}"
 							   @isActive('comments.index')>

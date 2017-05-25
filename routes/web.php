@@ -56,6 +56,9 @@ Route::group(['middleware' => 'auth', 'prefix' => 'dashboard'], function () {
 
     Route::get('requests/{request}/readmit', 'AdminRequestController@readmit')
             ->name('requests.readmit');
+
+    Route::get('requests-admnistrate/', 'AdminRequestController@index')
+            ->name('requests.admnistrate');
     
     Route::resource('users', 'UserController', ['only' => [
         'index', 'show', 'destroy', 'create']]);

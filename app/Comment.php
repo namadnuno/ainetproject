@@ -17,7 +17,7 @@ class Comment extends Model
 
     public function childrens()
     {
-        return $this->hasMany(Comment::class, 'parent_id', 'id');
+        return $this->hasMany(Comment::class, 'parent_id');
     }
 
     public function scopeParents($query)
