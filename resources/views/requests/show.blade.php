@@ -1,6 +1,8 @@
 @extends('layouts.admin')
 
 @section('content-child')
+@include('requests.refuse-box')
+@include('requests.admin-controls')
 <div class="columns">
 	<div class="column is-3">
 		<div class="box">
@@ -123,7 +125,7 @@
 									<small>{{ \Carbon\Carbon::parse($comment->created_at)->diffForHumans() }}</small>
 								</p>
 							</div>
-							@foreach ($comment->childrens()->atives() as $childrenComment)
+							@foreach ($comment->childrens()->atives()->get() as $childrenComment)
 							<article class="media">
 								<figure class="media-left">
 									<p class="image is-64x64">

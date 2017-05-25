@@ -19,7 +19,7 @@ class AdminRequestController extends Controller
     /**
      * Numero de pedidos por página
      */
-    const NUM_PER_PAGE = 20;
+    const NUM_PER_PAGE = 8;
 
     public function __constructor()
     {
