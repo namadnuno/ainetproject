@@ -29,6 +29,7 @@
                         {{ number_format($coloredRequests->count()/$requestsNumber * 100, 1) }} %
                     @else
                         {{ 0 }}
+                    @endif
                     </p>
                     <p class="sub-title">Cores</p>
                 </div>
@@ -40,6 +41,7 @@
                         {{ number_format($blackAndWhiteRequests->count()/$requestsNumber * 100, 1) }} %
                     @else
                         {{ 0 }}
+                    @endif
                     </p>
                     <p class="sub-title">Preto & branco</p>
                 </div>
