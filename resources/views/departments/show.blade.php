@@ -88,7 +88,7 @@
                                     <a href="{{ route('users.show', $user) }}" class="is-link">
                                         <strong>{{ $user->name }}</strong>
                                     </a>
-                                    {{ $user->email }}
+                                    <span class="subtitle is-6 is-small">{{ $user->email }}</span>
                                 </p>
                             </div>
                         </div>
