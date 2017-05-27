@@ -41,7 +41,7 @@ class RequestPolicy
      * @param  User   $user
      * @return mixed
      */
-    public function administrate(User $user, Request $request)
+    public function administrate(User $user)
     {
         return $user->isAdmin();
     }
@@ -55,6 +55,39 @@ class RequestPolicy
     public function update(User $user, Request $request)
     {
         return $request->owner_id == $user->id;
+    }
+
+    /**
+ * Determina se um user poder readmitir um pedido
+ * @param User $user
+ * @param Request $request
+ * @return bool
+ */
+    public function readmit(User $user, Request $request)
+    {
+        return $user->isAdmin();
+    }
+
+    /**
+     * Determina se um user poder recusar um pedido
+     * @param User $user
+     * @param Request $request
+     * @return bool
+     */
+    public function refuse(User $user, Request $request)
+    {
+        return $user->isAdmin();
+    }
+
+    /**
+     * Determina se um user poder acabar um pedido
+     * @param User $user
+     * @param Request $request
+     * @return bool
+     */
+    public function finish(User $user, Request $request)
+    {
+        return $user->isAdmin();
     }
 
      /**

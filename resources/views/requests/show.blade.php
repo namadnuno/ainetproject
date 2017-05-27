@@ -67,6 +67,15 @@
 					</div>
 					<div class="level-right">
 						<div class="level-item">
+							@if($request->due_date)
+								@if(carbon($request->due_date)->lt(carbon()))
+									<span class="tag is-warning">Expirado a {{ carbon($request->due_date)->toDateString() }}</span>
+								@else
+									<span class="tag is-info">Expira a {{ carbon($request->due_date)->toDateString() }}</span>
+								@endif
+							@endif
+						</div>
+						<div class="level-item">
 							<i>{{ $request->created_at->diffForHumans() }}</i>
 						</div>						
 					</div>

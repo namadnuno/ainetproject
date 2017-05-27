@@ -1,5 +1,5 @@
 @if(auth()->user()->isAdmin())
-<div class="box">
+    <div class="box">
         <div class="content">
             <div class="level">
                 <div class="level-left">
@@ -7,34 +7,40 @@
                 </div>
                 <div class="level-right">
                     @if($request->isRecusado())
-                        <a href="{{ route('requests.readmit', $request->id) }}" type="submit" class="level-item button is-warning">
+                        @can('readmit', $request)
+                            <a href="{{ route('requests.readmit', $request->id) }}" type="submit" class="level-item button is-warning">
                             <span class="icon is-small">
                                 <i class="fa fa-check"></i>
                             </span>
-                            <span>
+                                <span>
                                 Readmitir
                             </span>
-                        </a>
+                            </a>
+                        @endcan
                     @else
-                        <a href="{{ route('requests.refuse', $request->id) }}" type="submit" class="level-item button is-danger">
+                        @can('refuse', $request)
+                            <a href="{{ route('requests.refuse', $request->id) }}" type="submit" class="level-item button is-danger">
                             <span class="icon is-small">
                                 <i class="fa fa-ban"></i>
                             </span>
-                            <span>
+                                <span>
                                 Recusar
                             </span>
-                        </a>
-                        <a href="{{ route('requests.finish', $request->id) }}" type="submit" class="level-item button is-success">
+                            </a>
+                        @endcan
+                        @can('finish', $request)
+                            <a href="{{ route('requests.finish', $request->id) }}" type="submit" class="level-item button is-success">
                             <span class="icon is-small">
                                 <i class="fa fa-check"></i>
                             </span>
-                            <span>
+                                <span>
                                 Concluir
                             </span>
-                        </a>   
-                    @endif 
+                            </a>
+                        @endcan
+                    @endif
                 </div>
             </div>
         </div>
     </div>
-    @endif
+@endif

@@ -5,16 +5,16 @@ use Illuminate\Database\Seeder;
 class RequestsTableSeeder extends Seeder
 {
     // Change these properties to reflect student's use of status fields
-    const OPEN_STATE = 0;
-    const REFUSE_STATE = 1;
+    const REFUSE_STATE = 0;
+    const OPEN_STATE = 1;
     const COMPLETE_STATE = 2;
 
     const A3 = 3;
     const A4 = 4;
 
-    const DRAFT = 0;
     const NORMAL = 1;
-    const PHOTO = 2;
+    const DRAFT = 2;
+    const PHOTO = 3;
 
     private $sizes = [self::A3, self::A4];
     private $types = [self::DRAFT, self::NORMAL, self::PHOTO];

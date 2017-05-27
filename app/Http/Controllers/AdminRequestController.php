@@ -30,6 +30,7 @@ class AdminRequestController extends Controller
      */
     public function index()
     {
+        $this->authorize('administrate', Request::class);
         $requests = Request::search(request('filter'))
         ->orderBy(
             request('orderby') ? request('orderby') : 'created_at',
@@ -46,6 +47,7 @@ class AdminRequestController extends Controller
      */
     public function refuse(Request $request)
     {
+        $this->authorize('refuse', $request);
         return view('requests.refuse', compact('request'));
     }
 
@@ -56,6 +58,7 @@ class AdminRequestController extends Controller
      */
     public function refused(Request $request)
     {
+        $this->authorize('refuse', $request);
         $this->validate(request(), [
             'refused_reason' => 'required|min:10'
         ]);
@@ -77,6 +80,7 @@ class AdminRequestController extends Controller
      */
     public function finish(Request $request)
     {
+        $this->authorize('finish', $request);
         $printers = Printer::all();
         return view('requests.finish', compact('request', 'printers'));
     }
@@ -88,6 +92,8 @@ class AdminRequestController extends Controller
      */
     public function done(Request $request)
     {
+        $this->authorize('finish', $request);
+
         $this->validate(request(), [
             'printer_id' => 'required|exists:printers,id'
         ]);
@@ -107,6 +113,7 @@ class AdminRequestController extends Controller
      */
     public function readmit(Request $request)
     {
+        $this->authorize('readmit', $request);
         $request->status = 1;
         $request->save();
 
