@@ -18,7 +18,7 @@ class DepartmentController extends Controller
      */
     public function indexAsGuest()
     {
-        $departments = Departament::withCount(['users','departments'], function ($query) {
+        $departments = Departament::withCount(['users'], function ($query) {
             $query->where('requests.status', '2');
         })->search(request('filter'))
             ->orderBy(
@@ -42,6 +42,11 @@ class DepartmentController extends Controller
         )->paginate(static::NUM_PER_PAGE);
 
         return view('departments.index', compact('departments'));
+    }
+
+    public function show(Departament $department)
+    {
+        return view('departments.show', compact('department'));
     }
 
     /**

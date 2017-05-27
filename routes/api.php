@@ -18,3 +18,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('request/of-week', 'Api\RequestController@ofWeek');
+Route::get('departments/colors/{department}', 'Api\DepartmentController@depatementColors');
+

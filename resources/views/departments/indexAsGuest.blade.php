@@ -18,11 +18,13 @@
                         <div class="box">
                             <article class="media">
                                 <div class="media-content">
-                                    <div class="content">
-                                        <h5 class="title is-5">
+                                    <div  class="content">
+                                        <a href="{{ route('departments.show', $department) }}">
+                                            <h5 class="title is-5">
                                             <span class="icon"><i class="fa fa-building-o"></i></span>
                                             {{ $department->name }}
-                                        </h5>
+                                            </h5>
+                                        </a>
                                     </div>
                                 </div>
                             </article>

@@ -25,11 +25,11 @@
             <div class="level-item has-text-centered">
                 <div>
                     <p class="title">
-                    @if($requestsNumber != 0)
-                        {{ number_format($coloredRequests->count()/$requestsNumber * 100, 1) }} %
-                    @else
-                        {{ 0 }}
-                    @endif
+                        @if($requestsNumber != 0)
+                            {{ number_format($coloredRequests->count()/$requestsNumber * 100, 1) }} %
+                        @else
+                            {{ 0 }}
+                        @endif
                     </p>
                     <p class="sub-title">Cores</p>
                 </div>
@@ -37,11 +37,11 @@
             <div class="level-item has-text-centered">
                 <div>
                     <p class="title">
-                    @if($requestsNumber != 0)
-                        {{ number_format($blackAndWhiteRequests->count()/$requestsNumber * 100, 1) }} %
-                    @else
-                        {{ 0 }}
-                    @endif
+                        @if($requestsNumber != 0)
+                            {{ number_format($blackAndWhiteRequests->count()/$requestsNumber * 100, 1) }} %
+                        @else
+                            {{ 0 }}
+                        @endif
                     </p>
                     <p class="sub-title">Preto & branco</p>
                 </div>
@@ -54,46 +54,31 @@
             <h2 class="title is-2 is-inline">Departamentos </h2>
             <div class="content">
                 <div class="columns">
-                rever funcao que esta a devolver o array
-                    <div class="column is-one-third" style="padding-top: 60px">
-                            <div class="box">
-                                <p class="title is-3 has-text-centered">
-                                    {{ $departments[1]->requests()->done()->count() }}
-                                </p>
+                    @foreach($departments as $department)
+                        <div class="column is-one-third" style="padding-top: 60px">
+                            <div class="box ">
+                                <div class="level">
+                                    <div class="has-text-centered level-item">
+                                        <div>
+                                            <p class="title">
+                                                {{ $department->requests()->done()->count() }} /
+                                                <span class="title is-5">{{ $department->requests()->count() }} </span>
+                                            </p>
+                                            <p class="sub-title">
+                                                Pedidos de impressão
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
                                 <a class="card-header-icon" style="padding-bottom: 41px">
                                     <span class="icon">
                                         <i class="fa fa-building"></i>
                                     </span>
-                                    {{ $departments[1]->name }}
+                                    {{ $department->name }}
                                 </a>
                             </div>
                         </div>
-                        <div class="column is-one-third">
-                            <div class="box">
-                                <p class="title is-3 has-text-centered">
-                                    {{ $departments[0]->requests()->done()->count() }}
-                                </p>
-                                <a class="card-header-icon" style="padding-bottom: 90px">
-                                    <span class="icon">
-                                        <i class="fa fa-building"></i>
-                                    </span>
-                                    {{ $departments[0]->name }}
-                                </a>
-                            </div>
-                        </div>
-                        <div class="column is-one-third" style="padding-top: 90px">
-                            <div class="box">
-                                <p class="title is-3 has-text-centered">
-                                    {{ $departments[2]->requests()->done()->count() }}
-                                </p>
-                                <a class="card-header-icon">
-                                    <span class="icon">
-                                        <i class="fa fa-building"></i>
-                                    </span>
-                                    {{ $departments[2]->name }}
-                                </a>
-                            </div>
-                        </div>
+                    @endforeach
                 </div>
 
 

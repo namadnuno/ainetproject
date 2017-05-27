@@ -33,9 +33,7 @@ class HomeController extends Controller
                 Carbon::now()->year
             ), 2);
 
-        $departments = Departament::withCount(['users','requests'], function ($query) {
-            $query->where('requests.status', '2');
-        })->orderBy('requests_count', 'DESC')->take(3)->get();
+        $departments = Departament::withCount(['users','requests'])->orderBy('requests_count', 'DESC')->take(3)->get();
 
 
         return view('home', compact('requestsNumber', 'coloredRequests', 'blackAndWhiteRequests',

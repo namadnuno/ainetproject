@@ -5,10 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Requests\PedidoPutRequest;
 use App\Http\Requests\PedidoRequest;
 use App\Printer;
-use App\Request as RequestModel;
+use App\Request;
 use Barryvdh\DomPDF\Facade as PDF;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 use Mockery\Exception;
@@ -24,7 +23,6 @@ class AdminRequestController extends Controller
     public function __constructor()
     {
         $this->middleware('auth');
-        $this->authorize('administrate');
     }
     /**
      * Mostra a página dos pedidos do utilizador
@@ -32,7 +30,7 @@ class AdminRequestController extends Controller
      */
     public function index()
     {
-        $requests = RequestModel::search(request('filter'))
+        $requests = Request::search(request('filter'))
         ->orderBy(
             request('orderby') ? request('orderby') : 'created_at',
             request('order') ? request('order') : 'DESC'
@@ -43,20 +41,20 @@ class AdminRequestController extends Controller
 
     /**
      * Mostra a view com onde é dito o porque de ser recusado
-     * @param RequestModel $request
+     * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function refuse(RequestModel $request)
+    public function refuse(Request $request)
     {
         return view('requests.refuse', compact('request'));
     }
 
     /**
      * Recusa o pedido de impressão
-     * @param RequestModel $request
+     * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function refused(RequestModel $request)
+    public function refused(Request $request)
     {
         $this->validate(request(), [
             'refused_reason' => 'required|min:10'
@@ -68,16 +66,16 @@ class AdminRequestController extends Controller
 
         $request->save();
 
-        return redirect()->route('requests.index')
+        return redirect()->route('requests.admnistrate')
                 ->with('success', 'Pedido #'. $request->id .' recusado com sucesso!');
     }
 
     /**
      * Mostra a view para ser escolhida a impressora que finalizou o pedido
-     * @param RequestModel $request
+     * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function finish(RequestModel $request)
+    public function finish(Request $request)
     {
         $printers = Printer::all();
         return view('requests.finish', compact('request', 'printers'));
@@ -85,10 +83,10 @@ class AdminRequestController extends Controller
 
     /**
      * Finaliza o pedido de impressão
-     * @param RequestModel $request
+     * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function done(RequestModel $request)
+    public function done(Request $request)
     {
         $this->validate(request(), [
             'printer_id' => 'required|exists:printers,id'
@@ -99,38 +97,19 @@ class AdminRequestController extends Controller
         $request->closed_date = Carbon::now();
         $request->save();
 
-        return redirect()->route('requests.index')->with('success', 'Pedido finalizado com sucesso!');
+        return redirect()->route('requests.admnistrate')->with('success', 'Pedido finalizado com sucesso!');
     }
     /**
      * Readmite o pedido de impressão
-     * @param RequestModel $request
+     * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function readmit(RequestModel $request)
+    public function readmit(Request $request)
     {
         $request->status = 1;
         $request->save();
 
-        return redirect()->route('requests.index')
+        return redirect()->route('requests.admnistrate')
                 ->with('success', 'Pedido #'. $request->id .' readmitido com sucesso!');
-    }
-
-    /**
-     * Recebe a avaliação do funcionário e guarda no pedido
-     * @param  RequestModel $request
-     * @return Illuminate\Http\Response
-     */
-    public function evaluate(RequestModel $request)
-    {
-        $this->validate(request(),
-            ['satisfaction_grade' => 'required|digits_between:1,3']
-        );
-
-        $request->satisfaction_grade = request('satisfaction_grade');
-
-        $request->save();
-
-        return redirect()->route('requests.index')
-                ->with('success', 'Grau de satisfação foi atribuido ao pedido #'. $request->id .' com sucesso!');
     }
 }

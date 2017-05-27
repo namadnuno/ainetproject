@@ -15,6 +15,8 @@ Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/departments', ['as' => 'departmentsAsGuest', 'uses' => 'DepartmentController@indexAsGuest']);
 
+Route::get('/departments/{department}', 'DepartmentController@show')->name('departments.show');
+
 Route::get('/contacts', 'UserController@indexAsGuest')->name('contacts.index');
 
 Route::get('/login', 'Auth\LoginController@index')->name('login');
@@ -32,7 +34,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'dashboard'], function () {
     
     Route::resource('requests', 'RequestController');
 
-    Route::resource('departments', 'DepartmentController');
+    Route::resource('departments', 'DepartmentController', ['except' => ['show']]);
 
     Route::resource('printers', 'PrinterController');
 
