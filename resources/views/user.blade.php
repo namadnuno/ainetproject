@@ -43,18 +43,18 @@
 							{{ $user->departament->name}}
 						</a>
 					</p>
-					@if(auth()->check() && auth()->user()->isAdmin())
-						<div class="level">
-							<form action="{{ route('user.change') }}" method="post" >
+					@can('block', $user)
+						<div class="is-top-small">
+							<form action="{{ route('user.change') }}" method="post" class="is-fullwidth">
 								{{ csrf_field() }}
 								{{ method_field('PUT') }}
 								<input type="hidden" value="{{ $user->id }}" name="user_id">
-								<button class="level-item button {{ $user->blocked == 1 ? 'is-success' : 'is-danger' }}" type="submit">
+								<button class="level-item button is-fullwidth {{ $user->blocked == 1 ? 'is-success' : 'is-danger' }}" type="submit">
 									{{ $user->blocked == 1 ? 'Desbloquear' : 'Bloquear' }}
 								</button>
 							</form>
 						</div>
-					@endif
+					@endcan
 				</div>
 				<div class="column is-4 name">
 					<p>

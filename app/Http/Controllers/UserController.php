@@ -75,6 +75,7 @@ class UserController extends Controller
     public function change()
     {
         $user = User::find(request('user_id'));
+        $this->authorize('block', $user);
         if ($user->blocked == '1') {
             $user->blocked = 0;
         } else {
