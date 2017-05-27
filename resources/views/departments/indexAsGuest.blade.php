@@ -30,13 +30,13 @@
                             </article>
                             <div class="columns">
                                 <div class="column is-one-quarter">
-                                    <span class="tag is-info">{{ $department->requests()->done()->count() }} Impreções</span>
+                                    <span class="tag is-info">{{ $department->requests()->done()->count() }} Impressões</span>
                                 </div>
                                 <div class="column is-one-quarter">
-                                    <span class="tag is-dark">{{ $department->requests()->done()->blackAndWhite()->count() }} Impreções</span>
+                                    <span class="tag is-dark">{{ $department->requests()->done()->blackAndWhite()->count() }} Impressões</span>
                                 </div>
                                 <div class="column is-one-quarter">
-                                    <span class="tag is-success">{{ $department->requests()->done()->colored()->count() }} Impreções</span>
+                                    <span class="tag is-success">{{ $department->requests()->done()->colored()->count() }} Impressões</span>
                                 </div>
                                 <div class="column is-one-quarter">
                                     <span class="tag is-primary">{{ $department->users()->count() }} Funcionários</span>
