@@ -41,11 +41,11 @@
 			<div class="card">
 				<div class="card-header">
 					<p class="card-header-title">
-						Impressões em Espera
+						Últimos Pedidos
 					</p>
 				</div>
 				<div class="card-content">
-					@if (auth()->user()->requests()->take(1)->count() > 0)
+					@if (auth()->user()->requests()->count() > 0)
 					<table class="table">
 						<thead>
 							<tr>
@@ -58,10 +58,10 @@
 							</tr>
 						</thead>
 						<tbody>
-							@foreach (auth()->user()->requests()->take(5)->get() as $request)
+							@foreach (auth()->user()->requests()->take(5)->orderBy('created_at', 'ASC')->get() as $request)
 								<tr>
 									<td>{{ $request->id }}</td>
-									<td>{{ $request->open_date }}</td>
+									<td>{{ carbon($request->due_date)->diffForHumans() }}</td>
 									<td>{{ $request->quantity }}</td>
 									<td>{{ $request->colored == 1 ? 'Cores' : 'Preto e Branco' }}</td>
 									<td>

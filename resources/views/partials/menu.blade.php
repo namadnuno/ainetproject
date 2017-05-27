@@ -40,6 +40,11 @@
                <span>Registar</span>
            </a>
             @else
+                <span class="nav-item">
+                    <a href="{{ route('requests.create') }}" class="button is-default is-bold">
+                      Novo Pedido
+                    </a>
+                </span>
                 <auth-menu :user="{{ auth()->user() }}"
                            thumb="{{ auth()->user()->profile_photo ? asset('storage/profiles/' . auth()->user()->profile_photo) : asset('profile_photo/no_photo.jpg') }}">
                     <a class="button is-link is-small is-fullwidth" href="{{ route('dashboard') }}">
