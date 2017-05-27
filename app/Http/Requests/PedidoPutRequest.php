@@ -25,7 +25,6 @@ class PedidoPutRequest extends FormRequest
     {
         return [
             'description' => 'required|min:5|max:254',
-            'open_date' => 'required|date',
             'quantity' => 'required|integer|min:1|max:1000',
             'colored' => 'required|boolean',
             'stapled' => 'required|boolean',

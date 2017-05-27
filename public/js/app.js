@@ -69719,7 +69719,8 @@ Vue.component('chart-mouth-prints', __webpack_require__(218));
 Vue.component('remover-pedido', __webpack_require__(217));
 Vue.component('evaluate-pedido', __webpack_require__(216));
 Vue.component('auth-menu', __webpack_require__(200));
-
+Vue.component('user-requests-types', __webpack_require__(235));
+Vue.component('user-week-status', __webpack_require__(238));
 var app = new Vue({
   el: '#app'
 });
@@ -70302,6 +70303,272 @@ if (false) {
 
 module.exports = __webpack_require__(206);
 
+
+/***/ }),
+/* 226 */,
+/* 227 */,
+/* 228 */,
+/* 229 */,
+/* 230 */,
+/* 231 */,
+/* 232 */,
+/* 233 */,
+/* 234 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_chart_js__ = __webpack_require__(147);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_chart_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_chart_js__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['user'],
+    data: function data() {
+        return {
+            data: [],
+            labels: []
+        };
+    },
+    mounted: function mounted() {
+        var _this = this;
+
+        console.log(this.user);
+        axios.get(_api + '/api/users/' + this.user.id + '/colors/').then(function (response) {
+            _this.createChart(response.data.data, response.data.labels);
+        }).catch(function (error) {
+            console.log(error);
+        });
+    },
+
+    methods: {
+        createChart: function createChart(data, labels) {
+            var ctx = document.getElementById("user-colors");
+            var myChart = new __WEBPACK_IMPORTED_MODULE_0_chart_js___default.a(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Tipos de pedidos',
+                        data: data,
+                        backgroundColor: ['#ff6384', '#2b2a31'],
+                        borderWidth: 1
+                    }]
+                }
+            });
+        }
+    }
+});
+
+/***/ }),
+/* 235 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(4)(
+  /* script */
+  __webpack_require__(234),
+  /* template */
+  __webpack_require__(236),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "D:\\Projetos\\ainetproject\\resources\\assets\\js\\front\\components\\userRequestsTypes.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] userRequestsTypes.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-77e4c168", Component.options)
+  } else {
+    hotAPI.reload("data-v-77e4c168", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 236 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _vm._m(0)
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "card"
+  }, [_c('div', {
+    staticClass: "card-header"
+  }, [_c('p', {
+    staticClass: "card-header-title"
+  }, [_vm._v("\n            Cores\n        ")])]), _vm._v(" "), _c('div', {
+    staticClass: "card-content"
+  }, [_c('canvas', {
+    attrs: {
+      "id": "user-colors",
+      "width": "400",
+      "height": "200"
+    }
+  })])])
+}]}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-77e4c168", module.exports)
+  }
+}
+
+/***/ }),
+/* 237 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_chart_js__ = __webpack_require__(147);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_chart_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_chart_js__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['user'],
+    data: function data() {
+        return {
+            data: [],
+            labels: []
+        };
+    },
+    mounted: function mounted() {
+        var _this = this;
+
+        axios.get(_api + '/api/users/' + this.user.id + '/requests').then(function (response) {
+            _this.createChart(response.data.data, response.data.labels);
+        }).catch(function (error) {
+            console.log(error);
+        });
+    },
+
+    methods: {
+        createChart: function createChart(data, labels) {
+            var ctx = document.getElementById("week-prints");
+            var myChart = new __WEBPACK_IMPORTED_MODULE_0_chart_js___default.a(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: '# Pedidos',
+                        data: data,
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            });
+        }
+    }
+});
+
+/***/ }),
+/* 238 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(4)(
+  /* script */
+  __webpack_require__(237),
+  /* template */
+  __webpack_require__(239),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "D:\\Projetos\\ainetproject\\resources\\assets\\js\\front\\components\\userWeekStatus.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] userWeekStatus.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-56b31843", Component.options)
+  } else {
+    hotAPI.reload("data-v-56b31843", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 239 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _vm._m(0)
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "card"
+  }, [_c('div', {
+    staticClass: "card-header"
+  }, [_c('p', {
+    staticClass: "card-header-title"
+  }, [_vm._v("\n            Progresso\n        ")])]), _vm._v(" "), _c('div', {
+    staticClass: "card-content"
+  }, [_c('canvas', {
+    attrs: {
+      "id": "week-prints",
+      "width": "400",
+      "height": "200"
+    }
+  })])])
+}]}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-56b31843", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

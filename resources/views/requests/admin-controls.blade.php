@@ -1,3 +1,4 @@
+@if(auth()->user()->isAdmin())
 <div class="box">
         <div class="content">
             <div class="level">
@@ -36,3 +37,4 @@
             </div>
         </div>
     </div>
+    @endif

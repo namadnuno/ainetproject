@@ -25,7 +25,8 @@ class PerfilController extends Controller
      */
     public function index()
     {
-        return view('perfil.index');
+        $user = auth()->user();
+        return view('perfil.index', compact('user'));
     }
 
     /**

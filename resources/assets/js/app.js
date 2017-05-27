@@ -20,7 +20,8 @@ Vue.component('chart-mouth-prints', require('./components/chart-mouth-prints.vue
 Vue.component('remover-pedido', require('./components/RemoverPedido.vue'));
 Vue.component('evaluate-pedido', require('./components/EvaluatePedido.vue'));
 Vue.component('auth-menu', require('./front/components/AuthMenu.vue'));
-
+Vue.component('user-requests-types', require('./front/components/userRequestsTypes.vue'));
+Vue.component('user-week-status', require('./front/components/userWeekStatus.vue'));
 const app = new Vue({
     el: '#app'
 });
