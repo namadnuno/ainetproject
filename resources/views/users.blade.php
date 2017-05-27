@@ -1,12 +1,12 @@
 @extends('layouts.main')
 
 @section('content')
-@include('partials.section-header', 
+@include('partials.section-header',
 	[
 	'title' => 'Lista de contactos',
 	'subtitle' => ''
-	]);	
-	<div class="container">
+	]);
+	<div class="container is-top-medium is-bottom-medium">
 		@include('partials.filter-box', [
 			'filters' => [
 			'created_at' => 'Data de Criação',

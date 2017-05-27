@@ -6,14 +6,14 @@
             </p>
         </div>
         <div class="card-content">
-            <canvas id="department-colors" width="400" height="200"></canvas>
+            <canvas id="user-colors" width="400" height="200"></canvas>
         </div>
     </div>
 </template>
 <script>
     import Chart from 'chart.js'
     export default {
-        props: ['department'],
+        props: ['user'],
         data() {
             return {
                 data: [],
@@ -21,10 +21,9 @@
             }
         },
         mounted() {
-            console.log(this.department);
-            axios.get( _api + '/api/departments/'+ this.department.id +'/colors/').then(
+            console.log(this.user);
+            axios.get( _api + '/api/users/' + this.user.id + '/colors/').then(
                 response => {
-                    console.log(response.data.labels)
                     this.createChart(response.data.data, response.data.labels)
                 }).catch(
                 error => {
@@ -33,7 +32,7 @@
         },
         methods: {
             createChart(data, labels) {
-                var ctx = document.getElementById("department-colors");
+                var ctx = document.getElementById("user-colors");
                 var myChart = new Chart(ctx, {
                     type: 'doughnut',
                     data: {

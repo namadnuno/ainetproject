@@ -9,6 +9,9 @@
 // Bulma
 @import "node_modules/bulma/css/bulma";
 
+//profile
+@import "profile";
+
 body {
     font-family: $font-family-sans-serif;
 }
@@ -123,4 +126,7 @@ img.is-circle {
     align-items: center;
     justify-content: center;
   }
+}
+.is-centered-marginally {
+    margin: 0 auto;
 }

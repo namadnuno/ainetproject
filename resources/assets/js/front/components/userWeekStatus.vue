@@ -2,18 +2,19 @@
     <div class="card">
         <div class="card-header">
             <p class="card-header-title">
-                Cores
+                Progresso
             </p>
         </div>
         <div class="card-content">
-            <canvas id="department-colors" width="400" height="200"></canvas>
+            <canvas id="week-prints" width="400" height="200"></canvas>
         </div>
     </div>
 </template>
+
 <script>
     import Chart from 'chart.js'
     export default {
-        props: ['department'],
+        props: ['user'],
         data() {
             return {
                 data: [],
@@ -21,10 +22,8 @@
             }
         },
         mounted() {
-            console.log(this.department);
-            axios.get( _api + '/api/departments/'+ this.department.id +'/colors/').then(
+            axios.get( _api + '/api/users/'+ this.user.id +'/requests').then(
                 response => {
-                    console.log(response.data.labels)
                     this.createChart(response.data.data, response.data.labels)
                 }).catch(
                 error => {
@@ -33,21 +32,26 @@
         },
         methods: {
             createChart(data, labels) {
-                var ctx = document.getElementById("department-colors");
+                var ctx = document.getElementById("week-prints");
                 var myChart = new Chart(ctx, {
-                    type: 'doughnut',
+                    type: 'line',
                     data: {
                         labels: labels,
                         datasets: [{
-                            label: 'Tipos de pedidos',
+                            label: '# Pedidos',
                             data: data,
-                            backgroundColor: [
-                                '#ff6384',
-                                '#2b2a31'
-                            ],
                             borderWidth: 1
-                        }],
+                        }]
                     },
+                    options: {
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero:true
+                                }
+                            }]
+                        }
+                    }
                 });
             }
         }

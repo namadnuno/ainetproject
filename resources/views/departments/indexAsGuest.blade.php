@@ -42,6 +42,13 @@
                                     <span class="tag is-primary">{{ $department->users()->count() }} Funcionários</span>
                                 </div>
                             </div>
+                            <footer>
+                                <nav class="level-right">
+                                    <p class="level-item has-text-right">
+                                        <a href="{{ route('departments.show', $department) }}" class="button is-default">Ver</a>
+                                    </p>
+                                </nav>
+                            </footer>
                         </div>
                     </div>
                 @endforeach

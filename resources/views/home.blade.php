@@ -70,7 +70,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <a class="card-header-icon" style="padding-bottom: 41px">
+                                <a href="{{ route('departments.show', $department) }}" class="card-header-icon" style="padding-bottom: 41px">
                                     <span class="icon">
                                         <i class="fa fa-building"></i>
                                     </span>
