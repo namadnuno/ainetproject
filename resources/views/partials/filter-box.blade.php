@@ -44,7 +44,7 @@
 					    <span>Criar</span>
 					</a>
 				@endif
-				<button class="button is-info is-small" type="submit">Filtar</button>
+				<button class="button is-info is-small" type="submit">Filtrar</button>
 			</div>
 		</div>
 	</form>
