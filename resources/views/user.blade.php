@@ -14,7 +14,7 @@
 						@include('partials.profile_photo_of', $user)
 					</div>
 					<p class="is-top-xsmall">
-						@if( auth()->user()->isAdmin() )
+						@if( $user->isAdmin() )
 							Administrador
 						@else
 							Funcionário
