@@ -8,7 +8,6 @@
             Home
         </a>
         <a class="nav-item is-tab is-hidden-mobile" href="{{ route('departmentsAsGuest') }}">Departamentos</a>
-        <a class="nav-item is-tab is-hidden-mobile">Impressões</a>
         <a class="nav-item @isActiveClass('contacts.index')" href="{{ route('contacts.index') }}">
             Contactos
         </a>
@@ -20,11 +19,6 @@
       <span></span>
     </span>
     <div class="nav-right nav-menu">
-        <a class="nav-item is-tab is-hidden-tablet is-active">Home</a>
-        <a class="nav-item is-tab is-hidden-tablet">Departamentos</a>
-        <a class="nav-item is-tab is-hidden-tablet">Impressões</a>
-        <a class="nav-item is-tab is-hidden-tablet">Contactos</a>
-
         <span class="nav-item">
             @if(auth()->guest())
                 <a href="{{ route('login') }}" class="button is-primary">
