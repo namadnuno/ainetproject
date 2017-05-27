@@ -95,6 +95,7 @@ class AdminRequestController extends Controller
         $request->status = 2;
         $request->printer_id = request('printer_id');
         $request->closed_date = Carbon::now();
+        $request->closed_user_id = auth()->user()->id;
         $request->save();
 
         return redirect()->route('requests.admnistrate')->with('success', 'Pedido finalizado com sucesso!');

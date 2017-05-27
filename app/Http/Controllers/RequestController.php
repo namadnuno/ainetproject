@@ -143,6 +143,8 @@ class RequestController extends Controller
      */
     public function evaluate(RequestModel $request)
     {
+        $this->authorize('evaluate', $request);
+        
         $this->validate(request(),
             ['satisfaction_grade' => 'required|digits_between:1,3']
         );
@@ -160,9 +162,9 @@ class RequestController extends Controller
      * @param  Request $request
      * @return [type]
      */
-    public function report(Request $request)
+    public function report(RequestModel $request)
     {
-        $pdf = PDF::loadView('requests.report');
+        $pdf = PDF::loadView('requests.report', compact('request'));
         return $pdf->download('invoice.pdf');
     }
 }

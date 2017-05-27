@@ -11,7 +11,6 @@
         <a class="nav-item @isActiveClass('contacts.index')" href="{{ route('contacts.index') }}">
             Contactos
         </a>
-
     </div>
     <span class="nav-toggle">
       <span></span>

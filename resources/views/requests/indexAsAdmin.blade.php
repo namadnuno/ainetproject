@@ -22,7 +22,7 @@
                     <figure class="image is-square">
                         @if(isImage($request))
                             <img src="{{ route('getFile', $request) }}" alt="pedido" />
-                        @else 
+                        @else
                             <img src="{{ asset('/files_formats/' . typeFile($request) . '.png')}}" alt="" />
                         @endif
                     </figure>
@@ -91,7 +91,9 @@
                         @if($request->satisfaction_grade)
                             <a href="{{ route('request.report', $request) }}" class="card-footer-item"><i class="fa fa-download"></i>Relatório</a>
                         @else
-                            <evaluate-pedido route="{{ route('requests.evaluate', $request) }}" token="{{ csrf_token() }}"></evaluate-pedido>
+                            @can('evaluate', $request)
+                                <evaluate-pedido route="{{ route('requests.evaluate', $request) }}" token="{{ csrf_token() }}"></evaluate-pedido>
+                            @endcan
                         @endif
                     @endif
                 </footer>

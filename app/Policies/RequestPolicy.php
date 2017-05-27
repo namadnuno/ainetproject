@@ -10,13 +10,6 @@ class RequestPolicy
 {
     use HandlesAuthorization;
 
-    public function before($user, $ability)
-    {
-        if ($user->isAdmin()) {
-            return true;
-        }
-    }
-
     /**
      *  Determina se o utilizador pode ver
      *  todos os pedidos da plataforma
@@ -49,5 +42,10 @@ class RequestPolicy
     public function delete(User $user, Request $request)
     {
         return $request->owner_id == $user->id || $user->isAdmin();
+    }
+
+    public function evaluate(User $user, Request $request)
+    {
+        return $request->owner_id == $user->id;
     }
 }
