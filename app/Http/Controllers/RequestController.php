@@ -86,6 +86,7 @@ class RequestController extends Controller
      */
     public function show(RequestModel $request)
     {
+        $this->authorize('show', $request);
         return view(
             'requests.show',
             compact('request')
@@ -94,6 +95,7 @@ class RequestController extends Controller
 
     public function edit(RequestModel $request)
     {
+        $this->authorize('update', $request);
         return view('requests.edit', compact('request'));
     }
 
@@ -104,10 +106,8 @@ class RequestController extends Controller
      */
     public function update(PedidoPutRequest $requestValidator, RequestModel $request)
     {
+        $this->authorize('update', $request);
         $request->fill($requestValidator->all());
-        
-        //dd('add');
-        //dd($requestValidator->file->store('public/files'));
 
         if ($requestValidator->hasFile('file')) {
             $request->file = $requestValidator->file->store('public/files');
@@ -127,6 +127,8 @@ class RequestController extends Controller
      */
     public function destroy(RequestModel $request)
     {
+        $this->authorize('delete', $request);
+
         if ($request->status == 2) {
             return back()->with('warning', 'Não é possível remover pedidos concluidos!');
         }
@@ -144,7 +146,7 @@ class RequestController extends Controller
     public function evaluate(RequestModel $request)
     {
         $this->authorize('evaluate', $request);
-        
+
         $this->validate(request(),
             ['satisfaction_grade' => 'required|digits_between:1,3']
         );
@@ -164,6 +166,8 @@ class RequestController extends Controller
      */
     public function report(RequestModel $request)
     {
+        $this->authorize('show', $request);
+
         $pdf = PDF::loadView('requests.report', compact('request'));
         return $pdf->download('invoice.pdf');
     }

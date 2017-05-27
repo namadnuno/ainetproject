@@ -9,6 +9,15 @@ use Illuminate\Support\Facades\File;
 
 class FileController extends Controller
 {
+
+    /**
+     * FileController constructor.
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Vai buscar o ficheiro e dá uma representação do mesmo
      * @param  RequestModel $request
@@ -16,9 +25,8 @@ class FileController extends Controller
      */
     public function getFile(RequestModel $request)
     {
+        $this->authorize('download', $request);
         $path = storage_path('app/print-jobs/' . $request->owner_id . '/' . $request->file);
-
-        //dd($path);
 
         if (!File::exists($path)) {
             abort(404);
@@ -37,6 +45,7 @@ class FileController extends Controller
      */
     public function downloadFile(RequestModel $request)
     {
+        $this->authorize('download', $request);
         $path = storage_path('app/print-jobs/' . $request->owner_id . '/' . $request->file);
 
         if (!File::exists($path)) {

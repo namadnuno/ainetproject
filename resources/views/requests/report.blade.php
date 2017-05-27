@@ -74,7 +74,6 @@
                 @endif
             </td>
         </tr>
-
         </tbody>
     </table>
     <ul>
