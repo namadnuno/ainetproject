@@ -39,4 +39,9 @@ class HomeController extends Controller
         return view('home', compact('requestsNumber', 'coloredRequests', 'blackAndWhiteRequests',
             'departments', 'todayRequests', 'mouthRequests', 'averagePerMouth'));
     }
+
+    public function blocked()
+    {
+        return view('blocked');
+    }
 }

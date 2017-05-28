@@ -11,7 +11,11 @@
 |
 */
 
+use App\Http\Middleware\BlockedUser;
+
 Route::get('/', 'HomeController@index')->name('home');
+
+Route::get('/blocked', 'HomeController@blocked')->name('blocked');
 
 Route::get('/departments', ['as' => 'departmentsAsGuest', 'uses' => 'DepartmentController@indexAsGuest']);
 
@@ -26,7 +30,7 @@ Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 Route::get('/request-file/{request}', 'FileController@getFile')->name('getFile');
 Route::get('/request-file/{request}/download', 'FileController@downloadFile')->name('downloadFile');
 
-Route::group(['middleware' => 'auth', 'prefix' => 'dashboard'], function () {
+Route::group(['middleware' => ['auth', 'user.blocked'], 'prefix' => 'dashboard'], function () {
     Route::get('/perfil', 'PerfilController@index')->name('perfil.index');
     Route::get('/perfil/edit', 'PerfilController@edit')->name('perfil.edit');
     Route::post('/perfil/create', 'PerfilController@storeAsAdmin')->name('perfil.storeAsAdmin');
