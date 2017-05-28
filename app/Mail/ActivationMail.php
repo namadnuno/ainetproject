@@ -16,7 +16,7 @@ class ActivationMail extends Mailable
      * @var User
      */
     public $user;
-    
+
     /**
      * Create a new message instance.
      *

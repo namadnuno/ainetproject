@@ -23,7 +23,7 @@ class ActivationController extends Controller
 
         $user = User::where('remember_token', request('token'))->first();
 
-        if(!$user->can('activation', $user)) {
+        if(!$user->can('activation', $user) || !$user) {
             abort(404);
         }
 
