@@ -27,13 +27,24 @@ Route::get('/login', 'Auth\LoginController@index')->name('login');
 
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
-Route::get('/request-file/{request}', 'FileController@getFile')->name('getFile');
-Route::get('/request-file/{request}/download', 'FileController@downloadFile')->name('downloadFile');
+Route::post('/activate', 'ActivationController@activate')->name('activate');
 
-Route::group(['middleware' => ['auth', 'user.blocked'], 'prefix' => 'dashboard'], function () {
+Route::get('/not-activated/{token?}', 'ActivationController@notActivated')->name('not-activated');
+
+Route::get('/send-activation', 'ActivationController@send')->name('activate.send');
+
+Route::group(['middleware' => ['auth', 'user.blocked', 'user.ativated'], 'prefix' => 'dashboard'], function () {
+
+    Route::get('/request-file/{request}', 'FileController@getFile')->name('getFile');
+
+    Route::get('/request-file/{request}/download', 'FileController@downloadFile')->name('downloadFile');
+
     Route::get('/perfil', 'PerfilController@index')->name('perfil.index');
+
     Route::get('/perfil/edit', 'PerfilController@edit')->name('perfil.edit');
+
     Route::post('/perfil/create', 'PerfilController@storeAsAdmin')->name('perfil.storeAsAdmin');
+
     Route::put('/perfil', 'PerfilController@update')->name('perfil.update');
     
     Route::resource('requests', 'RequestController');

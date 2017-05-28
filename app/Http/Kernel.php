@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\AtivatedUser;
 use App\Http\Middleware\BlockedUser;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
@@ -57,6 +58,7 @@ class Kernel extends HttpKernel
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-        'user.blocked' => BlockedUser::class
+        'user.blocked' => BlockedUser::class,
+        'user.ativated' => AtivatedUser::class
     ];
 }

@@ -8,7 +8,7 @@ class DashboardController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['auth', 'user.blocked']);
+        $this->middleware(['auth', 'user.blocked', 'user.ativated']);
     }
 
     /**

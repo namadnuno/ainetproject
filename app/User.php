@@ -57,18 +57,40 @@ class User extends Authenticatable
         return $query->where('name', 'LIKE', '%' . $filter . '%');
     }
 
+    /**
+     * Scope para ver se o user está ativado
+     * @param $query
+     * @return mixed
+     */
     public function scopeActive($query)
     {
         return $query->where('blocked', '0');
     }
 
+    /**
+     * Determina se o user é admin
+     * @return bool
+     */
     public function isAdmin()
     {
         return $this->admin == 1;
     }
 
+    /**
+     * Determina se o user está bloqueado
+     * @return bool
+     */
     public function isBlocked()
     {
         return $this->blocked == 1;
+    }
+
+    /**
+     * Determina se o user está ativado
+     * @return bool
+     */
+    public function isActivated()
+    {
+        return $this->activated == 1;
     }
 }
