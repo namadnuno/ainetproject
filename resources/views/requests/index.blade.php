@@ -9,6 +9,7 @@
         'quantity' => 'Quantidade',
         'paper_size' => 'Tamanho de Papel',
         'status' => 'Estado',
+        'owner_id' => 'Nome de Funcionário'
         ],
         'newRoute' =>
         'requests.create'
