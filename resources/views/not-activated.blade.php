@@ -8,23 +8,22 @@
             <div class="is-top-medium">
                 <a href="{{ route('activate.send') }}" class="button is-info is-large">Reenviar Email</a>
             </div>
-            @if($token)
-                <div class="is-top-medium">
-                    <form action="{{ route('activate') }}" method="post">
-                        {{ csrf_field() }}
-                        <div class="field has-addons is-centered has-text-centered" style="justify-content: center">
-                            <p class="control">
-                                <input class="input" name="token" type="text" placeholder="Token" value="{{ $token }}">
-                            </p>
-                            <p class="control">
-                                <button type="submit" class="button is-info">
-                                    Ativar
-                                </button>
-                            </p>
-                        </div>
-                    </form>
-                </div>
-            @endif
+            <div class="is-top-medium">
+                <form action="{{ route('activate') }}" method="post">
+                    {{ csrf_field() }}
+                    <div class="field has-addons is-centered has-text-centered" style="justify-content: center">
+                        <p class="control">
+                            <input class="input" name="token" type="text" placeholder="Token" value="{{ $token }}">
+                        </p>
+                        <p class="control">
+                            <button type="submit" class="button is-info">
+                                Ativar
+                            </button>
+                        </p>
+                    </div>
+                </form>
+            </div>
+
         </section>
     </div>
 @stop

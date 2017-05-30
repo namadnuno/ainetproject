@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Mail\UserRegister;
 use App\User;
 use Carbon\Carbon;
-use Mail;
+use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -54,7 +55,7 @@ class RegisterController extends Controller
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
             'password_confirmation' => 'required|same:password',
-            'department_id' => 'required|integer|exists:departaments,id',
+            'department_id' => 'required|integer|exists:departments,id',
             'phone' => 'required|integer',
         ]);
     }
@@ -67,7 +68,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
@@ -80,5 +81,20 @@ class RegisterController extends Controller
             'created_at' => Carbon::now(),
             'updated_at' =>Carbon::now(),
         ]);
+
+        $user->remember_token = str_random(10);
+
+        $user->save();
+
+        Mail::to($user)->send(new UserRegister($user));
+
+        return $user;
+    }
+
+
+    public function form()
+    {
+        $user = new User;
+        return view('auth.register', compact('user'));
     }
 }

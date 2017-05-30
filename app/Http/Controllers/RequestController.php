@@ -60,7 +60,11 @@ class RequestController extends Controller
         $pedido = new RequestModel();
 
         $pedido = $pedido->fill($request->all());
-    
+
+        if(request('due_date')) {
+            $pedido->due_date = carbon(request('due_date'))->toDateString();
+        }
+
         $pedido->status = 1;
 
         $pedido->owner_id = auth()->user()->id;
@@ -107,10 +111,17 @@ class RequestController extends Controller
     public function update(PedidoPutRequest $requestValidator, RequestModel $request)
     {
         $this->authorize('update', $request);
+
         $request->fill($requestValidator->all());
 
+        if(request('due_date')) {
+            $request->due_date = carbon(request('due_date'))->toDateString();
+        }
+
         if ($requestValidator->hasFile('file')) {
-            $request->file = $requestValidator->file->store('public/files');
+            $filename = Uuid::uuid1()->toString() . '.' . $requestValidator->file->extension();
+            $requestValidator->file->storeAs('/print-jobs/' . $request->owner_id, $filename);
+            $request->file = $filename;
         }
 
         $request->save();

@@ -17,6 +17,7 @@ Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/blocked', 'HomeController@blocked')->name('blocked');
 
+
 Route::get('/departments', ['as' => 'departmentsAsGuest', 'uses' => 'DepartmentController@indexAsGuest']);
 
 Route::get('/departments/{department}', 'DepartmentController@show')->name('departments.show');
@@ -83,11 +84,15 @@ Route::group(['middleware' => ['auth', 'user.blocked', 'user.ativated'], 'prefix
     Route::put('/users/change', 'UserController@change')->name('user.change');
     
     Route::put('/comments/change', 'CommentController@change')->name('comments.change');
+
+    Route::get('/notifications', 'NotificationController@index')->name('notifications');
 });
 
 Route::resource('comments', 'CommentController', ['except' => [
     'create'
 ]]);
 
-
 Auth::routes();
+
+Route::get('/register', 'Auth\RegisterController@form')->name('register');
+

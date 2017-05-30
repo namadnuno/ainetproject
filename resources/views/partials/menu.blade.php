@@ -38,6 +38,20 @@
                       Novo Pedido
                     </a>
                 </span>
+                @can('notifications', auth()->user())
+                    <a href="{{ route('notifications') }}" class="nav-item is-tab">
+                        <div class="icon is-small">
+                            <i class="fa fa-bell"></i>
+                            @if(expiredStatus() == 1)
+                                <span class="tag is-danger is-small is-notification"></span>
+                            @elseif(expiredStatus() == 0)
+                                <span class="tag is-warning is-small is-notification"></span>
+                            @else
+                                <span class="tag is-info is-small is-notification"></span>
+                            @endif
+                        </div>
+                    </a>
+                @endcan
                 <auth-menu :user="{{ auth()->user() }}"
                            thumb="{{ auth()->user()->profile_photo ? asset('storage/profiles/' . auth()->user()->profile_photo) : asset('profile_photo/no_photo.jpg') }}">
                     <a class="button is-link is-small is-fullwidth" href="{{ route('dashboard') }}">

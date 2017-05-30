@@ -115,7 +115,7 @@ body {
     padding-bottom: 120px;
 }
 .is-bottom-small {
-    padding-bottom: 120px;
+    padding-bottom: 40px;
 }
 
 .button.is-primary {
@@ -148,4 +148,15 @@ img.is-circle {
 }
 .is-centered-marginally {
     margin: 0 auto;
+}
+
+.is-notification {
+    height: 5px;
+    width: 5px;
+    padding: 5px;
+    margin-bottom: 15px;
+}
+p.event-item {
+    padding: 10px 10px 10px 0;
+    border-bottom: 1px solid #f1f1f1;
 }
