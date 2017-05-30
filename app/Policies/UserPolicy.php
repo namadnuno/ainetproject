@@ -42,4 +42,14 @@ class UserPolicy
     {
         return !$userModel->isActivated();
     }
+
+    /**
+     * Determina se um utilizador pode ou não ver as notificações
+     * @param User $user
+     * @return bool
+     */
+    public function notifications(User $user, User $userModel)
+    {
+        return $user->isAdmin();
+    }
 }

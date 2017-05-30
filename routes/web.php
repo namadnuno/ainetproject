@@ -83,6 +83,8 @@ Route::group(['middleware' => ['auth', 'user.blocked', 'user.ativated'], 'prefix
     Route::put('/users/change', 'UserController@change')->name('user.change');
     
     Route::put('/comments/change', 'CommentController@change')->name('comments.change');
+
+    Route::get('/notifications', 'NotificationController@index')->name('notifications');
 });
 
 Route::resource('comments', 'CommentController', ['except' => [

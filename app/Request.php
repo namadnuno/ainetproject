@@ -28,6 +28,11 @@ class Request extends Model
         return $this->hasMany('App\Comment', 'request_id', 'id');
     }
 
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'owner_id');
+    }
+
     /**
      * Scope para fazer o filtro
      * @param \Illuminate\Database\Eloquent\Builder $query
@@ -110,6 +115,21 @@ class Request extends Model
          return $query
         ->where('created_at', '>=', $dataInicio->toDateTimeString())
         ->where('created_at', '<=', $dataFim->toDateTimeString());
+    }
+
+    public function scopePendente($query)
+    {
+        return $query->where('status', 1);
+    }
+
+    public function scopeExpirado($query)
+    {
+        return $query->where('due_date', '<=', carbon()->toDateString());
+    }
+
+    public function isExpired()
+    {
+        return carbon($this->due_date)->lt(carbon());
     }
 
     public function isRecusado()
