@@ -6,12 +6,27 @@
         <textarea class="textarea" placeholder="Descrição" name="description">{{ old('description', $request->description) }}</textarea>
     </p>
 </div>
-<div class="field">
-    <label for="due_date">Data do Pedido</label>
-    <p class="control">
-        <input type="date" class="input" name="due_date"
-               value="{{ old('due_date' , \Carbon\Carbon::parse($request->due_date)->toDateString())  }}">
-    </p>
+<div class="columns">
+    <div class="column">
+        <div class="field">
+            <label for="due_date">Data do Finalização</label>
+            <p class="control">
+                <input type="date" class="input" name="due_date" value="{{ old('due_date', carbon($request->due_date)->format('Y-m-d')) }}">
+            <p class="help">Data prevista para entrega (opcional)</p>
+            </p>
+        </div>
+    </div>
+    <div class="column">
+        <label for="front_back">Frente e verso</label>
+        <p class="control">
+                <span class="select is-fullwidth">
+                    <select name="front_back" id="front_back" class="select">
+                        <option value="0" {{ old('front_back', $request->front_back) == "0" ? 'selected' : '' }}>Não</option>
+                        <option value="1" {{ old('front_back', $request->front_back) == "1" ? 'selected' : '' }}>Sim</option>
+                    </select>
+                </span>
+        </p>
+    </div>
 </div>
 <div class="columns">
     <div class="column">

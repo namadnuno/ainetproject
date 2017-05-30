@@ -17,7 +17,7 @@ class Request extends Model
      */
     protected $fillable = [
         'description', 'due_date','quantity',
-        'colored', 'stapled', 'paper_size',
+        'colored', 'stapled', 'paper_size', 'front_back',
         'paper_type', 'file', 'satisfaction_grade'];
 
     /**
@@ -110,6 +110,13 @@ class Request extends Model
         ->where('created_at', '>=', Carbon::now()->endOfWeek()->toDateString());
     }
 
+    /**
+     * Scope para dar pedidos entre datas
+     * @param $query
+     * @param $dataInicio
+     * @param $dataFim
+     * @return mixed
+     */
     public function scopeBetween($query, $dataInicio, $dataFim)
     {
          return $query
@@ -117,21 +124,39 @@ class Request extends Model
         ->where('created_at', '<=', $dataFim->toDateTimeString());
     }
 
+    /**
+     * Scope para dar todos os pedidos pendentes
+     * @param $query
+     * @return mixed
+     */
     public function scopePendente($query)
     {
         return $query->where('status', 1);
     }
 
+    /**
+     * Scope para dar todos os pedidos expirados
+     * @param $query
+     * @return mixed
+     */
     public function scopeExpirado($query)
     {
         return $query->where('due_date', '<=', carbon()->toDateString());
     }
 
+    /**
+     * Verifica se um pedido está expirado
+     * @return mixed
+     */
     public function isExpired()
     {
         return carbon($this->due_date)->lt(carbon());
     }
 
+    /**
+     * Verifica se um pedido está recusado
+     * @return bool
+     */
     public function isRecusado()
     {
         return $this->status == '0';
