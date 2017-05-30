@@ -1,4 +1,4 @@
-@if(auth()->user()->isAdmin())
+@if(auth()->user()->isAdmin() && $request->status != 2)
     <div class="box">
         <div class="content">
             <div class="level">

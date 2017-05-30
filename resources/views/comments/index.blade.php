@@ -32,7 +32,7 @@ Comentários
 									<p>
 										<strong>{{ $comment->user->name }}</strong>
 										<br>
-										{{ $comment->comment }}
+										<div class="">{{ $comment->comment }}</div>
 										<br>
 										<small>{{ \Carbon\Carbon::parse($comment->created_at)->diffForHumans() }}</small>
 									</p>

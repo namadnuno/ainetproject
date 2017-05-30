@@ -22,7 +22,7 @@
 					</p>
 					@if($user->profile_url)
 						<p class="is-top-xsmall">
-							<a href="{{ $user->profile_url }}" class="has-text-lef">
+							<a target="_blank" href="{{ $user->profile_url }}" class="has-text-lef">
 										<span class="icon">
 											<i class="fa fa-link"></i>
 										</span>
