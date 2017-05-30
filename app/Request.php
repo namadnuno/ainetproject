@@ -150,6 +150,9 @@ class Request extends Model
      */
     public function isExpired()
     {
+        if(!$this->due_date) {
+            return false;
+        }
         return carbon($this->due_date)->lt(carbon());
     }
 

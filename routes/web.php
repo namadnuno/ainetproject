@@ -17,6 +17,7 @@ Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/blocked', 'HomeController@blocked')->name('blocked');
 
+
 Route::get('/departments', ['as' => 'departmentsAsGuest', 'uses' => 'DepartmentController@indexAsGuest']);
 
 Route::get('/departments/{department}', 'DepartmentController@show')->name('departments.show');
@@ -91,5 +92,7 @@ Route::resource('comments', 'CommentController', ['except' => [
     'create'
 ]]);
 
-
 Auth::routes();
+
+Route::get('/register', 'Auth\RegisterController@form')->name('register');
+

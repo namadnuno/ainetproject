@@ -33,12 +33,16 @@
             <p class="event-item">
                 <span class="icon-item-type"><i class="fa fa-print"></i></span>
                 <a href="{{ route('users.show', $request->user) }}">{{ $request->user->name}}</a>
-                @if($request->isExpired())
-                    o <a href="{{ route('requests.show', $request) }}">pedido</a> expirou a
+                @if($request->due_date)
+                    @if($request->isExpired())
+                        fez um <a href="{{ route('requests.show', $request) }}">pedido</a> expirou a
+                    @else
+                        fez um <a href="{{ route('requests.show', $request) }}">pedido</a> expira daqui a
+                    @endif
+                    <small class="{{ $request->isExpired() ? 'tag is-danger' : '' }}">{{ carbon($request->due_date)->diffForHumans() }}</small>
                 @else
-                    o <a href="{{ route('requests.show', $request) }}">pedido</a> expira daqui a
+                    fez um <a href="{{ route('requests.show', $request) }}">pedido</a>
                 @endif
-                <small class="{{ $request->isExpired() ? 'tag is-danger' : '' }}">{{ carbon($request->due_date)->diffForHumans() }}</small>
                 @if(!request('department'))
                     , <a href="{{ route('departments.show', $request->user->departament) }}">{{ $request->user->departament->name }}</a>
                 @endif
