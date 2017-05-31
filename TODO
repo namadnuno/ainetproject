@@ -12,6 +12,7 @@
 	ao criar mostrar um campo se e impresso em frente e verso, ou se e em paginas unicas <<<<------------
 	ao recusar um pedido, nao ha botao para voltar a sua ediacao de pedido	
 	concertar helper para aparecer o icone correto
+	filtros: falta o filtro de ordenar por departamento
 
 	################# PEDIDOS / COMENTARIOS
 		se for administrador, pode desativar comentarios ou respostas a comentarios
