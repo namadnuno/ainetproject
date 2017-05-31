@@ -53,6 +53,12 @@ class UserPolicy
         return $user->isAdmin();
     }
 
+    /**
+     * Determina se um utilizador pode mudar o tipo de conta do outro utilizador
+     * @param User $user
+     * @param User $userModel
+     * @return bool
+     */
     public function changeTipoConta(User $user, User $userModel)
     {
         return $user->isAdmin() && $user->id != $userModel->id;

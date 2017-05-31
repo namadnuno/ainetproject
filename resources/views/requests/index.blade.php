@@ -19,6 +19,11 @@
         @foreach ($requests as $request)
             <div class="column is-one-quarter">
                 <div class="card">
+                    <header class="card-header">
+                        <div class="card-header-title" >
+                            <a href="{{ route('users.show', $request->user) }}">{{ $request->user->name }}</a>
+                        </div>
+                    </header>
                     <div class="card-image">
                         <figure class="image is-square">
                             @if(isImage($request))
@@ -30,6 +35,9 @@
                     </div>
                     <div class="card-content">
                         <div class="content">
+                            <div class="is-bottom-xsmall">
+                                <b>Departamento: </b><a href="{{ route('departments.show', $request->user->departament ) }}" >{{ $request->user->departament->name}}</a>
+                            </div>
                             <div class="columns">
                                 <div class="column is-one-third">
                                 <span class="tag is-{{ $request->colored == 1 ? 'primary' : 'dark'}}">
