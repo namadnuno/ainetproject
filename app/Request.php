@@ -28,9 +28,22 @@ class Request extends Model
         return $this->hasMany('App\Comment', 'request_id', 'id');
     }
 
+    /**
+     * Relação com utilizador
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function user()
     {
         return $this->belongsTo(User::class, 'owner_id');
+    }
+
+    /**
+     * Relação com impresoras
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function printer()
+    {
+        return $this->belongsTo(Printer::class, 'printer_id');
     }
 
     /**
@@ -163,5 +176,14 @@ class Request extends Model
     public function isRecusado()
     {
         return $this->status == '0';
+    }
+
+    /**
+     * Verifica se o pedido está completo
+     * @return bool
+     */
+    public function isDone()
+    {
+        return $this->status == 2;
     }
 }

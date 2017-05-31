@@ -100,7 +100,9 @@
                                 <a href="{{ route('requests.edit', $request->id) }}" class="card-footer-item">Editar</a>
                             @endcan
                             @can('delete', $request)
-                                <remover-pedido route="{{ route('requests.destroy', $request) }}" token="{{ csrf_token() }}" ></remover-pedido>
+                                <remover-objeto route="{{ route('requests.destroy', $request) }}" token="{{ csrf_token() }}" >
+                                    Tem a certeza que quer remover o pedido ?
+                                </remover-objeto>
                             @endcan
                         @else
                             @if($request->satisfaction_grade)

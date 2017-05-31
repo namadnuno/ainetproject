@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 232);
+/******/ 	return __webpack_require__(__webpack_require__.s = 229);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -69958,12 +69958,12 @@ module.exports = Vue$3;
 /* 213 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(221);
+__webpack_require__(220);
 
 $('.parallax-window').parallax();
 
 Vue.component('auth-menu', __webpack_require__(202));
-Vue.component('department-requests-types', __webpack_require__(225));
+Vue.component('department-requests-types', __webpack_require__(223));
 Vue.component('user-requests-types', __webpack_require__(203));
 Vue.component('user-week-status', __webpack_require__(204));
 
@@ -69980,8 +69980,7 @@ var contentApp = new Vue({
 /* 215 */,
 /* 216 */,
 /* 217 */,
-/* 218 */,
-/* 219 */
+/* 218 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -70042,8 +70041,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 220 */,
-/* 221 */
+/* 219 */,
+/* 220 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -70060,17 +70059,16 @@ window.axios = __webpack_require__(128);
 window.Vue = __webpack_require__(211);
 
 /***/ }),
+/* 221 */,
 /* 222 */,
-/* 223 */,
-/* 224 */,
-/* 225 */
+/* 223 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(2)(
   /* script */
-  __webpack_require__(219),
+  __webpack_require__(218),
   /* template */
-  __webpack_require__(228),
+  __webpack_require__(225),
   /* scopeId */
   null,
   /* cssModules */
@@ -70097,9 +70095,8 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 226 */,
-/* 227 */,
-/* 228 */
+/* 224 */,
+/* 225 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -70130,10 +70127,10 @@ if (false) {
 }
 
 /***/ }),
-/* 229 */,
-/* 230 */,
-/* 231 */,
-/* 232 */
+/* 226 */,
+/* 227 */,
+/* 228 */,
+/* 229 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(213);

@@ -11,7 +11,7 @@
 					<button class="delete" @click='close'></button>
 				</header>
 				<section class="modal-card-body">
-					Tem a certeza que quer remover o pedido ?
+					<slot></slot>
 				</section>
 				<footer class="modal-card-foot has-text-right">
 					<form :action="route" method="post">

@@ -12,7 +12,6 @@
             'printers.create'
         ])
     <div class="columns  is-multiline">
-    {{ $printers->count() }}
         @foreach ($printers as $printer)
             <div class="column is-one-quarter">
                 <div class="card">
@@ -23,7 +22,10 @@
                     </div>
                     <footer class="card-footer">
                         <a href="{{ route('printers.edit', $printer) }}" class="card-footer-item">Editar</a>
-                        <a href="{{ route('printers.destroy', $printer) }}" class="card-footer-item">Remover</a>
+                        <remover-objeto route="{{ route('printers.destroy', $printer) }}"
+                                        token="{{ csrf_token() }}" >
+                            Tem a certeza que quer remover a impressora <b>{{ $printer->name }}</b> ?
+                        </remover-objeto>
                     </footer>
                 </div>
             </div>

@@ -84,6 +84,11 @@
 					<p>
 						{{ $request->description }}
 					</p>
+					@if($request->isDone())
+						<p>
+							<b>Impressora: </b> {{ $request->printer->name }}
+						</p>
+					@endif
 					<p>
 						<span class="tag {{ $request->colored == 1 ? 'is-primary' : 'is-dark' }}">
 							<span class="icon is-small">

@@ -14,7 +14,7 @@ class PrinterController extends Controller
      */
     public function index()
     {
-        $printers = Printer::ofType(request('filter'))
+        $printers = Printer::search(request('filter'))
         ->orderBy(
             request('orderby') ? request('orderby') : 'created_at',
             request('order') ? request('order') : 'DESC'
@@ -67,5 +67,19 @@ class PrinterController extends Controller
         $printer->update($request->all());
 
         return  redirect()->route('printers.index')->with('success', 'Impressora editada com sucesso');
+    }
+
+    /**
+     * Remove uma dada impressora
+     * @param Printer $printer
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function destroy(Printer $printer)
+    {
+        if ($printer->requests()->count() > 0) {
+            return back()->with('error', 'Impossível remover impressora pois tem pedidos associados!');
+        }
+
+        return back()->with('success', 'Impressora removida com sucesso!');
     }
 }

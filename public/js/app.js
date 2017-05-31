@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 231);
+/******/ 	return __webpack_require__(__webpack_require__.s = 228);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -69964,7 +69964,7 @@ module.exports = Vue$3;
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-__webpack_require__(220);
+__webpack_require__(219);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -69973,9 +69973,9 @@ __webpack_require__(220);
  */
 
 //Vue.component('example', require('./components/Example.vue'));
-Vue.component('chart-mouth-prints', __webpack_require__(224));
-Vue.component('remover-pedido', __webpack_require__(223));
-Vue.component('evaluate-pedido', __webpack_require__(222));
+Vue.component('chart-mouth-prints', __webpack_require__(222));
+Vue.component('remover-objeto', __webpack_require__(238));
+Vue.component('evaluate-pedido', __webpack_require__(221));
 Vue.component('auth-menu', __webpack_require__(202));
 Vue.component('user-requests-types', __webpack_require__(203));
 Vue.component('user-week-status', __webpack_require__(204));
@@ -70065,62 +70065,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-	props: ['route', 'token'],
-	data: function data() {
-		return {
-			isActive: false
-		};
-	},
-
-	methods: {
-		open: function open() {
-			this.isActive = true;
-		},
-		close: function close() {
-			this.isActive = false;
-		}
-	}
-});
-
-/***/ }),
-/* 218 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_chart_js__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_chart_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_chart_js__);
 //
@@ -70183,8 +70127,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 219 */,
-/* 220 */
+/* 218 */,
+/* 219 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -70239,15 +70183,15 @@ window.axios.defaults.headers.common['Accept'] = 'application/json';
 __webpack_require__(198);
 
 /***/ }),
-/* 221 */,
-/* 222 */
+/* 220 */,
+/* 221 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(2)(
   /* script */
   __webpack_require__(216),
   /* template */
-  __webpack_require__(229),
+  __webpack_require__(226),
   /* scopeId */
   null,
   /* cssModules */
@@ -70274,48 +70218,14 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 223 */
+/* 222 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(2)(
   /* script */
   __webpack_require__(217),
   /* template */
-  __webpack_require__(226),
-  /* scopeId */
-  null,
-  /* cssModules */
-  null
-)
-Component.options.__file = "D:\\Projetos\\ainetproject\\resources\\assets\\js\\components\\RemoverPedido.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] RemoverPedido.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-37b3f4ab", Component.options)
-  } else {
-    hotAPI.reload("data-v-37b3f4ab", Component.options)
-  }
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 224 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var Component = __webpack_require__(2)(
-  /* script */
-  __webpack_require__(218),
-  /* template */
-  __webpack_require__(227),
+  __webpack_require__(224),
   /* scopeId */
   null,
   /* cssModules */
@@ -70342,81 +70252,8 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 225 */,
-/* 226 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "inline"
-  }, [_c('a', {
-    staticClass: "card-footer-item",
-    on: {
-      "click": _vm.open
-    }
-  }, [_vm._v("\n\t\tRemover\n\t")]), _vm._v(" "), _c('div', {
-    staticClass: "modal",
-    class: {
-      'is-active': _vm.isActive
-    }
-  }, [_c('div', {
-    staticClass: "modal-background"
-  }), _vm._v(" "), _c('div', {
-    staticClass: "modal-card"
-  }, [_c('header', {
-    staticClass: "modal-card-head"
-  }, [_c('p', {
-    staticClass: "modal-card-title"
-  }, [_vm._v("Certificação")]), _vm._v(" "), _c('button', {
-    staticClass: "delete",
-    on: {
-      "click": _vm.close
-    }
-  })]), _vm._v(" "), _c('section', {
-    staticClass: "modal-card-body"
-  }, [_vm._v("\n\t\t\t\tTem a certeza que quer remover o pedido ?\n\t\t\t")]), _vm._v(" "), _c('footer', {
-    staticClass: "modal-card-foot has-text-right"
-  }, [_c('form', {
-    attrs: {
-      "action": _vm.route,
-      "method": "post"
-    }
-  }, [_c('input', {
-    attrs: {
-      "type": "hidden",
-      "name": "_token"
-    },
-    domProps: {
-      "value": _vm.token
-    }
-  }), _vm._v(" "), _c('input', {
-    attrs: {
-      "type": "hidden",
-      "name": "_method",
-      "value": "DELETE"
-    }
-  }), _vm._v(" "), _c('a', {
-    staticClass: "button",
-    on: {
-      "click": function($event) {
-        if (!('button' in $event) && _vm._k($event.keyCode, "preventDefault")) { return null; }
-        _vm.close($event)
-      }
-    }
-  }, [_vm._v("\n\t\t\t\t\t\tCalcelar\n\t\t\t\t\t")]), _vm._v(" "), _c('button', {
-    staticClass: "button is-danger"
-  }, [_vm._v("\n\t\t\t\t\t\tSim\n\t\t\t\t\t")])])])])])])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-37b3f4ab", module.exports)
-  }
-}
-
-/***/ }),
-/* 227 */
+/* 223 */,
+/* 224 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -70447,8 +70284,8 @@ if (false) {
 }
 
 /***/ }),
-/* 228 */,
-/* 229 */
+/* 225 */,
+/* 226 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -70555,12 +70392,183 @@ if (false) {
 }
 
 /***/ }),
-/* 230 */,
-/* 231 */
+/* 227 */,
+/* 228 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(212);
 
+
+/***/ }),
+/* 229 */,
+/* 230 */,
+/* 231 */,
+/* 232 */,
+/* 233 */,
+/* 234 */,
+/* 235 */,
+/* 236 */,
+/* 237 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+	props: ['route', 'token'],
+	data: function data() {
+		return {
+			isActive: false
+		};
+	},
+
+	methods: {
+		open: function open() {
+			this.isActive = true;
+		},
+		close: function close() {
+			this.isActive = false;
+		}
+	}
+});
+
+/***/ }),
+/* 238 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(2)(
+  /* script */
+  __webpack_require__(237),
+  /* template */
+  __webpack_require__(239),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "D:\\Projetos\\ainetproject\\resources\\assets\\js\\components\\RemoverObjeto.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] RemoverObjeto.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-3d98e0af", Component.options)
+  } else {
+    hotAPI.reload("data-v-3d98e0af", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 239 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "inline"
+  }, [_c('a', {
+    staticClass: "card-footer-item",
+    on: {
+      "click": _vm.open
+    }
+  }, [_vm._v("\n\t\tRemover\n\t")]), _vm._v(" "), _c('div', {
+    staticClass: "modal",
+    class: {
+      'is-active': _vm.isActive
+    }
+  }, [_c('div', {
+    staticClass: "modal-background"
+  }), _vm._v(" "), _c('div', {
+    staticClass: "modal-card"
+  }, [_c('header', {
+    staticClass: "modal-card-head"
+  }, [_c('p', {
+    staticClass: "modal-card-title"
+  }, [_vm._v("Certificação")]), _vm._v(" "), _c('button', {
+    staticClass: "delete",
+    on: {
+      "click": _vm.close
+    }
+  })]), _vm._v(" "), _c('section', {
+    staticClass: "modal-card-body"
+  }, [_vm._t("default")], 2), _vm._v(" "), _c('footer', {
+    staticClass: "modal-card-foot has-text-right"
+  }, [_c('form', {
+    attrs: {
+      "action": _vm.route,
+      "method": "post"
+    }
+  }, [_c('input', {
+    attrs: {
+      "type": "hidden",
+      "name": "_token"
+    },
+    domProps: {
+      "value": _vm.token
+    }
+  }), _vm._v(" "), _c('input', {
+    attrs: {
+      "type": "hidden",
+      "name": "_method",
+      "value": "DELETE"
+    }
+  }), _vm._v(" "), _c('a', {
+    staticClass: "button",
+    on: {
+      "click": function($event) {
+        if (!('button' in $event) && _vm._k($event.keyCode, "preventDefault")) { return null; }
+        _vm.close($event)
+      }
+    }
+  }, [_vm._v("\n\t\t\t\t\t\tCalcelar\n\t\t\t\t\t")]), _vm._v(" "), _c('button', {
+    staticClass: "button is-danger"
+  }, [_vm._v("\n\t\t\t\t\t\tSim\n\t\t\t\t\t")])])])])])])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-3d98e0af", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

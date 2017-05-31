@@ -18,8 +18,22 @@ class Printer extends Model
      */
     protected $fillable = ['name', 'create_at', 'update_at'];
 
-    public function request()
+    /**
+     * Relação com os pedidos
+     */
+    public function requests()
     {
-        $this->belongsToMany(Request::class);
+        return $this->hasMany(Request::class, 'printer_id');
+    }
+
+    /**
+     * Scope para que a impressora possa ser filtrada
+     * @param $query
+     * @param $filter
+     * @return mixed
+     */
+    public function scopeSearch($query, $filter)
+    {
+        return $query->where('name', 'LIKE' , "%$filter%");
     }
 }
