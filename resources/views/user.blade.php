@@ -45,14 +45,28 @@
 					</p>
 					@can('block', $user)
 						<div class="is-top-small">
-							<form action="{{ route('user.change') }}" method="post" class="is-fullwidth">
-								{{ csrf_field() }}
-								{{ method_field('PUT') }}
-								<input type="hidden" value="{{ $user->id }}" name="user_id">
-								<button class="level-item button is-fullwidth {{ $user->blocked == 1 ? 'is-success' : 'is-danger' }}" type="submit">
-									{{ $user->blocked == 1 ? 'Desbloquear' : 'Bloquear' }}
-								</button>
-							</form>
+							<div class="columns">
+								<div class="column">
+									<form action="{{ route('user.change') }}" method="post" class="is-fullwidth">
+										{{ csrf_field() }}
+										{{ method_field('PUT') }}
+										<input type="hidden" value="{{ $user->id }}" name="user_id">
+										<button class="level-item button is-fullwidth {{ $user->blocked == 1 ? 'is-success' : 'is-danger' }}" type="submit">
+											{{ $user->blocked == 1 ? 'Desbloquear' : 'Bloquear' }}
+										</button>
+									</form>
+								</div>
+								<div class="column">
+									<form action="{{ route('user.changeTipoConta') }}" method="post" class="is-fullwidth">
+										{{ csrf_field() }}
+										{{ method_field('PUT') }}
+										<input type="hidden" value="{{ $user->id }}" name="user_id">
+										<button class="level-item button is-fullwidth is-primary" type="submit">
+											{{ $user->admin == 1 ? 'Funcionário' : 'Administrador' }}
+										</button>
+									</form>
+								</div>
+							</div>
 						</div>
 					@endcan
 				</div>

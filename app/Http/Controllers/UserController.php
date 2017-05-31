@@ -88,6 +88,21 @@ class UserController extends Controller
         );
     }
 
+    public function changeTipoConta()
+    {
+        $user = User::find(request('user_id'));
+
+        $this->authorize('changeTipoConta', $user);
+
+        $user->admin = $user->admin == 1 ? 0 : 1;
+
+        $user->save();
+        return back()->with(
+            'success',
+            $user->admin == '1' ? 'Utilizador é agora Administrador' : 'Utilizador é agora Funcionário'
+        );
+    }
+
     /**
      * Remove the specified resource from storage.
      *

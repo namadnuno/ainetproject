@@ -82,6 +82,8 @@ Route::group(['middleware' => ['auth', 'user.blocked', 'user.ativated'], 'prefix
         'index', 'show', 'destroy', 'create']]);
 
     Route::put('/users/change', 'UserController@change')->name('user.change');
+
+    Route::put('/user/change-tipo-conta', 'UserController@changeTipoConta')->name('user.changeTipoConta');
     
     Route::put('/comments/change', 'CommentController@change')->name('comments.change');
 

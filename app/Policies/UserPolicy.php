@@ -52,4 +52,9 @@ class UserPolicy
     {
         return $user->isAdmin();
     }
+
+    public function changeTipoConta(User $user, User $userModel)
+    {
+        return $user->isAdmin() && $user->id != $userModel->id;
+    }
 }
