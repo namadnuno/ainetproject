@@ -84,7 +84,7 @@ class UserController extends Controller
         $user->save();
         return back()->with(
             'success',
-            $user->blocked == '1' ? 'Bloquado' : 'Desbloqueado'
+            $user->blocked == '1' ? 'Bloqueado' : 'Desbloqueado'
         );
     }
 
