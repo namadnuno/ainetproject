@@ -20,17 +20,11 @@
     <div class="nav-right nav-menu">
         <span class="nav-item">
             @if(auth()->guest())
-                <a href="{{ route('login') }}" class="button is-primary">
-               <span class="icon">
-                   <i class="fa fa-sign-in"></i>
-               </span>
-               <span>Login</span>
-           </a>
                 <a href="{{ route('register') }}" class="button is-primary">
-               <span class="icon">
-                   <i class="fa fa-user-plus"></i>
-               </span>
                <span>Registar</span>
+           </a>
+                <a href="{{ route('login') }}" class="button">
+               <span>Login</span>
            </a>
             @else
                 <span class="nav-item">

@@ -23,4 +23,4 @@ Route::get('departments/{department}/colors/', 'Api\DepartmentController@depatem
 Route::get('users/{user}/colors', 'Api\UserController@colors');
 Route::get('users/{user}/requests', 'Api\UserController@requests');
 
-
+Route::get('printers/{printer}/requests', 'Api\PrinterController@requests');

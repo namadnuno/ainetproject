@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 228);
+/******/ 	return __webpack_require__(__webpack_require__.s = 234);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -4903,6 +4903,64 @@ module.exports = function normalizeComponent (
 /* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
+/**
+ * @namespace Chart
+ */
+var Chart = __webpack_require__(170)();
+
+__webpack_require__(168)(Chart);
+__webpack_require__(184)(Chart);
+__webpack_require__(164)(Chart);
+__webpack_require__(173)(Chart);
+__webpack_require__(167)(Chart);
+__webpack_require__(163)(Chart);
+__webpack_require__(165)(Chart);
+__webpack_require__(166)(Chart);
+__webpack_require__(171)(Chart);
+__webpack_require__(175)(Chart);
+__webpack_require__(176)(Chart);
+__webpack_require__(174)(Chart);
+__webpack_require__(177)(Chart);
+__webpack_require__(172)(Chart);
+__webpack_require__(169)(Chart);
+__webpack_require__(178)(Chart);
+
+__webpack_require__(179)(Chart);
+__webpack_require__(180)(Chart);
+__webpack_require__(181)(Chart);
+__webpack_require__(182)(Chart);
+
+__webpack_require__(187)(Chart);
+__webpack_require__(185)(Chart);
+__webpack_require__(186)(Chart);
+__webpack_require__(188)(Chart);
+__webpack_require__(189)(Chart);
+__webpack_require__(190)(Chart);
+
+// Controllers must be loaded after elements
+// See Chart.core.datasetController.dataElementType
+__webpack_require__(157)(Chart);
+__webpack_require__(158)(Chart);
+__webpack_require__(159)(Chart);
+__webpack_require__(160)(Chart);
+__webpack_require__(161)(Chart);
+__webpack_require__(162)(Chart);
+
+__webpack_require__(150)(Chart);
+__webpack_require__(151)(Chart);
+__webpack_require__(152)(Chart);
+__webpack_require__(153)(Chart);
+__webpack_require__(154)(Chart);
+__webpack_require__(155)(Chart);
+__webpack_require__(156)(Chart);
+
+window.Chart = module.exports = Chart;
+
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {
 
@@ -4999,64 +5057,6 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 module.exports = defaults;
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
-
-/***/ }),
-/* 4 */
-/***/ (function(module, exports, __webpack_require__) {
-
-/**
- * @namespace Chart
- */
-var Chart = __webpack_require__(170)();
-
-__webpack_require__(168)(Chart);
-__webpack_require__(184)(Chart);
-__webpack_require__(164)(Chart);
-__webpack_require__(173)(Chart);
-__webpack_require__(167)(Chart);
-__webpack_require__(163)(Chart);
-__webpack_require__(165)(Chart);
-__webpack_require__(166)(Chart);
-__webpack_require__(171)(Chart);
-__webpack_require__(175)(Chart);
-__webpack_require__(176)(Chart);
-__webpack_require__(174)(Chart);
-__webpack_require__(177)(Chart);
-__webpack_require__(172)(Chart);
-__webpack_require__(169)(Chart);
-__webpack_require__(178)(Chart);
-
-__webpack_require__(179)(Chart);
-__webpack_require__(180)(Chart);
-__webpack_require__(181)(Chart);
-__webpack_require__(182)(Chart);
-
-__webpack_require__(187)(Chart);
-__webpack_require__(185)(Chart);
-__webpack_require__(186)(Chart);
-__webpack_require__(188)(Chart);
-__webpack_require__(189)(Chart);
-__webpack_require__(190)(Chart);
-
-// Controllers must be loaded after elements
-// See Chart.core.datasetController.dataElementType
-__webpack_require__(157)(Chart);
-__webpack_require__(158)(Chart);
-__webpack_require__(159)(Chart);
-__webpack_require__(160)(Chart);
-__webpack_require__(161)(Chart);
-__webpack_require__(162)(Chart);
-
-__webpack_require__(150)(Chart);
-__webpack_require__(151)(Chart);
-__webpack_require__(152)(Chart);
-__webpack_require__(153)(Chart);
-__webpack_require__(154)(Chart);
-__webpack_require__(155)(Chart);
-__webpack_require__(156)(Chart);
-
-window.Chart = module.exports = Chart;
-
 
 /***/ }),
 /* 5 */
@@ -16660,7 +16660,7 @@ module.exports = __webpack_require__(129);
 var utils = __webpack_require__(1);
 var bind = __webpack_require__(10);
 var Axios = __webpack_require__(131);
-var defaults = __webpack_require__(3);
+var defaults = __webpack_require__(4);
 
 /**
  * Create an instance of Axios
@@ -16780,7 +16780,7 @@ module.exports = CancelToken;
 "use strict";
 
 
-var defaults = __webpack_require__(3);
+var defaults = __webpack_require__(4);
 var utils = __webpack_require__(1);
 var InterceptorManager = __webpack_require__(132);
 var dispatchRequest = __webpack_require__(133);
@@ -16934,7 +16934,7 @@ module.exports = InterceptorManager;
 var utils = __webpack_require__(1);
 var transformData = __webpack_require__(136);
 var isCancel = __webpack_require__(8);
-var defaults = __webpack_require__(3);
+var defaults = __webpack_require__(4);
 
 /**
  * Throws a `Cancel` if cancellation has been requested.
@@ -17526,7 +17526,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_chart_js__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_chart_js__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_chart_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_chart_js__);
 //
 //
@@ -17586,7 +17586,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_chart_js__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_chart_js__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_chart_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_chart_js__);
 //
 //
@@ -69964,7 +69964,7 @@ module.exports = Vue$3;
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-__webpack_require__(219);
+__webpack_require__(221);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -69973,12 +69973,14 @@ __webpack_require__(219);
  */
 
 //Vue.component('example', require('./components/Example.vue'));
-Vue.component('chart-mouth-prints', __webpack_require__(222));
-Vue.component('remover-objeto', __webpack_require__(238));
-Vue.component('evaluate-pedido', __webpack_require__(221));
+Vue.component('chart-mouth-prints', __webpack_require__(225));
+Vue.component('remover-objeto', __webpack_require__(224));
+Vue.component('evaluate-pedido', __webpack_require__(223));
 Vue.component('auth-menu', __webpack_require__(202));
 Vue.component('user-requests-types', __webpack_require__(203));
 Vue.component('user-week-status', __webpack_require__(204));
+Vue.component('printer-requests-types', __webpack_require__(226));
+
 var app = new Vue({
   el: '#app'
 });
@@ -70065,7 +70067,63 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_chart_js__ = __webpack_require__(4);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+	props: ['route', 'token'],
+	data: function data() {
+		return {
+			isActive: false
+		};
+	},
+
+	methods: {
+		open: function open() {
+			this.isActive = true;
+		},
+		close: function close() {
+			this.isActive = false;
+		}
+	}
+});
+
+/***/ }),
+/* 218 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_chart_js__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_chart_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_chart_js__);
 //
 //
@@ -70127,8 +70185,69 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 218 */,
 /* 219 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_chart_js__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_chart_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_chart_js__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['printer'],
+    data: function data() {
+        return {
+            data: [],
+            labels: []
+        };
+    },
+    mounted: function mounted() {
+        var _this = this;
+
+        console.log(this.printer.id);
+        axios.get(_api + '/api/printers/' + this.printer.id + '/requests').then(function (response) {
+            _this.createChart(response.data.data, response.data.labels);
+        }).catch(function (error) {
+            console.log(error);
+        });
+    },
+
+    methods: {
+        createChart: function createChart(data, labels) {
+            var ctx = document.getElementById("week-prints");
+            var myChart = new __WEBPACK_IMPORTED_MODULE_0_chart_js___default.a(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Cores',
+                        data: data,
+                        backgroundColor: ['#ff6384', '#2b2a31'],
+                        borderWidth: 1
+                    }]
+                }
+            });
+        }
+    }
+});
+
+/***/ }),
+/* 220 */,
+/* 221 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -70183,15 +70302,15 @@ window.axios.defaults.headers.common['Accept'] = 'application/json';
 __webpack_require__(198);
 
 /***/ }),
-/* 220 */,
-/* 221 */
+/* 222 */,
+/* 223 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(2)(
   /* script */
   __webpack_require__(216),
   /* template */
-  __webpack_require__(226),
+  __webpack_require__(232),
   /* scopeId */
   null,
   /* cssModules */
@@ -70218,14 +70337,48 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 222 */
+/* 224 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(2)(
   /* script */
   __webpack_require__(217),
   /* template */
-  __webpack_require__(224),
+  __webpack_require__(229),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "D:\\Projetos\\ainetproject\\resources\\assets\\js\\components\\RemoverObjeto.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] RemoverObjeto.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-3d98e0af", Component.options)
+  } else {
+    hotAPI.reload("data-v-3d98e0af", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 225 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(2)(
+  /* script */
+  __webpack_require__(218),
+  /* template */
+  __webpack_require__(230),
   /* scopeId */
   null,
   /* cssModules */
@@ -70252,8 +70405,146 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 223 */,
-/* 224 */
+/* 226 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(2)(
+  /* script */
+  __webpack_require__(219),
+  /* template */
+  __webpack_require__(228),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "D:\\Projetos\\ainetproject\\resources\\assets\\js\\components\\printerRequestsTypes.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] printerRequestsTypes.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-28f213d3", Component.options)
+  } else {
+    hotAPI.reload("data-v-28f213d3", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 227 */,
+/* 228 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _vm._m(0)
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "card"
+  }, [_c('div', {
+    staticClass: "card-header"
+  }, [_c('p', {
+    staticClass: "card-header-title"
+  }, [_vm._v("\n            Progresso\n        ")])]), _vm._v(" "), _c('div', {
+    staticClass: "card-content"
+  }, [_c('canvas', {
+    attrs: {
+      "id": "week-prints",
+      "width": "400",
+      "height": "200"
+    }
+  })])])
+}]}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-28f213d3", module.exports)
+  }
+}
+
+/***/ }),
+/* 229 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "inline"
+  }, [_c('a', {
+    staticClass: "card-footer-item",
+    on: {
+      "click": _vm.open
+    }
+  }, [_vm._v("\n\t\tRemover\n\t")]), _vm._v(" "), _c('div', {
+    staticClass: "modal",
+    class: {
+      'is-active': _vm.isActive
+    }
+  }, [_c('div', {
+    staticClass: "modal-background"
+  }), _vm._v(" "), _c('div', {
+    staticClass: "modal-card"
+  }, [_c('header', {
+    staticClass: "modal-card-head"
+  }, [_c('p', {
+    staticClass: "modal-card-title"
+  }, [_vm._v("Certificação")]), _vm._v(" "), _c('button', {
+    staticClass: "delete",
+    on: {
+      "click": _vm.close
+    }
+  })]), _vm._v(" "), _c('section', {
+    staticClass: "modal-card-body"
+  }, [_vm._t("default")], 2), _vm._v(" "), _c('footer', {
+    staticClass: "modal-card-foot has-text-right"
+  }, [_c('form', {
+    attrs: {
+      "action": _vm.route,
+      "method": "post"
+    }
+  }, [_c('input', {
+    attrs: {
+      "type": "hidden",
+      "name": "_token"
+    },
+    domProps: {
+      "value": _vm.token
+    }
+  }), _vm._v(" "), _c('input', {
+    attrs: {
+      "type": "hidden",
+      "name": "_method",
+      "value": "DELETE"
+    }
+  }), _vm._v(" "), _c('a', {
+    staticClass: "button",
+    on: {
+      "click": function($event) {
+        if (!('button' in $event) && _vm._k($event.keyCode, "preventDefault")) { return null; }
+        _vm.close($event)
+      }
+    }
+  }, [_vm._v("\n\t\t\t\t\t\tCalcelar\n\t\t\t\t\t")]), _vm._v(" "), _c('button', {
+    staticClass: "button is-danger"
+  }, [_vm._v("\n\t\t\t\t\t\tSim\n\t\t\t\t\t")])])])])])])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-3d98e0af", module.exports)
+  }
+}
+
+/***/ }),
+/* 230 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -70284,8 +70575,8 @@ if (false) {
 }
 
 /***/ }),
-/* 225 */,
-/* 226 */
+/* 231 */,
+/* 232 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -70392,183 +70683,12 @@ if (false) {
 }
 
 /***/ }),
-/* 227 */,
-/* 228 */
+/* 233 */,
+/* 234 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(212);
 
-
-/***/ }),
-/* 229 */,
-/* 230 */,
-/* 231 */,
-/* 232 */,
-/* 233 */,
-/* 234 */,
-/* 235 */,
-/* 236 */,
-/* 237 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-	props: ['route', 'token'],
-	data: function data() {
-		return {
-			isActive: false
-		};
-	},
-
-	methods: {
-		open: function open() {
-			this.isActive = true;
-		},
-		close: function close() {
-			this.isActive = false;
-		}
-	}
-});
-
-/***/ }),
-/* 238 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var Component = __webpack_require__(2)(
-  /* script */
-  __webpack_require__(237),
-  /* template */
-  __webpack_require__(239),
-  /* scopeId */
-  null,
-  /* cssModules */
-  null
-)
-Component.options.__file = "D:\\Projetos\\ainetproject\\resources\\assets\\js\\components\\RemoverObjeto.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] RemoverObjeto.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-3d98e0af", Component.options)
-  } else {
-    hotAPI.reload("data-v-3d98e0af", Component.options)
-  }
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 239 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "inline"
-  }, [_c('a', {
-    staticClass: "card-footer-item",
-    on: {
-      "click": _vm.open
-    }
-  }, [_vm._v("\n\t\tRemover\n\t")]), _vm._v(" "), _c('div', {
-    staticClass: "modal",
-    class: {
-      'is-active': _vm.isActive
-    }
-  }, [_c('div', {
-    staticClass: "modal-background"
-  }), _vm._v(" "), _c('div', {
-    staticClass: "modal-card"
-  }, [_c('header', {
-    staticClass: "modal-card-head"
-  }, [_c('p', {
-    staticClass: "modal-card-title"
-  }, [_vm._v("Certificação")]), _vm._v(" "), _c('button', {
-    staticClass: "delete",
-    on: {
-      "click": _vm.close
-    }
-  })]), _vm._v(" "), _c('section', {
-    staticClass: "modal-card-body"
-  }, [_vm._t("default")], 2), _vm._v(" "), _c('footer', {
-    staticClass: "modal-card-foot has-text-right"
-  }, [_c('form', {
-    attrs: {
-      "action": _vm.route,
-      "method": "post"
-    }
-  }, [_c('input', {
-    attrs: {
-      "type": "hidden",
-      "name": "_token"
-    },
-    domProps: {
-      "value": _vm.token
-    }
-  }), _vm._v(" "), _c('input', {
-    attrs: {
-      "type": "hidden",
-      "name": "_method",
-      "value": "DELETE"
-    }
-  }), _vm._v(" "), _c('a', {
-    staticClass: "button",
-    on: {
-      "click": function($event) {
-        if (!('button' in $event) && _vm._k($event.keyCode, "preventDefault")) { return null; }
-        _vm.close($event)
-      }
-    }
-  }, [_vm._v("\n\t\t\t\t\t\tCalcelar\n\t\t\t\t\t")]), _vm._v(" "), _c('button', {
-    staticClass: "button is-danger"
-  }, [_vm._v("\n\t\t\t\t\t\tSim\n\t\t\t\t\t")])])])])])])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-3d98e0af", module.exports)
-  }
-}
 
 /***/ })
 /******/ ]);

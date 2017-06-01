@@ -22,6 +22,8 @@ Vue.component('evaluate-pedido', require('./components/EvaluatePedido.vue'));
 Vue.component('auth-menu', require('./front/components/AuthMenu.vue'));
 Vue.component('user-requests-types', require('./front/components/userRequestsTypes.vue'));
 Vue.component('user-week-status', require('./front/components/userWeekStatus.vue'));
+Vue.component('printer-requests-types', require('./components/printerRequestsTypes.vue'));
+
 const app = new Vue({
     el: '#app'
 });

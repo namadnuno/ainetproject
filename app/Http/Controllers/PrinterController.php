@@ -8,6 +8,7 @@ use App\Printer;
 class PrinterController extends Controller
 {
     const NUM_PER_PAGE=20;
+
     /**
      * Página com todas as impressoras
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
@@ -54,6 +55,18 @@ class PrinterController extends Controller
         $printer->create($request->all());
 
         return redirect()->route('printers.index')->with('success', 'Impressora criada com sucesso');
+    }
+
+    /**
+     * Mostra view com a impressora
+     * @param Printer $printer
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function show(Printer $printer)
+    {
+        $requests = $printer->requests()->paginate(self::NUM_PER_PAGE);
+
+        return view('printers.show', compact('printer', 'requests'));
     }
 
     /**

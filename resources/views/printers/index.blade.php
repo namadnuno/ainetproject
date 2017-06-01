@@ -17,10 +17,11 @@
                 <div class="card">
                     <div class="card-content">
                         <div class="content has-text-centered">
-                            <h3 class="is-title ">{{ $printer->name }}</h3>
+                            </a><h3 class="is-title ">{{ $printer->name }}</h3>
                         </div>
                     </div>
                     <footer class="card-footer">
+                        <a href="{{ route('printers.show', $printer) }}" class="card-footer-item">Ver</a>
                         <a href="{{ route('printers.edit', $printer) }}" class="card-footer-item">Editar</a>
                         <remover-objeto route="{{ route('printers.destroy', $printer) }}"
                                         token="{{ csrf_token() }}" >
