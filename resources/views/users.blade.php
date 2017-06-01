@@ -13,7 +13,7 @@
 			'name' => 'Nome',
 			'email' => 'Email'
 			],
-			'newRoute' => 'users.create'
+			'newRoute' => ''
 			])
 			<div class="columns  is-multiline">
 				@foreach ($users as $user)
