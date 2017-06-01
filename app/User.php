@@ -52,9 +52,10 @@ class User extends Authenticatable
      * @param $filter
      * @return mixed
      */
-    public function scopeOfType($query, $filter)
+    public function scopeSearch($query, $filter)
     {
-        return $query->where('name', 'LIKE', '%' . $filter . '%');
+        return $query->where('name', 'LIKE', '%' . $filter . '%')
+                      ->orWhere('email', 'LIKE', '%' . $filter . '%' );
     }
 
     /**

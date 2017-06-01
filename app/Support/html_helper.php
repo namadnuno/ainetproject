@@ -12,8 +12,16 @@ function typeFile($request)
 {
     if (isImage($request)) {
         return "photo";
+    } elseif (File::extension($request->file) == "pdf") {
+        return "file-pdf-o";
+    } elseif (File::extension($request->file) == "xlsx") {
+        return "file-excel-o";
+    } elseif (File::extension($request->file) == "docx") {
+        return "file-word-o";
+    } elseif (File::extension($request->file) == "odt") {
+        return "file-text-o";
     }
-    return "file-pdf-o";
+    return "file";
 }
 
 /**
