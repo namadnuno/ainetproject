@@ -80,7 +80,7 @@
 				</div>
 				<div class="column is-2 followers has-text-centered">
 					<p class="stat-val">{{ $user->requests()->done()->count() }} / {{ $user->requests()->count() }}</p>
-					<p class="stat-key">Pedidos Concluidos</p>
+					<p class="stat-key">Pedidos Concluídos</p>
 				</div>
 				<div class="column is-2 following has-text-centered">
 					<p class="stat-val">{{ $user->requests()->done()->colored()->count() }} / {{ $user->requests()->colored()->count() }}</p>
