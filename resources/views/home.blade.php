@@ -26,7 +26,7 @@
                 <div>
                     <p class="title">
                         @if($requestsNumber != 0)
-                            {{ number_format($coloredRequests->count()/$requestsNumber * 100, 1) }} %
+                            {{ number_format($coloredRequests->count()/$requestsNumber * 100, 0) }} %
                         @else
                             {{ 0 }}
                         @endif
@@ -38,7 +38,7 @@
                 <div>
                     <p class="title">
                         @if($requestsNumber != 0)
-                            {{ number_format($blackAndWhiteRequests->count()/$requestsNumber * 100, 1) }} %
+                            {{ number_format($blackAndWhiteRequests->count()/$requestsNumber * 100, 0) }} %
                         @else
                             {{ 0 }}
                         @endif
