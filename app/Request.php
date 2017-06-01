@@ -10,6 +10,9 @@ class Request extends Model
     const RECUSADO = 0;
     const PENDENTE = 1;
     const CONCLUIDO = 2;
+
+    const COLORED = 1;
+    const NUNCOLORED = 0;
     /**
      * The attributes that are mass assignable.
      *
@@ -64,7 +67,7 @@ class Request extends Model
      */
     public function scopeDone($query)
     {
-        return $query->where('status', '2');
+        return $query->where('status', self::CONCLUIDO);
     }
 
     /**
@@ -74,7 +77,7 @@ class Request extends Model
      */
     public function scopeColored($query)
     {
-        return $query->where('colored', '1');
+        return $query->where('colored', self::COLORED);
     }
 
     /**
@@ -84,7 +87,7 @@ class Request extends Model
      */
     public function scopeBlackAndWhite($query)
     {
-        return $query->where('colored', '0');
+        return $query->where('colored', self::NUNCOLORED);
     }
 
     /**
@@ -144,7 +147,7 @@ class Request extends Model
      */
     public function scopePendente($query)
     {
-        return $query->where('status', 1);
+        return $query->where('status', self::PENDENTE);
     }
 
     /**
@@ -163,7 +166,7 @@ class Request extends Model
      */
     public function isExpired()
     {
-        if(!$this->due_date) {
+        if (!$this->due_date) {
             return false;
         }
         return carbon($this->due_date)->lt(carbon());
