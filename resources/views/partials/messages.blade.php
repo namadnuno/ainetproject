@@ -10,3 +10,8 @@
         {{ session()->get('error') }}
     </div>
 @endif
+@if (session('status'))
+    <div class="notification is-danger">
+        {{ session('status') }}
+    </div>
+@endif
