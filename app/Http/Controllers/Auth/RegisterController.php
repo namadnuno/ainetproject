@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Mail\UserRegister;
 use App\User;
 use Carbon\Carbon;
+use Dompdf\Exception;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
@@ -85,8 +86,12 @@ class RegisterController extends Controller
         $user->remember_token = str_random(10);
 
         $user->save();
-
-        Mail::to($user)->send(new UserRegister($user));
+        try {
+            Mail::to($user)->send(new UserRegister($user));
+        } catch (Exception $e) {
+            $user->delete();
+            return null;
+        }
 
         return $user;
     }
