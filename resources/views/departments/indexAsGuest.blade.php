@@ -33,10 +33,18 @@
                                     <span class="tag is-info">{{ $department->requests()->done()->count() }} Impressões</span>
                                 </div>
                                 <div class="column is-one-quarter">
-                                    <span class="tag is-dark">{{ $department->requests()->done()->blackAndWhite()->count() }} Impressões</span>
+                                    @if($department->requests()->done()->count() != 0)
+                                        <span class="tag is-dark">{{ $department->requests()->done()->blackAndWhite()->count()/$department->requests()->done()->count() * 100 }} % Preto & Branco</span>
+                                    @else
+                                        <span class="tag is-dark">{{ $department->requests()->done()->blackAndWhite()->count() }} % Preto & Branco</span>
+                                    @endif
                                 </div>
                                 <div class="column is-one-quarter">
-                                    <span class="tag is-success">{{ $department->requests()->done()->colored()->count() }} Impressões</span>
+                                    @if($department->requests()->done()->count() != 0)
+                                        <span class="tag is-success">{{ $department->requests()->done()->colored()->count()/$department->requests()->done()->count() * 100 }} % Cores</span>
+                                    @else
+                                        <span class="tag is-success">{{ $department->requests()->done()->colored()->count() }} % Cores</span>
+                                    @endif
                                 </div>
                                 <div class="column is-one-quarter">
                                     <span class="tag is-primary">{{ $department->users()->count() }} Funcionários</span>
