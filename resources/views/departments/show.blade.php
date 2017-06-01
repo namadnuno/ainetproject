@@ -5,7 +5,7 @@
     [
         'title' => 'Depatamento '. $department->name,
         'subtitle' => ''
-    ]);
+    ])
     <div class="container is-top-medium is-bottom-medium" id="content">
         <div class="columns">
             <div class="column is-6">
