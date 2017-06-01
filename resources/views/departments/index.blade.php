@@ -21,8 +21,12 @@
                         </div>
                     </div>
                     <footer class="card-footer">
+                        <a href="{{ route('departments.show', $department) }}" class="card-footer-item">Ver</a>
                         <a href="{{ route('departments.edit', $department) }}" class="card-footer-item">Editar</a>
-                        <a href="{{ route('departments.destroy', $department) }}" class="card-footer-item">Remover</a>
+                        <remover-objeto route="{{ route('departments.destroy', $department) }}"
+                                        token="{{ csrf_token() }}" >
+                            Tem a certeza que quer remover o departamento <b>{{ $department->name }}</b> ?
+                        </remover-objeto>
                     </footer>
                 </div>
             </div>

@@ -35,7 +35,7 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        $departments = auth()->user()->requests()->search(request('filter'))
+        $departments = Departament::search(request('filter'))
         ->orderBy(
             request('orderby') ? request('orderby') : 'created_at',
             request('order') ? request('order') : 'DESC'
