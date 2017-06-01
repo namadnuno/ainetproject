@@ -34,6 +34,8 @@ Route::get('/not-activated/{token?}', 'ActivationController@notActivated')->name
 
 Route::get('/send-activation', 'ActivationController@send')->name('activate.send');
 
+Route::get('/users/{user}', 'UserController@show')->name('users.show');
+
 Route::group(['middleware' => ['auth', 'user.blocked', 'user.ativated'], 'prefix' => 'dashboard'], function () {
 
     Route::get('/request-file/{request}', 'FileController@getFile')->name('getFile');
@@ -79,7 +81,7 @@ Route::group(['middleware' => ['auth', 'user.blocked', 'user.ativated'], 'prefix
             ->name('requests.admnistrate');
     
     Route::resource('users', 'UserController', ['only' => [
-        'index', 'show', 'destroy', 'create']]);
+        'index', 'destroy', 'create']]);
 
     Route::put('/users/change', 'UserController@change')->name('user.change');
 

@@ -1,11 +1,12 @@
 @extends('layouts.main')
 
 @section('content')
-	@include('partials.section-header', 
+	@include('partials.section-header',
 	[
 	    'title' => 'Perfil de '. $user->name,
 	    'subtitle' => ''
 	]);
+	@include('partials.messages')
 	<div class="container profile" id="content">
 		<div class="section profile-heading">
 			<div class="columns">
