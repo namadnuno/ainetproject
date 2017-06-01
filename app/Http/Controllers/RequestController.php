@@ -6,6 +6,7 @@ use App\Http\Requests\PedidoPutRequest;
 use App\Http\Requests\PedidoRequest;
 use App\Printer;
 use App\Request as RequestModel;
+use App\Support\NotificationCenter;
 use Barryvdh\DomPDF\Facade as PDF;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -76,6 +77,8 @@ class RequestController extends Controller
         $pedido->file = $filename;
 
         $pedido->save();
+
+        NotificationCenter::sendNewRequestToAdmins($pedido);
 
         return redirect()->route(
             'requests.index'

@@ -25,9 +25,11 @@
 							</figure>
 						</div>
 						<div class="card-content">
-							<div class="content">
-								<p class="has-text-centered">
+							<div class="media-content">
+								<p class="tile is-6 has-text-centered">
 									<strong>{{ $user->name }}</strong> <br>
+								</p>
+								<p class="subtitle is-6">
 									{{ $user->email }} <br>
 									{{ $user->phone }}
 								</p>

@@ -69,6 +69,16 @@ class User extends Authenticatable
     }
 
     /**
+     * Scope para returnar admins
+     * @param $query
+     * @return mixed
+     */
+    public function scopeAdmins($query)
+    {
+       return $query->where('admin', '1');
+    }
+
+    /**
      * Determina se o user é admin
      * @return bool
      */
