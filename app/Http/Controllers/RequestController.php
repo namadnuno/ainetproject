@@ -61,7 +61,7 @@ class RequestController extends Controller
 
         $pedido = $pedido->fill($request->all());
 
-        if(request('due_date')) {
+        if (request('due_date')) {
             $pedido->due_date = carbon(request('due_date'))->toDateString();
         }
 
@@ -114,7 +114,7 @@ class RequestController extends Controller
 
         $request->fill($requestValidator->all());
 
-        if(request('due_date')) {
+        if (request('due_date')) {
             $request->due_date = carbon(request('due_date'))->toDateString();
         }
 

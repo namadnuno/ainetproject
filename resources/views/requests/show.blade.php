@@ -92,7 +92,7 @@
 					<p>
 						<span class="tag {{ $request->colored == 1 ? 'is-primary' : 'is-dark' }}">
 							<span class="icon is-small">
-								<i class="fa fa-file-{{ typeFile($request) }}-o"></i>
+								<i class="fa fa-{{ typeFile($request) }}"></i>
 							</span>
 						</span>
 						<span class="tag is-info">
@@ -102,6 +102,9 @@
 						</span>
 						<span class="tag {{ $request->stapled == 1 ? 'is-info' : 'is-warning' }}">
 							{{ $request->stapled == 1 ? 'É' : 'Não é' }} agrafado
+						</span>
+						<span class="tag {{ $request->stapled == 1 ? 'is-info' : 'is-warning' }}">
+							{{ $request->front_back == 1 ? 'É' : 'Não é' }} frente e verso
 						</span>
 						<span class="tag is-info">
 							A{{ $request->paper_size }}
