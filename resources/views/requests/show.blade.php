@@ -6,6 +6,11 @@
 <div class="columns">
 	<div class="column is-3">
 		<div class="box">
+			<header>
+				<div class="card-header-title" >
+					<a href="{{ route('users.show', $request->user) }}">{{ $request->user->name }}</a>
+				</div>
+			</header>
 			<div class="media-image">
 				<figure class="image">
 					@if(isImage($request))
@@ -18,11 +23,11 @@
 				<div class="media-content">
 					<div class="content">
 						<div class="level-item is-top-xsmall">
-							@if ($request->status == 0)
+							@if ($request->isRecusado())
 							<span class="tag is-danger">
 								Recusado
 							</span>
-							@elseif($request->status == 1)
+							@elseif($request->isPendente())
 							<span class="tag is-warning">
 								Pendente
 							</span>
@@ -83,6 +88,12 @@
 				<div class="content">
 					<p>
 						{{ $request->description }}
+					</p>
+					<p>
+						<b>Departamento: </b>
+						<a href="{{ route('departments.show', $request->user->departament) }}">
+							{{ $request->user->departament->name }}
+						</a>
 					</p>
 					@if($request->isDone())
 						<p>

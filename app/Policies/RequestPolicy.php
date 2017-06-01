@@ -111,4 +111,15 @@ class RequestPolicy
     {
         return $request->owner_id == $user->id;
     }
+
+    /**
+     * Determina se um utilizador pode comentar um request
+     * @param User $user
+     * @param Request $request
+     * @return bool
+     */
+    public function comment(User $user, Request $request)
+    {
+        return $user->isAdmin() || $user->id == $request->owner_id;
+    }
 }

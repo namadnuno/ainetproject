@@ -175,7 +175,7 @@ class Request extends Model
      */
     public function isRecusado()
     {
-        return $this->status == '0';
+        return $this->status == self::RECUSADO;
     }
 
     /**
@@ -184,6 +184,11 @@ class Request extends Model
      */
     public function isDone()
     {
-        return $this->status == 2;
+        return $this->status == self::CONCLUIDO;
+    }
+
+    public function isPendente()
+    {
+        return $this->status == self::PENDENTE;
     }
 }
