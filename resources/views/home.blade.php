@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
-    <div id="hero" style="background-image: url({{ asset('images/hero.jpg') }})">
+    <div id="hero" style="background-image: url({{ asset("images/hero" . random_int(1, 7) . ".jpg") }})">
         <div class="container">
             <div class="heading">
                 <h1><span>Print</span>IT</h1>

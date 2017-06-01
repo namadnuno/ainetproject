@@ -24,7 +24,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::ofType(request('filter'))
+        $users = User::search(request('filter'))
         ->orderBy(
             request('orderby') ? request('orderby') : 'created_at',
             request('order') ? request('order') : 'DESC'
@@ -40,7 +40,7 @@ class UserController extends Controller
      */
     public function indexAsGuest()
     {
-        $users = User::active()->ofType(request('filter'))
+        $users = User::active()->search(request('filter'))
         ->orderBy(
             request('orderby') ? request('orderby') : 'created_at',
             request('order') ? request('order') : 'DESC'
