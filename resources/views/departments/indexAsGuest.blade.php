@@ -30,7 +30,11 @@
                             </article>
                             <div class="columns">
                                 <div class="column is-one-quarter">
-                                    <span class="tag is-info">{{ $department->requests()->done()->count() }} Impressões</span>
+                                    @if($department->requests()->done()->count() == 1)
+                                        <span class="tag is-info">{{ $department->requests()->done()->count() }} Impressão</span>
+                                    @else
+                                        <span class="tag is-info">{{ $department->requests()->done()->count() }} Impressões</span>
+                                    @endif
                                 </div>
                                 <div class="column is-one-quarter">
                                     @if($department->requests()->done()->count() != 0)
@@ -47,7 +51,11 @@
                                     @endif
                                 </div>
                                 <div class="column is-one-quarter">
-                                    <span class="tag is-primary">{{ $department->users()->count() }} Funcionários</span>
+                                    @if($department->users()->count() == 1)
+                                        <span class="tag is-primary">{{ $department->users()->count() }} Funcionário</span>
+                                    @else
+                                        <span class="tag is-primary">{{ $department->users()->count() }} Funcionários</span>
+                                    @endif
                                 </div>
                             </div>
                             <footer>
