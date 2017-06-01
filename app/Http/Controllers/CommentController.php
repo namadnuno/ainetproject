@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Comment;
 use App\Http\Requests\CommentRequest;
-use Illuminate\Http\Request;
+use App\Request;
 
 class CommentController extends Controller
 {
@@ -17,6 +17,7 @@ class CommentController extends Controller
 
     public function index()
     {
+        $this->authorize('index', Comment::class);
         $comments = Comment::ofType(request('filter'))
         ->orderBy(
             request('orderby') ? request('orderby') : 'created_at',
@@ -34,6 +35,7 @@ class CommentController extends Controller
      */
     public function store(CommentRequest $request)
     {
+        $this->authorize('comment', Request::find(request('request_id')));
         $comment = new Comment();
         $comment->fill($request->all());
         $comment->user_id = auth()->user()->id;
@@ -45,6 +47,8 @@ class CommentController extends Controller
 
     public function change()
     {
+        $this->authorize('change', Comment::class);
+        
         $comment = Comment::find(request('comment_id'));
         if ($comment->blocked == '1') {
             $comment->blocked = 0;
@@ -56,39 +60,5 @@ class CommentController extends Controller
             'success',
             $comment->blocked == '1' ? 'Bloqueado' : 'Desbloqueado'
         );
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }
