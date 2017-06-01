@@ -48,7 +48,7 @@ class CommentController extends Controller
     public function change()
     {
         $this->authorize('change', Comment::class);
-        
+
         $comment = Comment::find(request('comment_id'));
         if ($comment->blocked == '1') {
             $comment->blocked = 0;
