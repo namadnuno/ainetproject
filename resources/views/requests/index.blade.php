@@ -5,7 +5,7 @@
     @include('partials.filter-box', [
         'filters' => [
         'created_at' => 'Data de Criação',
-        'open_date' => 'Data Abertura',
+        'due_date' => 'Data Fidelização',
         'quantity' => 'Quantidade',
         'paper_size' => 'Tamanho de Papel',
         'status' => 'Estado',

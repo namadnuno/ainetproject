@@ -9,7 +9,7 @@
 <div class="columns">
     <div class="column">
         <div class="field">
-            <label for="due_date">Data do Finalização</label>
+            <label for="due_date">Data de Finalização</label>
             <p class="control">
                 <input type="date" class="input" name="due_date"
                        value="{{ old('due_date', $request->due_date ? carbon($request->due_date)->format('Y-m-d') : '') }}">

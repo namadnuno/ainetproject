@@ -1,6 +1,22 @@
-@extends('layouts.app')
+@extends('layouts.main')
 
 @section('content')
+<section class="hero is-small is-primary is-bold">
+    <div class="hero-body">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column">
+                    <p class="title">
+                        Recuperar Password
+                    </p>
+                    <p class="subtitle">
+                        Entre na sua conta para ter acesso ao <b>painel de administração</b>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
