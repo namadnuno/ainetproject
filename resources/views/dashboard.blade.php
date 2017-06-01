@@ -61,7 +61,7 @@
 							@foreach (auth()->user()->requests()->take(5)->orderBy('created_at', 'ASC')->get() as $request)
 								<tr>
 									<td>{{ $request->id }}</td>
-									<td>{{ carbon($request->due_date)->diffForHumans() }}</td>
+									<td>{{ carbon($request->created_at)->diffForHumans() }}</td>
 									<td>{{ $request->quantity }}</td>
 									<td>{{ $request->colored == 1 ? 'Cores' : 'Preto e Branco' }}</td>
 									<td>

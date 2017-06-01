@@ -14,7 +14,7 @@
 		</div>
 	</div>
 </section>
-<section class="container is-top-large is-bottom-large">
+<section class="container is-top-medium is-bottom-large">
 	<div class="columns">
 		<div class="column is-one-quarter">
 			<aside class="menu">
