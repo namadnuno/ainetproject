@@ -54,7 +54,7 @@ class CommentController extends Controller
         $comment->save();
         return back()->with(
             'success',
-            $comment->blocked == '1' ? 'Bloquado' : 'Desbloqueado'
+            $comment->blocked == '1' ? 'Bloqueado' : 'Desbloqueado'
         );
     }
 
