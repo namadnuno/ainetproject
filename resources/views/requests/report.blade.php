@@ -38,10 +38,14 @@
                 @if(!$request->due_date )
                     ---
                 @else
-                    @if(carbon($request->due_date)->lt(carbon($request->closed_date)))
-                        <span class="alert-failed">A data da entrega era a {{ $request->due_date }} e foi apenas concluido a {{ $request->closed_date }}</span>
+                    @if($request->isExpired())
+                        <span class="alert-failed">
+                            A data da entrega era a {{ $request->due_date }} e foi apenas concluido a {{ $request->closed_date }}
+                        </span>
                     @else
-                        <span class="alert-success">A data da entrega era a {{ $request->due_date }} e foi concluido a {{ $request->closed_date }}</span>
+                        <span class="alert-success">
+                            A data da entrega era a {{ $request->due_date }} e foi concluido a {{ $request->closed_date }}
+                        </span>
                     @endif
                 @endif
             </td>
@@ -74,11 +78,30 @@
                 @endif
             </td>
         </tr>
+        <tr>
+            <td>Impressora: </td>
+            <td>
+                {{ $request->printer->name }}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Dono:
+            </td>
+            <td>
+                {{ $request->user->name }}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Departamento:
+            </td>
+            <td>
+                {{ $request->user->departament->name }}
+            </td>
+        </tr>
         </tbody>
     </table>
-    <ul>
-
-    </ul>
 </div>
 </body>
 </html>

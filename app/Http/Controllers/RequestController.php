@@ -183,6 +183,6 @@ class RequestController extends Controller
         $this->authorize('show', $request);
 
         $pdf = PDF::loadView('requests.report', compact('request'));
-        return $pdf->download('invoice.pdf');
+        return $pdf->download("pedido-$request->id-relatorio.pdf");
     }
 }
