@@ -47,9 +47,12 @@
 							</span>
 						</div>
 						@endif
-
-						<div class="has-text-centered is-top-xsmall">
-							<a href="{{ route('downloadFile', $request) }}"  class="button is-primary has-icon">
+						<div class="columns is-top-small">
+						<div class="column">
+							<a href="{{ route('request.report', $request) }}" class="button is-info is-small has-icon">Relatório</a>
+						</div>
+						<div class="column has-text-centered">
+							<a href="{{ route('downloadFile', $request) }}"  class="button is-small has-icon">
 								<span class="icon is-small">
 									<i class="fa fa-download"></i>
 								</span>
@@ -57,6 +60,7 @@
 									Download
 								</span>
 							</a>
+						</div>
 						</div>
 					</div>
 				</div>

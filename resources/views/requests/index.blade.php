@@ -105,8 +105,8 @@
                                 </remover-objeto>
                             @endcan
                         @else
-                            @if($request->satisfaction_grade)
-                                <a href="{{ route('request.report', $request) }}" class="card-footer-item"><i class="fa fa-download"></i>Relatório</a>
+                            @if($request->isDone())
+                                <a href="{{ route('request.report', $request) }}" class="card-footer-item">Relatório</a>
                             @else
                                 @can('evaluate', $request)
                                     <evaluate-pedido route="{{ route('requests.evaluate', $request) }}" token="{{ csrf_token() }}"></evaluate-pedido>
