@@ -18,7 +18,7 @@ class UserPolicy
      */
     public function block(User $user, User $userModel)
     {
-        return $user->isAdmin() && $user->id != $userModel->id;
+        return $user->isAdmin() && $user->id != $userModel->id ;
     }
 
     /**

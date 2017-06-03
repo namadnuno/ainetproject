@@ -42,20 +42,20 @@ class PerfilController extends Controller
 
     public function update(PerfilRequest $request)
     {
-        $user = User::find(auth()->user()->id);
+        $user = auth()->user();
 
-        $user->profile_photo = $this->storePerfilPhoto($request);
-        
         if (!$request->password == '') {
             $user->password = Hash::make($request->password);
         }
 
         $user->fill(
-            request([
+            request()->only([
                 'name', 'email', 'phone', 'profile_url', 'presentation', 'department_id'
             ])
         );
-        
+
+        $user->profile_photo = $this->storePerfilPhoto($request) ?: $user->profile_photo;
+
         $user->save();
 
         return redirect()->route('perfil.index')->with('success', 'Perfil Alterado!');
@@ -78,8 +78,13 @@ class PerfilController extends Controller
         $user->profile_photo = $this->storePerfilPhoto($request);
         
         $user->fill(
-            request([
-                'name', 'email', 'phone', 'profile_url', 'presentation', 'department_id'
+            request()->only([
+                'name',
+                'email',
+                'phone',
+                'profile_url',
+                'presentation',
+                'department_id'
             ])
         );
         
