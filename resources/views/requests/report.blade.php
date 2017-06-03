@@ -9,10 +9,10 @@
             max-width: 875px;
         }
         .alert-failed {
-            color: #ff7653;
+            color: #ff3860;
         }
         .alert-success {
-            color: #94ff9e;
+            color: #23d160;
         }
     </style>
 </head>
@@ -56,11 +56,11 @@
         </tr>
         <tr>
             <td>Cores/Preto e branco:</td>
-            <td>{{ $request->colored }}</td>
+            <td>{{ $request->colored == 1 ? 'Sim' : 'Não' }}</td>
         </tr>
         <tr>
             <td>Com/sem agrafo</td>
-            <td>{{ $request->straped }}</td>
+            <td>{{ $request->straped == 1 ? 'Sim' : 'Não' }}</td>
         </tr>
         <tr>
             <td>Tamanho do papel (A3, A4):</td>

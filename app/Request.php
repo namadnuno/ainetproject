@@ -55,9 +55,9 @@ class Request extends Model
      * @param $filter
      * @return mixed
      */
-    public static function scopeSearch($query, $filter = '')
+    public static function scopeSearch($query, $filter = null)
     {
-        return $query->where('description', 'LIKE', '%' . $filter . '%');
+        return $filter ? $query->where('description', 'LIKE', "%$filter%") : $query;
     }
 
     /**

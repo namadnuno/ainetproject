@@ -1,66 +1,68 @@
 @extends('layouts.admin')
 
 @section('content-child')
-@include('requests.refuse-box')
-@include('requests.admin-controls')
-<div class="columns">
-	<div class="column is-3">
-		<div class="box">
-			<header>
-				<div class="card-header-title" >
-					<a href="{{ route('users.show', $request->user) }}">{{ $request->user->name }}</a>
-				</div>
-			</header>
-			<div class="media-image">
-				<figure class="image">
-					@if(isImage($request))
-						<img src="{{ route('getFile', $request) }}" alt="pedido" />
-					@else  
-                        <img src="{{ asset('/files_formats/' . typeFile($request) . '.png')}}" alt="" />
-                    @endif
+	@include('requests.refuse-box')
+	@include('requests.admin-controls')
+	<div class="columns">
+		<div class="column is-3">
+			<div class="box">
+				<header>
+					<div class="card-header-title" >
+						<a href="{{ route('users.show', $request->user) }}">{{ $request->user->name }}</a>
+					</div>
+				</header>
+				<div class="media-image">
+					<figure class="image">
+						@if(isImage($request))
+							<img src="{{ route('getFile', $request) }}" alt="pedido" />
+						@else
+							<img src="{{ asset('/files_formats/' . typeFile($request) . '.png')}}" alt="" />
+						@endif
 					</figure>
 				</div>
 				<div class="media-content">
 					<div class="content">
 						<div class="level-item is-top-xsmall">
 							@if ($request->isRecusado())
-							<span class="tag is-danger">
+								<span class="tag is-danger">
 								Recusado
 							</span>
 							@elseif($request->isPendente())
-							<span class="tag is-warning">
+								<span class="tag is-warning">
 								Pendente
 							</span>
 							@else
-							<span class="tag is-success">
+								<span class="tag is-success">
 								Concluído
 							</span>
 							@endif
 						</div>
 
 						@if($request->status == 2)
-						<div class="level-item is-top-xsmall">
+							<div class="level-item is-top-xsmall">
 							<span class="icon is-small">
 								@for ($i = 0; $i < $request->satisfaction_grade; $i++)
-								<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
 								@endfor
 							</span>
-						</div>
+							</div>
 						@endif
 						<div class="columns is-top-small">
-						<div class="column">
-							<a href="{{ route('request.report', $request) }}" class="button is-info is-small has-icon">Relatório</a>
-						</div>
-						<div class="column has-text-centered">
-							<a href="{{ route('downloadFile', $request) }}"  class="button is-small has-icon">
+							@if($request->isDone())
+								<div class="column">
+									<a href="{{ route('request.report', $request) }}" class="button is-info is-small has-icon">Relatório</a>
+								</div>
+							@endif
+							<div class="column has-text-centered">
+								<a href="{{ route('downloadFile', $request) }}"  class="button is-small has-icon">
 								<span class="icon is-small">
 									<i class="fa fa-download"></i>
 								</span>
-								<span>
+									<span>
 									Download
 								</span>
-							</a>
-						</div>
+								</a>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -71,7 +73,7 @@
 				<div class="level">
 					<div class="level-left">
 						<div class="level-item">
-							<p class="title is-4">Pedido nº {{ $request->id }} </p>							
+							<p class="title is-4">Pedido nº {{ $request->id }} </p>
 						</div>
 					</div>
 					<div class="level-right">
@@ -86,7 +88,7 @@
 						</div>
 						<div class="level-item">
 							<i>{{ $request->created_at->diffForHumans() }}</i>
-						</div>						
+						</div>
 					</div>
 				</div>
 				<div class="content">
@@ -125,13 +127,13 @@
 							A{{ $request->paper_size }}
 						</span>
 						<span class="tag is-primary">
-							Papel 
+							Papel
 							@if ($request->paper_type == 1)
-							normal
+								normal
 							@elseif($request->paper_type == 2)
-							rascunho
+								rascunho
 							@else
-							fotográfico
+								fotográfico
 							@endif
 						</span>
 					</p>
@@ -141,101 +143,101 @@
 				<div class="media-content">
 					<p class="title is-5">Comentários</p>
 					@foreach ($request->comments()->parents()->atives()->get() as $comment)
-					<article class="media">
-						<figure class="media-left">
-							<p class="image is-64x64">
-								@include('partials.profile_photo_of', ['user' => $comment->user])
-							</p>
-						</figure>
-						<div class="media-content">
-							<div class="content">
-								<p>
-									<strong>{{ $comment->user->name }}</strong>
-									<br>
-									{{ $comment->comment }}
-									<br>
-									<small>{{ \Carbon\Carbon::parse($comment->created_at)->diffForHumans() }}</small>
+						<article class="media">
+							<figure class="media-left">
+								<p class="image is-64x64">
+									@include('partials.profile_photo_of', ['user' => $comment->user])
 								</p>
-							</div>
-							@foreach ($comment->childrens()->atives()->get() as $childrenComment)
-							<article class="media">
-								<figure class="media-left">
-									<p class="image is-64x64">
-										@include('partials.profile_photo_of', ['user' => $childrenComment->user])
+							</figure>
+							<div class="media-content">
+								<div class="content">
+									<p>
+										<strong>{{ $comment->user->name }}</strong>
+										<br>
+										{{ $comment->comment }}
+										<br>
+										<small>{{ \Carbon\Carbon::parse($comment->created_at)->diffForHumans() }}</small>
 									</p>
-								</figure>
-								<div class="media-content">
-									<div class="content">
-										<p>
-											<strong>{{ $childrenComment->user->name }}</strong>
-											<br>
-											{{ $childrenComment->comment }}
-											<br>
-											<small>{{ \Carbon\Carbon::parse($childrenComment->created_at)->diffForHumans() }}</small>
-										</p>
-									</div>
 								</div>
-							</article>
-							@endforeach
+								@foreach ($comment->childrens()->atives()->get() as $childrenComment)
+									<article class="media">
+										<figure class="media-left">
+											<p class="image is-64x64">
+												@include('partials.profile_photo_of', ['user' => $childrenComment->user])
+											</p>
+										</figure>
+										<div class="media-content">
+											<div class="content">
+												<p>
+													<strong>{{ $childrenComment->user->name }}</strong>
+													<br>
+													{{ $childrenComment->comment }}
+													<br>
+													<small>{{ \Carbon\Carbon::parse($childrenComment->created_at)->diffForHumans() }}</small>
+												</p>
+											</div>
+										</div>
+									</article>
+								@endforeach
 
 							<!--apenas responder a comentarios em pedidos pendentes-->
-							@if($request->status == 1)
-							<article class="media">
-								<figure class="media-left">
-									<p class="image is-64x64">
-										@include('partials.profile_photo')
-									</p>
-								</figure>
-								<div class="media-content">
-									<form method="post" action="{{ route('comments.store') }}">
-										@include('partials.errors')
-										{{ csrf_field() }}
-										<div class="field">
-											<p class="control">
-												<input class="input is-small" name="comment" placeholder="Resposta ao Comentário">
+								@if($request->status == 1)
+									<article class="media">
+										<figure class="media-left">
+											<p class="image is-64x64">
+												@include('partials.profile_photo')
 											</p>
-											<input type="hidden" name="request_id" value="{{ $request->id }}">
-											<input type="hidden" name="parent_id" value="{{ $comment->id }}">
+										</figure>
+										<div class="media-content">
+											<form method="post" action="{{ route('comments.store') }}">
+												@include('partials.errors')
+												{{ csrf_field() }}
+												<div class="field">
+													<p class="control">
+														<input class="input is-small" name="comment" placeholder="Resposta ao Comentário">
+													</p>
+													<input type="hidden" name="request_id" value="{{ $request->id }}">
+													<input type="hidden" name="parent_id" value="{{ $comment->id }}">
+												</div>
+												<div class="field">
+													<p class="control">
+														<button type="submit" class="button">Responder</button>
+													</p>
+												</div>
+											</form>
 										</div>
-										<div class="field">
-											<p class="control">
-												<button type="submit" class="button">Responder</button>
-											</p>
-										</div>
-									</form>
-								</div>
-							</article>
-							@endif
-						</div>
-					</article>
+									</article>
+								@endif
+							</div>
+						</article>
 					@endforeach
-					
-					<!--apenas comentar em pedidos pendentes-->
+
+				<!--apenas comentar em pedidos pendentes-->
 					@if($request->status == 1)
-					<article class="media">
-						<figure class="media-left">
-							<p class="image is-64x64">
-								@include('partials.profile_photo')
-							</p>
-						</figure>
-						<div class="media-content">
-							<form method="post" action="{{ route('comments.store') }}">
-								@include('partials.errors')
-								{{ csrf_field() }}
-								<div class="field">
-									<p class="control">
-										<input class="input is-small" name="comment" placeholder="Novo Comentário">
-									</p>
-									<input type="hidden" name="request_id" value="{{ $request->id }}">
-								</div>
-								<div class="field">
-									<p class="control">
-										<button type="submit" class="button">Comentar</button>
-									</p>
-								</div>
-							</form>
-						</div>
-					</article>
+						<article class="media">
+							<figure class="media-left">
+								<p class="image is-64x64">
+									@include('partials.profile_photo')
+								</p>
+							</figure>
+							<div class="media-content">
+								<form method="post" action="{{ route('comments.store') }}">
+									@include('partials.errors')
+									{{ csrf_field() }}
+									<div class="field">
+										<p class="control">
+											<input class="input is-small" name="comment" placeholder="Novo Comentário">
+										</p>
+										<input type="hidden" name="request_id" value="{{ $request->id }}">
+									</div>
+									<div class="field">
+										<p class="control">
+											<button type="submit" class="button">Comentar</button>
+										</p>
+									</div>
+								</form>
+							</div>
+						</article>
 					@endif
 				</div>
 			</div>
@@ -244,8 +246,8 @@
 	<div class="level-right">
 		<a href="{{ URL::previous() }}" class="level-item button is-primary">Voltar</a>
 	</div>
-	@endsection
+@endsection
 
-	@section('title')
+@section('title')
 	Pedido #{{ $request->id }}
-	@endsection
+@endsection
